@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- 1. Define the animations --- */
+  --animate-orbit: orbit 20s linear infinite;
+  --animate-counter-orbit: counter-orbit 20s linear infinite;
+  --animate-float: float 3s ease-in-out infinite;
+
+  /* --- 2. Define the Keyframes --- */
+  @keyframes orbit {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes counter-orbit {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+  }
+
+  /* Float Keyframes (Up and Down) */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); } /* Moves up 10px */
+  }
+}
