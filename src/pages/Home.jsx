@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import EnquiryModal from '../components/EnquiryModal';
+import AboutPreview from "../components/AboutPreview";
+
 
 // --- ICONS ---
 const TagIcon = () => (
@@ -21,58 +23,132 @@ const ArrowRightIcon = () => (
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // CHANGED: Use the local image from the public folder
   const heroImage = "/loan.jpg";
 
   return (
     <div className="bg-gray-50 font-sans">
       
       {/* 1. HERO SECTION */}
-      <div className="relative bg-blue-50 h-[500px] flex items-center overflow-hidden">
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full">
-          
-          {/* Left Text */}
-          <div className="z-10 mt-[-50px]">
-            <h1 className="text-5xl font-bold text-blue-900 mb-4">
-              Personal Loans
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Shop and compare the best rates in minutes.
-            </p>
-            <button 
-              onClick={() => setIsModalOpen(true)}
-              className="bg-blue-900 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-800 transition shadow-lg"
-            >
-              Apply Now
-            </button>
-          </div>
+        {/* 1. UPDATED HERO SECTION */}
+<div className="relative bg-white h-[520px] flex items-center overflow-hidden">
 
-          {/* Right Image (Background Style) */}
-          <div className="hidden md:block h-full w-full relative">
-             {/* CHANGED: Classes updated to make image fit as a full background cover */}
-             <img 
-               src={heroImage} 
-               alt="Loan Approved" 
-               className="absolute inset-0 w-full h-full object-cover"
-             />
-             {/* Optional: Add a slight gradient fade so the image blends with the text area if needed */}
-             <div className="absolute inset-0 bg-gradient-to-l from-transparent to-blue-50/20 pointer-events-none"></div>
-          </div>
+  <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full">
 
-        </div>
+    {/* LEFT CONTENT */}
+    <div className="z-20">
+      <h1 className="text-5xl font-bold text-blue-900 mb-4">
+        Personal Loans Simplified
+      </h1>
+
+      <p className="text-xl text-gray-600 mb-8">
+        Fast approval • Low interest • Trusted by thousands
+      </p>
+
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="bg-blue-900 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-800 transition shadow-lg"
+      >
+        Apply Now
+      </button>
+    </div>
+
+    {/* RIGHT IMAGE + FLOATING BOXES */}
+    <div className="relative w-full h-full flex items-center justify-center">
+
+      {/* MAIN HERO IMAGE */}
+      <img
+        src="/hero.png"
+        alt="Loan Hero"
+        className="w-full h-full object-contain md:object-cover"
+      />
+
+      {/* FLOATING CARD 1 */}
+      <div className="absolute top-50 right-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
+        <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
+        <p className="text-gray-500 text-sm">Low Interest</p>
+      </div>
+        <div className="absolute top-10 right-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
+        <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
+        <p className="text-gray-500 text-sm">Low Interest</p>
+      </div>
+        <div className="absolute top-10 left-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
+        <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
+        <p className="text-gray-500 text-sm">Low Interest</p>
+      </div>
+      <div className="absolute top-50 left-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
+        <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
+        <p className="text-gray-500 text-sm">Low Interest</p>
       </div>
 
-      {/* 2. FLOATING CARDS */}
-      <div className="container mx-auto px-6 relative z-20 -mt-16 mb-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {['Personal Loans', 'Car Loan', 'Home Loan', 'Business Loan'].map((item, index) => (
-            <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:-translate-y-2 transition duration-300 flex flex-col items-center text-center cursor-pointer border border-gray-100">
-              <div className="bg-blue-50 p-4 rounded-full mb-4 text-blue-600 font-bold text-xl">
-                 $
+      {/* FLOATING CARD 2 */}
+      <div className="absolute bottom-14 right-10 bg-white shadow-xl rounded-2xl p-4 w-44 animate-fade-up [animation-delay:0.2s]">
+        <h3 className="text-xl font-bold text-green-600">98%</h3>
+        <p className="text-gray-500 text-sm">Approval Rate</p>
+      </div>
+
+      {/* FLOATING CARD 3 */}
+      <div className="absolute bottom-4 left-4 bg-white shadow-xl rounded-2xl p-4 w-44 animate-fade-up [animation-delay:0.4s]">
+        <h3 className="text-xl font-bold text-orange-500">Fast</h3>
+        <p className="text-gray-500 text-sm">Same Day Processing</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+      {/* 2. LOAN CATEGORY CARDS (UPDATED SECTION) */}
+      <div className="container mx-auto px-6 relative z-20 -mt-20 mb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+
+          {[
+            {
+              title: "Personal Loans",
+              desc: "Flexible personal loan options with competitive interest rates.",
+              img: "/cards/personal.jpg"
+            },
+            {
+              title: "Car Loan",
+              desc: "Get fast approval and low EMI rates for new or used cars.",
+              img: "/cards/car.jpg"
+            },
+            {
+              title: "Home Loan",
+              desc: "Affordable home loan solutions with easy documentation.",
+              img: "/cards/home.jpg"
+            },
+            {
+              title: "Business Loan",
+              desc: "Grow your business with our smart financing options.",
+              img: "/cards/business.jpg"
+            }
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="
+                bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100
+                transform hover:-translate-y-2 transition duration-300 cursor-pointer
+              "
+            >
+              
+              {/* Image */}
+              <div className="h-40 w-full overflow-hidden">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover hover:scale-110 transition duration-500"
+                />
               </div>
-              <h3 className="font-bold text-gray-700">{item}</h3>
+
+              {/* Text */}
+              <div className="p-6 text-center">
+                <h3 className="text-xl font-bold text-blue-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.desc}</p>
+              </div>
+
             </div>
           ))}
+
         </div>
       </div>
 
@@ -120,6 +196,7 @@ export default function Home() {
               </div>
               <button onClick={() => setIsModalOpen(true)} className="w-full bg-blue-500 text-white font-bold py-3 rounded-full hover:bg-blue-600 transition">Learn More</button>
             </div>
+
           </div>
         </div>
       </div>
@@ -146,6 +223,8 @@ export default function Home() {
         </div>
       </div>
 
+      <AboutPreview />
+
       {/* 5. FEATURES */}
       <div className="container mx-auto px-6 py-20 bg-white">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -164,20 +243,20 @@ export default function Home() {
         </div>
       </div>
 
-      {/* --- ANIMATED SECTION: EXPLORE YOUR OPTIONS (CREDIT SCORES) --- */}
+      {/* 6. EXPLORE YOUR OPTIONS (ROTATING CARDS) */}
       <div className="py-32 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-6 relative h-[600px] flex justify-center items-center">
           
-          {/* Central Circle & Text (Static) */}
+          {/* Center Circle */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-96 md:h-96 rounded-full border-[6px] border-orange-500 flex flex-col justify-center items-center text-center p-8 z-10 bg-white shadow-sm">
             <h2 className="text-3xl font-bold text-black mb-3">Explore Your Options</h2>
             <p className="text-gray-600 text-lg">Compare the personal loans available by credit rating</p>
           </div>
 
-          {/* Rotating Container for Cards */}
+          {/* Rotating Items */}
           <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] -ml-[250px] -mt-[250px] animate-orbit z-20 pointer-events-none">
             
-            {/* 1. Excellent (Top) */}
+            {/* Excellent */}
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-5 rounded-xl shadow-lg text-center min-w-[160px] animate-float">
                 <h3 className="font-bold text-2xl text-blue-900 mb-1">Excellent</h3>
@@ -185,7 +264,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 2. Good (Right) - Added 1s delay to float */}
+            {/* Good */}
             <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-5 rounded-xl shadow-lg text-center min-w-[160px] animate-float [animation-delay:1s]">
                 <h3 className="font-bold text-2xl text-blue-900 mb-1">Good</h3>
@@ -193,15 +272,15 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 3. Fair (Bottom) - Added 2s delay to float */}
-             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 animate-counter-orbit pointer-events-auto">
+            {/* Fair */}
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-5 rounded-xl shadow-lg text-center min-w-[160px] animate-float [animation-delay:2s]">
                 <h3 className="font-bold text-2xl text-blue-900 mb-1">Fair</h3>
                 <p className="text-red-500 font-bold text-xl">620 ~ 659</p>
               </div>
             </div>
 
-            {/* 4. Poor (Left) - Added 1.5s delay to float */}
+            {/* Poor */}
             <div className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-5 rounded-xl shadow-lg text-center min-w-[160px] animate-float [animation-delay:1.5s]">
                 <h3 className="font-bold text-2xl text-blue-900 mb-1">Poor</h3>
@@ -209,14 +288,6 @@ export default function Home() {
               </div>
             </div>
             
-          </div>
-
-          {/* Connecting Dots */}
-          <div className="hidden md:block absolute top-1/2 left-1/2 w-[500px] h-[500px] -ml-[250px] -mt-[250px] pointer-events-none z-0 opacity-50">
-             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-400 rounded-full"></div>
-             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-gray-400 rounded-full"></div>
-             <div className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-400 rounded-full"></div>
-             <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-400 rounded-full"></div>
           </div>
 
         </div>

@@ -23,3 +23,11 @@
     50% { transform: translateY(-10px); } /* Moves up 10px */
   }
 }
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease forwards;
+}
