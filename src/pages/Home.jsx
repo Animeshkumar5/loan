@@ -68,16 +68,16 @@ export default function Home() {
         <p className="text-gray-500 text-sm">Low Interest</p>
       </div>
         <div className="absolute top-10 right-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
-        <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
-        <p className="text-gray-500 text-sm">Low Interest</p>
+        <h3 className="text-xl font-bold text-blue-900">90%</h3>
+        <p className="text-gray-500 text-sm">Satisfied Customer</p>
       </div>
         <div className="absolute top-10 left-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
-        <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
-        <p className="text-gray-500 text-sm">Low Interest</p>
+        <h3 className="text-xl font-bold text-blue-900">100%</h3>
+        <p className="text-gray-500 text-sm">Secure</p>
       </div>
       <div className="absolute top-50 left-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
-        <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
-        <p className="text-gray-500 text-sm">Low Interest</p>
+        <h3 className="text-xl font-bold text-blue-900">100%</h3>
+        <p className="text-gray-500 text-sm">Instant Approvals</p>
       </div>
 
       {/* FLOATING CARD 2 */}
