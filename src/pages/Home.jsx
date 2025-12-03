@@ -62,34 +62,22 @@ export default function Home() {
         className="w-full h-full object-contain md:object-cover"
       />
 
-      {/* FLOATING CARD 1 */}
+      
       <div className="absolute top-50 right-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
         <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
         <p className="text-gray-500 text-sm">Low Interest</p>
       </div>
         <div className="absolute top-10 right-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
-        <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
-        <p className="text-gray-500 text-sm">Low Interest</p>
+        <h3 className="text-xl font-bold text-blue-900">100%</h3>
+        <p className="text-gray-500 text-sm">Secure</p>
       </div>
         <div className="absolute top-10 left-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
-        <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
-        <p className="text-gray-500 text-sm">Low Interest</p>
+        <h3 className="text-xl font-bold text-blue-900">80%</h3>
+        <p className="text-gray-500 text-sm">Satified Customer</p>
       </div>
       <div className="absolute top-50 left-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
-        <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
-        <p className="text-gray-500 text-sm">Low Interest</p>
-      </div>
-
-      {/* FLOATING CARD 2 */}
-      <div className="absolute bottom-14 right-10 bg-white shadow-xl rounded-2xl p-4 w-44 animate-fade-up [animation-delay:0.2s]">
-        <h3 className="text-xl font-bold text-green-600">98%</h3>
-        <p className="text-gray-500 text-sm">Approval Rate</p>
-      </div>
-
-      {/* FLOATING CARD 3 */}
-      <div className="absolute bottom-4 left-4 bg-white shadow-xl rounded-2xl p-4 w-44 animate-fade-up [animation-delay:0.4s]">
-        <h3 className="text-xl font-bold text-orange-500">Fast</h3>
-        <p className="text-gray-500 text-sm">Same Day Processing</p>
+        <h3 className="text-xl font-bold text-blue-900">100%</h3>
+        <p className="text-gray-500 text-sm">Fast approval</p>
       </div>
 
     </div>
