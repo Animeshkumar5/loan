@@ -29,10 +29,10 @@ export default function Home() {
     <div className="bg-gray-50 font-sans">
       
       {/* 1. HERO SECTION */}
-        {/* 1. UPDATED HERO SECTION */}
 <div className="relative bg-white h-[520px] flex items-center overflow-hidden">
 
-  <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full">
+  {/* Max width 1280 */}
+  <div className="max-w-[1280px] w-full mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full">
 
     {/* LEFT CONTENT */}
     <div className="z-20">
@@ -52,49 +52,46 @@ export default function Home() {
       </button>
     </div>
 
-    {/* RIGHT IMAGE + FLOATING BOXES */}
+    {/* RIGHT IMAGE + FLOATING ANIMATED CARDS */}
     <div className="relative w-full h-full flex items-center justify-center">
 
-      {/* MAIN HERO IMAGE */}
+      {/* HERO IMAGE */}
       <img
         src="/hero.png"
         alt="Loan Hero"
-        className="w-full h-full object-contain md:object-cover"
+        className="w-full h-full object-contain"
       />
 
-      {/* FLOATING CARD 1 */}
-      <div className="absolute top-50 right-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
+      {/* CARD - LOW INTEREST */}
+      <div className="floating-card absolute top-10 right-5 w-40">
         <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
         <p className="text-gray-500 text-sm">Low Interest</p>
       </div>
-        <div className="absolute top-10 right-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
+
+      {/* CARD - SATISFIED CUSTOMER */}
+      <div className="floating-card absolute top-45 left-110 w-40 [animation-delay:0.4s]">
         <h3 className="text-xl font-bold text-blue-900">90%</h3>
-        <p className="text-gray-500 text-sm">Satisfied Customer</p>
+        <p className="text-gray-500 text-sm">Satisfied Customers</p>
       </div>
-        <div className="absolute top-10 left-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
+
+      {/* CARD - SECURE */}
+      <div className="floating-card absolute top-10 left-10 w-40 [animation-delay:0.8s]">
         <h3 className="text-xl font-bold text-blue-900">100%</h3>
         <p className="text-gray-500 text-sm">Secure</p>
       </div>
-      <div className="absolute top-50 left-6 bg-white shadow-xl rounded-2xl p-4 w-40 animate-fade-up">
+
+      {/* CARD - INSTANT APPROVAL */}
+      <div className="floating-card absolute top-45 left-5 w-40 [animation-delay:1.2s]">
         <h3 className="text-xl font-bold text-blue-900">100%</h3>
         <p className="text-gray-500 text-sm">Instant Approvals</p>
       </div>
 
-      {/* FLOATING CARD 2 */}
-      <div className="absolute bottom-14 right-10 bg-white shadow-xl rounded-2xl p-4 w-44 animate-fade-up [animation-delay:0.2s]">
-        <h3 className="text-xl font-bold text-green-600">98%</h3>
-        <p className="text-gray-500 text-sm">Approval Rate</p>
-      </div>
-
-      {/* FLOATING CARD 3 */}
-      <div className="absolute bottom-4 left-4 bg-white shadow-xl rounded-2xl p-4 w-44 animate-fade-up [animation-delay:0.4s]">
-        <h3 className="text-xl font-bold text-orange-500">Fast</h3>
-        <p className="text-gray-500 text-sm">Same Day Processing</p>
-      </div>
-
+      
+      
     </div>
   </div>
 </div>
+
 
 
       {/* 2. LOAN CATEGORY CARDS (UPDATED SECTION) */}
