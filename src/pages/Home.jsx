@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import EnquiryModal from '../components/EnquiryModal';
 import AboutPreview from "../components/AboutPreview";
 
-
 // --- ICONS ---
 const TagIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -23,78 +22,77 @@ const ArrowRightIcon = () => (
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const heroImage = "/loan.jpg";
-
   return (
     <div className="bg-gray-50 font-sans">
       
-      {/* 1. HERO SECTION */}
-<div className="relative bg-white h-[520px] flex items-center overflow-hidden">
+      {/* 1. HERO SECTION (UPDATED FOR MOBILE) */}
+      {/* Changed h-[520px] to h-auto md:h-[650px] and added padding for mobile */}
+      <div className="relative bg-white h-auto md:h-[650px] flex items-center overflow-hidden pb-24 pt-12 md:py-0">
 
-  {/* Max width 1280 */}
-  <div className="max-w-[1280px] w-full mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center h-full">
+        {/* Max width 1280 */}
+        <div className="max-w-[1280px] w-full mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
 
-    {/* LEFT CONTENT */}
-    <div className="z-20">
-      <h1 className="text-5xl font-bold text-blue-900 mb-4">
-        Personal Loans Simplified
-      </h1>
+          {/* LEFT CONTENT */}
+          <div className="z-20 text-center md:text-left">
+            <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4 leading-tight">
+              Personal Loans Simplified
+            </h1>
 
-      <p className="text-xl text-gray-600 mb-8">
-        Fast approval • Low interest • Trusted by thousands
-      </p>
+            <p className="text-lg md:text-xl text-gray-600 mb-8">
+              Fast approval • Low interest • Trusted by thousands
+            </p>
 
-      <button
-        onClick={() => setIsModalOpen(true)}
-        className="bg-blue-900 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-800 transition shadow-lg"
-      >
-        Apply Now
-      </button>
-    </div>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-blue-900 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-800 transition shadow-lg"
+            >
+              Apply Now
+            </button>
+          </div>
 
-    {/* RIGHT IMAGE + FLOATING ANIMATED CARDS */}
-    <div className="relative w-full h-full flex items-center justify-center">
+          {/* RIGHT IMAGE + FLOATING ANIMATED CARDS */}
+          <div className="relative w-full h-full flex items-center justify-center mt-8 md:mt-0">
 
-      {/* HERO IMAGE */}
-      <img
-        src="/hero.png"
-        alt="Loan Hero"
-        className="w-full h-full object-contain"
-      />
+            {/* HERO IMAGE */}
+            <img
+              src="/hero.png"
+              alt="Loan Hero"
+              className="w-3/4 md:w-full h-auto object-contain max-h-[400px] md:max-h-full"
+            />
 
-      {/* CARD - LOW INTEREST */}
-      <div className="floating-card absolute top-10 right-5 w-40">
-        <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
-        <p className="text-gray-500 text-sm">Low Interest</p>
+            {/* FLOATING CARDS - HIDDEN ON MOBILE (hidden md:block) */}
+            {/* Keeping them on mobile breaks layout, so we only show them on md screens and up */}
+            
+            {/* CARD - LOW INTEREST */}
+            <div className="hidden md:block floating-card absolute top-20 right-5 w-40">
+              <h3 className="text-xl font-bold text-blue-900">9.2%</h3>
+              <p className="text-gray-500 text-sm">Low Interest</p>
+            </div>
+
+            {/* CARD - SATISFIED CUSTOMER */}
+            {/* Adjusted position for better desktop fit */}
+            <div className="hidden md:block floating-card absolute bottom-20 right-10 w-40 [animation-delay:0.4s]">
+              <h3 className="text-xl font-bold text-blue-900">90%</h3>
+              <p className="text-gray-500 text-sm">Satisfied Customers</p>
+            </div>
+
+            {/* CARD - SECURE */}
+            <div className="hidden md:block floating-card absolute top-20 left-10 w-40 [animation-delay:0.8s]">
+              <h3 className="text-xl font-bold text-blue-900">100%</h3>
+              <p className="text-gray-500 text-sm">Secure</p>
+            </div>
+
+            {/* CARD - INSTANT APPROVAL */}
+            <div className="hidden md:block floating-card absolute bottom-20 left-0 w-40 [animation-delay:1.2s]">
+              <h3 className="text-xl font-bold text-blue-900">100%</h3>
+              <p className="text-gray-500 text-sm">Instant Approvals</p>
+            </div>
+            
+          </div>
+        </div>
       </div>
 
-      {/* CARD - SATISFIED CUSTOMER */}
-      <div className="floating-card absolute top-45 left-110 w-40 [animation-delay:0.4s]">
-        <h3 className="text-xl font-bold text-blue-900">90%</h3>
-        <p className="text-gray-500 text-sm">Satisfied Customers</p>
-      </div>
-
-      {/* CARD - SECURE */}
-      <div className="floating-card absolute top-10 left-10 w-40 [animation-delay:0.8s]">
-        <h3 className="text-xl font-bold text-blue-900">100%</h3>
-        <p className="text-gray-500 text-sm">Secure</p>
-      </div>
-
-      {/* CARD - INSTANT APPROVAL */}
-      <div className="floating-card absolute top-45 left-5 w-40 [animation-delay:1.2s]">
-        <h3 className="text-xl font-bold text-blue-900">100%</h3>
-        <p className="text-gray-500 text-sm">Instant Approvals</p>
-      </div>
-
-      
-      
-    </div>
-  </div>
-</div>
-
-
-
-      {/* 2. LOAN CATEGORY CARDS (UPDATED SECTION) */}
+      {/* 2. LOAN CATEGORY CARDS */}
       <div className="container mx-auto px-6 relative z-20 -mt-20 mb-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
 
@@ -127,8 +125,6 @@ export default function Home() {
                 transform hover:-translate-y-2 transition duration-300 cursor-pointer
               "
             >
-              
-              {/* Image */}
               <div className="h-40 w-full overflow-hidden">
                 <img
                   src={item.img}
@@ -136,13 +132,10 @@ export default function Home() {
                   className="w-full h-full object-cover hover:scale-110 transition duration-500"
                 />
               </div>
-
-              {/* Text */}
               <div className="p-6 text-center">
                 <h3 className="text-xl font-bold text-blue-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600">{item.desc}</p>
               </div>
-
             </div>
           ))}
 
@@ -240,18 +233,18 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 6. EXPLORE YOUR OPTIONS (ROTATING CARDS) */}
+      {/* 6. EXPLORE YOUR OPTIONS (ROTATING CARDS) - UPDATED FOR MOBILE */}
       <div className="py-32 bg-gray-50 overflow-hidden">
-        <div className="container mx-auto px-6 relative h-[600px] flex justify-center items-center">
+        <div className="container mx-auto px-6 relative h-[400px] md:h-[600px] flex justify-center items-center">
           
           {/* Center Circle */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-96 md:h-96 rounded-full border-[6px] border-orange-500 flex flex-col justify-center items-center text-center p-8 z-10 bg-white shadow-sm">
-            <h2 className="text-3xl font-bold text-black mb-3">Explore Your Options</h2>
-            <p className="text-gray-600 text-lg">Compare the personal loans available by credit rating</p>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-96 md:h-96 rounded-full border-[6px] border-orange-500 flex flex-col justify-center items-center text-center p-4 md:p-8 z-10 bg-white shadow-sm">
+            <h2 className="text-xl md:text-3xl font-bold text-black mb-1 md:mb-3">Explore Your Options</h2>
+            <p className="text-xs md:text-lg text-gray-600">Compare the personal loans available by credit rating</p>
           </div>
 
-          {/* Rotating Items */}
-          <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] -ml-[250px] -mt-[250px] animate-orbit z-20 pointer-events-none">
+          {/* Rotating Items - Scaled down for mobile using scale-[0.6] */}
+          <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] -ml-[250px] -mt-[250px] animate-orbit z-20 pointer-events-none transform scale-[0.5] md:scale-100 origin-center">
             
             {/* Excellent */}
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
