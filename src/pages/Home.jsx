@@ -61,7 +61,7 @@ export default function Home() {
             {/* Modal Header */}
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-t-3xl">
               <div className="inline-block mb-3">
-                <span className="bg-white bg-opacity-20 text-white text-sm font-semibold px-4 py-2 rounded-full">
+                <span className="bg-white bg-opacity-20 text-black text-sm font-semibold px-4 py-2 rounded-full">
                   ⚡ Quick & Easy Process
                 </span>
               </div>
