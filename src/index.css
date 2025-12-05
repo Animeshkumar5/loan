@@ -46,3 +46,7 @@
          animate-[floatUpDown_3s_ease-in-out_infinite] 
          shadow-[0_0_8px_2px_rgba(0,150,255,0.4)];
 }
+
+.input-style {
+  @apply border p-3 rounded-xl text-gray-700 focus:outline-blue-600 w-full;
+}
