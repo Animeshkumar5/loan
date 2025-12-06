@@ -5,6 +5,10 @@ export default function Contact() {
   const [form, setForm] = useState({
     name: "",
     phone: "",
+    email: "",
+    location: "",
+    amount: "",
+    loanType: "",
     message: ""
   });
 
@@ -17,7 +21,17 @@ export default function Contact() {
     try {
       await sendMail(form);
       setStatus("Message sent successfully!");
-      setForm({ name: "", phone: "", message: "" });
+
+      setForm({
+        name: "",
+        phone: "",
+        email: "",
+        location: "",
+        amount: "",
+        loanType: "",
+        message: ""
+      });
+
     } catch (err) {
       console.log(err);
       setStatus("Failed to send message. Try again!");
@@ -25,54 +39,102 @@ export default function Contact() {
   };
 
   return (
-    <div className="p-10 max-w-2xl mx-auto">
+    <div className="p-10 max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
 
-      <form className="space-y-4" onSubmit={handleSubmit}>
-        <div>
-          <label className="block text-gray-700 font-medium mb-1">Name</label>
-          <input
-            type="text"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="John Doe"
-            required
-          />
+      <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
+
+        {/* Name */}
+        <input
+          type="text"
+          placeholder="Full Name"
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          className="input-style"
+          required
+        />
+
+        {/* Phone */}
+        <input
+          type="text"
+          placeholder="Phone Number"
+          value={form.phone}
+          onChange={(e) => setForm({ ...form, phone: e.target.value })}
+          className="input-style"
+          required
+        />
+
+        {/* Email */}
+        <input
+          type="email"
+          placeholder="Email Address"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          className="input-style"
+        />
+
+        {/* Location */}
+        <input
+          type="text"
+          placeholder="Location / City"
+          value={form.location}
+          onChange={(e) => setForm({ ...form, location: e.target.value })}
+          className="input-style"
+        />
+
+        {/* Amount */}
+        <input
+          type="number"
+          placeholder="Loan Amount"
+          value={form.amount}
+          onChange={(e) => setForm({ ...form, amount: e.target.value })}
+          className="input-style"
+        />
+
+        {/* Loan Type */}
+        <div className="col-span-1 md:col-span-2">
+          <label className="text-gray-700 font-semibold mb-2 block">
+            Loan Type
+          </label>
+
+          <div className="flex flex-wrap gap-4">
+            {["Salary", "Business", "Home Loan", "HDFC"].map((type) => (
+              <label key={type} className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="loanType"
+                  value={type}
+                  checked={form.loanType === type}
+                  onChange={(e) =>
+                    setForm({ ...form, loanType: e.target.value })
+                  }
+                  required
+                />
+                <span>{type}</span>
+              </label>
+            ))}
+          </div>
         </div>
 
-        <div>
-          <label className="block text-gray-700 font-medium mb-1">Phone Number</label>
-          <input
-            type="text"
-            value={form.phone}
-            onChange={(e) => setForm({ ...form, phone: e.target.value })}
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="9876543210"
-            required
-          />
-        </div>
+        {/* Message */}
+        <textarea
+          placeholder="Your Message"
+          rows="4"
+          value={form.message}
+          onChange={(e) => setForm({ ...form, message: e.target.value })}
+          className="input-style md:col-span-2"
+          required
+        />
 
-        <div>
-          <label className="block text-gray-700 font-medium mb-1">Message</label>
-          <textarea
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            rows="4"
-            placeholder="How can we help?"
-            required
-          ></textarea>
-        </div>
-
+        {/* Submit */}
         <button
           type="submit"
-          className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+          className="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition"
         >
           Send Message
         </button>
 
-        {status && <p className="mt-2 text-gray-700">{status}</p>}
+        {status && <p className="md:col-span-2 text-gray-700">{status}</p>}
       </form>
     </div>
   );
