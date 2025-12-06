@@ -33,7 +33,7 @@ export default function Home() {
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
 
   return (
-    <div className="bg-gray-50 font-sans">
+    <div className="bg-gray-50 font-sans -mt-6">
 
       {/* FORM MODAL */}
       {isFormModalOpen && (
