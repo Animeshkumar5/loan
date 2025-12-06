@@ -165,12 +165,12 @@ export default function Home() {
             </div>
 
             {/* RIGHT IMAGE - Visual Section */}
-            <div className="order-1 lg:order-2 relative h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center">
-              <div className="relative w-full h-full flex items-center justify-center">
-                <img
-                  src="/hero.png"
-                  alt="Loan Hero"
-                  className="w-full max-w-md lg:max-w-lg h-auto object-contain drop-shadow-2xl"
+            
+            <div className="order-1 lg:order-2 relative h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center"> 
+              <div className="relative w-full h-full flex items-center justify-center"> 
+                <img src="heroloan3.png" 
+                alt="Loan Hero" 
+                className="w-full max-w-md lg:max-w-lg h-auto object-contain drop-shadow-2xl" 
                 />
 
                 {/* FLOATING CARDS - Responsive */}
