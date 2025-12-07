@@ -10,6 +10,11 @@ import Insurance from "./pages/Insurance";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
+import DebtConsolidation from "./pages/DebtConsolidation";
+import CreditCardConsolidation from "./pages/CreditCardConsolidation";
+import SmallLoans from "./pages/SmallLoans";
+import HomeImprovement from "./pages/HomeImprovement";
+
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -34,6 +39,10 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/debt-consolidation" element={<DebtConsolidation />} />
+            <Route path="/credit-card-consolidation" element={<CreditCardConsolidation />} />
+            <Route path="/small-loans" element={<SmallLoans />} />
+            <Route path="/home-improvement" element={<HomeImprovement />} />
           </Routes>
         </div>
 
