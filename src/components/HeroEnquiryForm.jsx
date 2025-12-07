@@ -7,7 +7,7 @@ export default function HeroEnquiryForm() {
     phone: "",
     email: "",
     location: "",
-    amount: "",
+    amount: "50000",
     loanType: "",
     message: "",
   });
@@ -27,13 +27,18 @@ export default function HeroEnquiryForm() {
         phone: "",
         email: "",
         location: "",
-        amount: "",
+        amount: "50000",
         loanType: "",
         message: "",
       });
     } catch {
       setStatus("Error submitting enquiry!");
     }
+  };
+
+  // Format number with commas
+  const formatAmount = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   return (
@@ -79,13 +84,42 @@ export default function HeroEnquiryForm() {
           className="input-style"
         />
 
-        <input
-          type="number"
-          placeholder="Loan Amount"
-          value={form.amount}
-          onChange={(e) => setForm({ ...form, amount: e.target.value })}
-          className="input-style"
-        />
+        {/* LOAN AMOUNT INPUT */}
+        <div className="relative">
+          <input
+            type="number"
+            placeholder="Loan Amount"
+            value={form.amount}
+            onChange={(e) => setForm({ ...form, amount: e.target.value })}
+            className="input-style"
+            min="10000"
+            max="500000"
+            step="5000"
+            required
+          />
+        </div>
+
+        {/* LOAN AMOUNT SLIDER */}
+        <div className="flex flex-col">
+          <label className="text-gray-700 font-semibold mb-2 text-sm">
+            Adjust Amount: ₹{formatAmount(form.amount)}
+          </label>
+          <div className="relative pt-2">
+            <input
+              type="range"
+              min="10000"
+              max="500000"
+              step="5000"
+              value={form.amount}
+              onChange={(e) => setForm({ ...form, amount: e.target.value })}
+              className="w-full h-3 bg-blue-200 rounded-lg appearance-none cursor-pointer slider-thumb"
+            />
+            <div className="flex justify-between text-xs text-gray-500 mt-2">
+              <span>₹10K</span>
+              <span>₹500K</span>
+            </div>
+          </div>
+        </div>
 
         {/* LOAN TYPE */}
         <div className="col-span-1 md:col-span-2">
@@ -94,8 +128,8 @@ export default function HeroEnquiryForm() {
           </label>
 
           <div className="flex flex-wrap gap-4">
-            {["Salary", "Business", "Home Loan", "HDFC"].map((type) => (
-              <label key={type} className="flex items-center gap-2">
+            {["Salary", "Business", "Home Loan", "Insurance"].map((type) => (
+              <label key={type} className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="radio"
                   name="loanType"
@@ -104,9 +138,10 @@ export default function HeroEnquiryForm() {
                   onChange={(e) =>
                     setForm({ ...form, loanType: e.target.value })
                   }
+                  className="w-4 h-4 text-blue-600 cursor-pointer"
                   required
                 />
-                <span>{type}</span>
+                <span className="text-gray-700">{type}</span>
               </label>
             ))}
           </div>
@@ -120,12 +155,75 @@ export default function HeroEnquiryForm() {
           className="input-style md:col-span-2"
         />
 
-        <button className="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition">
+        <button className="md:col-span-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 rounded-xl transition transform hover:scale-105 shadow-lg">
           Submit Enquiry
         </button>
       </form>
 
-      {status && <p className="text-sm text-gray-700 mt-3">{status}</p>}
+      {status && (
+        <p className={`text-sm font-semibold mt-3 text-center ${status.includes('success') ? 'text-green-600' : status.includes('Error') ? 'text-red-600' : 'text-blue-600'}`}>
+          {status}
+        </p>
+      )}
+
+      <style jsx>{`
+        .slider-thumb::-webkit-slider-thumb {
+          appearance: none;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+          cursor: pointer;
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+          transition: transform 0.2s;
+          margin-top: -8px;
+        }
+
+        .slider-thumb::-webkit-slider-thumb:hover {
+          transform: scale(1.3);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .slider-thumb::-moz-range-thumb {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+          cursor: pointer;
+          border: none;
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+          transition: transform 0.2s;
+        }
+
+        .slider-thumb::-moz-range-thumb:hover {
+          transform: scale(1.3);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .slider-thumb::-webkit-slider-runnable-track {
+          background: linear-gradient(
+            to right,
+            #3b82f6 0%,
+            #3b82f6 ${((form.amount - 10000) / (500000 - 10000)) * 100}%,
+            #bfdbfe ${((form.amount - 10000) / (500000 - 10000)) * 100}%,
+            #bfdbfe 100%
+          );
+          height: 10px;
+          border-radius: 5px;
+        }
+
+        .slider-thumb::-moz-range-track {
+          background: #bfdbfe;
+          height: 10px;
+          border-radius: 5px;
+        }
+
+        .slider-thumb::-moz-range-progress {
+          background: #3b82f6;
+          height: 10px;
+          border-radius: 5px;
+        }
+      `}</style>
     </div>
   );
 }
