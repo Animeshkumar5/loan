@@ -290,6 +290,26 @@ export default function Home() {
                 meta1: "Collateral-free options",
                 meta2: "Flexible repayment",
               },
+              {
+                title: "Education Loan",
+                badge: "For Students",
+                typeTag: "Higher Studies",
+                amountLabel: "Up to $80K",
+                desc: "Finance tuition, living expenses and more for your education.",
+                img: "/cards/education.jpg", // add this image
+                meta1: "Moratorium available",
+                meta2: "Tax benefits*",
+              },
+              {
+                title: "Insurance & Protection",
+                badge: "Add-on Cover",
+                typeTag: "Protection",
+                amountLabel: "Loan Shield",
+                desc: "Secure your EMIs against job loss, illness or accidents.",
+                img: "/cards/insurance.jpg", // add this image
+                meta1: "Family protection",
+                meta2: "Critical illness cover",
+              },
             ].map((item, index) => (
               <div
                 key={index}
