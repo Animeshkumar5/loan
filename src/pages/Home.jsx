@@ -375,14 +375,6 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {[
-<<<<<<< HEAD
-              { title: 'Debt Consolidation', desc: 'Easy to manage payment with debt Consolidation' },
-              { title: 'Credit Card Consolidation', desc: 'Combine all balances into one easy payment' },
-              { title: 'Small Loans', desc: 'Get a small loan, no collateral or equity required' },
-              { title: 'Home Improvement', desc: 'Renovate or repair your home' },
-            ].map((item, index) => (
-              <div key={index} className="bg-white p-6 sm:p-8 rounded-2xl shadow-md flex justify-between items-center hover:shadow-lg transition cursor-pointer group">
-=======
               {
                 title: 'Debt Consolidation',
                 desc: 'Easy to manage payment with debt Consolidation',
@@ -409,7 +401,6 @@ export default function Home() {
                 key={index}
                 className="bg-white p-6 sm:p-8 rounded-2xl shadow-md flex justify-between items-center hover:shadow-lg transition cursor-pointer group"
               >
->>>>>>> 91118df067655abb52487ff0b885ddf543a405f0
                 <div>
                   <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-2 group-hover:text-blue-600 transition">{item.title}</h3>
                   <p className="text-sm sm:text-base text-gray-500">{item.desc}</p>
