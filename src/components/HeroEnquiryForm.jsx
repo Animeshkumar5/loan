@@ -121,28 +121,20 @@ export default function HeroEnquiryForm() {
           </div>
         </div>
 
-        {/* LOAN TYPE */}
-        <div className="col-span-1 md:col-span-2">
-          <label className="text-gray-700 font-semibold mb-2 block">
-            Loan Type
-          </label>
+        {/* LOAN TYPE - Slider Buttons */}
+        <div className="loan-type-section">
+          <label className="loan-type-label">Loan Type</label>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="loan-type-slider-container">
             {["Salary", "Business", "Home Loan", "Insurance"].map((type) => (
-              <label key={type} className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="radio"
-                  name="loanType"
-                  value={type}
-                  checked={form.loanType === type}
-                  onChange={(e) =>
-                    setForm({ ...form, loanType: e.target.value })
-                  }
-                  className="w-4 h-4 text-blue-600 cursor-pointer"
-                  required
-                />
-                <span className="text-gray-700">{type}</span>
-              </label>
+              <button
+                key={type}
+                type="button"
+                onClick={() => setForm({ ...form, loanType: type })}
+                className={`loan-type-slide ${form.loanType === type ? 'active' : ''}`}
+              >
+                {type}
+              </button>
             ))}
           </div>
         </div>

@@ -7,7 +7,7 @@ export default function Contact() {
     phone: "",
     email: "",
     location: "",
-    amount: "",
+    amount: "50000",
     loanType: "",
     message: ""
   });
@@ -27,7 +27,7 @@ export default function Contact() {
         phone: "",
         email: "",
         location: "",
-        amount: "",
+        amount: "50000",
         loanType: "",
         message: ""
       });
@@ -38,11 +38,20 @@ export default function Contact() {
     }
   };
 
-  return (
-    <div className="p-10 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
+  // Format number with commas
+  const formatAmount = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
-      <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
+  // Calculate progress percentage for slider
+  const sliderProgress = ((form.amount - 10000) / (500000 - 10000)) * 100;
+
+  return (
+    <div className="contact-container">
+      <h1 className="contact-title">Contact Us</h1>
+      <p className="contact-subtitle">Fill in your details and we'll get back to you shortly.</p>
+
+      <form className="contact-form" onSubmit={handleSubmit}>
 
         {/* Name */}
         <input
@@ -82,36 +91,60 @@ export default function Contact() {
           className="input-style"
         />
 
-        {/* Amount */}
-        <input
-          type="number"
-          placeholder="Loan Amount"
-          value={form.amount}
-          onChange={(e) => setForm({ ...form, amount: e.target.value })}
-          className="input-style"
-        />
+        {/* LOAN AMOUNT INPUT */}
+        <div className="amount-input-container">
+          <input
+            type="number"
+            placeholder="Loan Amount"
+            value={form.amount}
+            onChange={(e) => setForm({ ...form, amount: e.target.value })}
+            className="input-style"
+            min="10000"
+            max="500000"
+            step="5000"
+            required
+          />
+        </div>
+
+        {/* LOAN AMOUNT SLIDER */}
+        <div className="slider-container">
+          <label className="slider-label">
+            Adjust Amount: ₹{formatAmount(form.amount)}
+          </label>
+          <div className="slider-wrapper">
+            <input
+              type="range"
+              min="10000"
+              max="500000"
+              step="5000"
+              value={form.amount}
+              onChange={(e) => setForm({ ...form, amount: e.target.value })}
+              className="loan-slider"
+              style={{
+                background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${sliderProgress}%, #bfdbfe ${sliderProgress}%, #bfdbfe 100%)`
+              }}
+            />
+            <div className="slider-range">
+              <span>₹10K</span>
+              <span>₹500K</span>
+            </div>
+          </div>
+        </div>
 
         {/* Loan Type */}
-        <div className="col-span-1 md:col-span-2">
-          <label className="text-gray-700 font-semibold mb-2 block">
-            Loan Type
-          </label>
+        <div className="loan-type-section">
+          <label className="loan-type-label">Loan Type</label>
 
-          <div className="flex flex-wrap gap-4">
-            {["Salary", "Business", "Home Loan", "HDFC"].map((type) => (
-              <label key={type} className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="loanType"
-                  value={type}
-                  checked={form.loanType === type}
-                  onChange={(e) =>
-                    setForm({ ...form, loanType: e.target.value })
-                  }
-                  required
-                />
-                <span>{type}</span>
-              </label>
+          <div className="loan-type-slider-container">
+            {["Salary", "Business", "Home Loan", "Insurance"].map((type) => (
+              <button
+                key={type}
+                type="button"
+                onClick={() => setForm({ ...form, loanType: type })}
+                className={`loan-type-slide ${form.loanType === type ? 'active' : ''}`}
+              >
+                {type}
+              </button>
             ))}
           </div>
         </div>
@@ -122,19 +155,24 @@ export default function Contact() {
           rows="4"
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className="input-style md:col-span-2"
+          className="input-style message-textarea"
           required
         />
 
         {/* Submit */}
-        <button
-          type="submit"
-          className="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition"
-        >
+        <button type="submit" className="submit-button">
           Send Message
         </button>
 
-        {status && <p className="md:col-span-2 text-gray-700">{status}</p>}
+        {status && (
+          <p className={`status-message ${
+            status.includes('successfully') ? 'status-success' : 
+            status.includes('Failed') ? 'status-error' : 
+            'status-sending'
+          }`}>
+            {status}
+          </p>
+        )}
       </form>
     </div>
   );
