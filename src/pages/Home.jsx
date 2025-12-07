@@ -39,16 +39,15 @@ export default function Home() {
       {isFormModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop with Liquid Blur */}
-          <div
+          <div 
             className="absolute inset-0 backdrop-blur-xl bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-pink-500/30"
             onClick={() => setIsFormModalOpen(false)}
             style={{
-              backgroundImage:
-                'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.3) 0%, transparent 50%)',
-              backdropFilter: 'blur(40px)',
+              backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.3) 0%, transparent 50%)',
+              backdropFilter: 'blur(40px)'
             }}
           ></div>
-
+          
           {/* Modal Content */}
           <div className="relative bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto z-10 animate-fade-up">
             {/* Close Button */}
@@ -73,37 +72,25 @@ export default function Home() {
             {/* Form Content */}
             <div className="p-8">
               <HeroEnquiryForm />
-
+              
               {/* Trust Indicators */}
               <div className="mt-6 pt-6 border-t border-gray-100">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                   <div className="flex flex-col items-center">
                     <svg className="w-8 h-8 text-green-500 mb-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fillRule="evenodd"
-                        d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
+                      <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     <span className="text-sm font-semibold text-gray-700">100% Secure</span>
                   </div>
                   <div className="flex flex-col items-center">
                     <svg className="w-8 h-8 text-green-500 mb-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     <span className="text-sm font-semibold text-gray-700">No Hidden Fees</span>
                   </div>
                   <div className="flex flex-col items-center">
                     <svg className="w-8 h-8 text-green-500 mb-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                        clipRule="evenodd"
-                      />
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                     <span className="text-sm font-semibold text-gray-700">Fast Approval</span>
                   </div>
@@ -125,6 +112,7 @@ export default function Home() {
 
         <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
             {/* LEFT CONTENT - Hero Text */}
             <div className="order-2 lg:order-1 space-y-6 text-center lg:text-left">
               <div className="space-y-4">
@@ -133,7 +121,7 @@ export default function Home() {
                     ⚡ Quick & Easy Process
                   </span>
                 </div>
-
+                
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-900 leading-tight">
                   Personal Loans
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
@@ -227,56 +215,117 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
-      {/* 2. LOAN CATEGORY CARDS */}
-      <div className="container mx-auto px-4 sm:px-6 relative z-20 -mt-12 lg:-mt-20 mb-16 lg:mb-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {[
-            {
-              title: "Personal Loans",
-              desc: "Flexible personal loan options with competitive interest rates.",
-              img: "/cards/personal.jpg"
-            },
-            {
-              title: "Car Loan",
-              desc: "Get fast approval and low EMI rates for new or used cars.",
-              img: "/cards/car.jpg"
-            },
-            {
-              title: "Home Loan",
-              desc: "Affordable home loan solutions with easy documentation.",
-              img: "/cards/home.jpg"
-            },
-            {
-              title: "Business Loan",
-              desc: "Grow your business with our smart financing options.",
-              img: "/cards/business.jpg"
-            }
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 transform hover:-translate-y-2 transition duration-300 cursor-pointer group"
-            >
-              <div className="h-32 sm:h-40 w-full overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                />
+      {/* 2. LOAN CATEGORY CARDS - Auto-Scrolling Carousel */}
+      <div className="container mx-auto relative z-20 -mt-12 lg:-mt-20 mb-16 lg:mb-24 overflow-hidden">
+        <div className="relative px-4 sm:px-6">
+          {/* Gradient Overlays for smooth edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+          
+          {/* Scrolling Container */}
+          <div className="flex gap-6 animate-scroll-loop hover:pause-animation">
+            {/* First set of cards */}
+            {[
+              {
+                title: "Personal Loans",
+                desc: "Flexible personal loan options with competitive interest rates.",
+                img: "/cards/personal.jpg"
+              },
+              {
+                title: "Car Loan",
+                desc: "Get fast approval and low EMI rates for new or used cars.",
+                img: "/cards/car.jpg"
+              },
+              {
+                title: "Home Loan",
+                desc: "Affordable home loan solutions with easy documentation.",
+                img: "/cards/home.jpg"
+              },
+              {
+                title: "Business Loan",
+                desc: "Grow your business with our smart financing options.",
+                img: "/cards/business.jpg"
+              },
+              {
+                title: "Insurance",
+                desc: "Secure your life and assets with trusted insurance plans.",
+                img: "/cards/personal.jpg"
+              }
+            ].map((item, index) => (
+              <div
+                key={`first-${index}`}
+                className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 cursor-pointer group flex-shrink-0 w-[280px] sm:w-[300px]"
+              >
+                <div className="h-40 w-full overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-600 line-clamp-2">{item.desc}</p>
+                </div>
               </div>
-              <div className="p-4 sm:p-6 text-center">
-                <h3 className="text-lg sm:text-xl font-bold text-blue-900 mb-2">{item.title}</h3>
-                <p className="text-sm sm:text-base text-gray-600">{item.desc}</p>
+            ))}
+            
+            {/* Duplicate set for seamless loop */}
+            {[
+              {
+                title: "Personal Loans",
+                desc: "Flexible personal loan options with competitive interest rates.",
+                img: "/cards/personal.jpg"
+              },
+              {
+                title: "Car Loan",
+                desc: "Get fast approval and low EMI rates for new or used cars.",
+                img: "/cards/car.jpg"
+              },
+              {
+                title: "Home Loan",
+                desc: "Affordable home loan solutions with easy documentation.",
+                img: "/cards/home.jpg"
+              },
+              {
+                title: "Business Loan",
+                desc: "Grow your business with our smart financing options.",
+                img: "/cards/business.jpg"
+              },
+              {
+                title: "Insurance",
+                desc: "Secure your life and assets with trusted insurance plans.",
+                img: "/cards/personal.jpg"
+              }
+            ].map((item, index) => (
+              <div
+                key={`second-${index}`}
+                className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 cursor-pointer group flex-shrink-0 w-[280px] sm:w-[300px]"
+              >
+                <div className="h-40 w-full overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-600 line-clamp-2">{item.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* 3. LOAN OPTIONS SECTION (existing component) */}
+      <LoanOptions setIsModalOpen={setIsModalOpen} />
+
       <LoanOptions setIsModalOpen={setIsModalOpen} />
 
       {/* 4. LOAN TYPES GRID */}
@@ -284,31 +333,14 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {[
-              {
-                title: 'Debt Consolidation',
-                desc: 'Easy to manage payment with debt Consolidation',
-              },
-              {
-                title: 'Credit Card Consolidation',
-                desc: 'Combine all balances into one easy payment',
-              },
-              {
-                title: 'Small Loans',
-                desc: 'Get a small loan, no collateral or equity required',
-              },
-              {
-                title: 'Home Improvement',
-                desc: 'Renovate or repair your home',
-              },
+              { title: 'Debt Consolidation', desc: 'Easy to manage payment with debt Consolidation' },
+              { title: 'Credit Card Consolidation', desc: 'Combine all balances into one easy payment' },
+              { title: 'Small Loans', desc: 'Get a small loan, no collateral or equity required' },
+              { title: 'Home Improvement', desc: 'Renovate or repair your home' },
             ].map((item, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 sm:p-8 rounded-2xl shadow-md flex justify-between items-center hover:shadow-lg transition cursor-pointer group"
-              >
+              <div key={index} className="bg-white p-6 sm:p-8 rounded-2xl shadow-md flex justify-between items-center hover:shadow-lg transition cursor-pointer group">
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-2 group-hover:text-blue-600 transition">
-                    {item.title}
-                  </h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-2 group-hover:text-blue-600 transition">{item.title}</h3>
                   <p className="text-sm sm:text-base text-gray-500">{item.desc}</p>
                 </div>
                 <ArrowRightIcon />
@@ -343,12 +375,8 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 relative min-h-[400px] sm:h-[500px] lg:h-[600px] flex justify-center items-center">
           {/* CENTER CIRCLE */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-64 sm:h-64 lg:w-96 lg:h-96 rounded-full border-4 sm:border-6 border-orange-500 flex flex-col justify-center items-center text-center p-4 sm:p-6 lg:p-8 z-10 bg-white shadow-lg">
-            <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold text-black mb-2 sm:mb-3">
-              Explore Your Options
-            </h2>
-            <p className="text-xs sm:text-base lg:text-lg text-gray-600">
-              Compare personal loans by credit rating
-            </p>
+            <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold text-black mb-2 sm:mb-3">Explore Your Options</h2>
+            <p className="text-xs sm:text-base lg:text-lg text-gray-600">Compare personal loans by credit rating</p>
           </div>
 
           {/* ROTATING ITEMS */}
@@ -356,9 +384,7 @@ export default function Home() {
             {/* Excellent */}
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">
-                  Excellent
-                </h3>
+                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Excellent</h3>
                 <p className="text-green-500 font-bold text-base sm:text-lg lg:text-xl">720+</p>
               </div>
             </div>
@@ -366,9 +392,7 @@ export default function Home() {
             {/* Good */}
             <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-1000">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">
-                  Good
-                </h3>
+                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Good</h3>
                 <p className="text-blue-500 font-bold text-base sm:text-lg lg:text-xl">550-719</p>
               </div>
             </div>
@@ -376,9 +400,7 @@ export default function Home() {
             {/* Fair */}
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-2000">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">
-                  Fair
-                </h3>
+                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Fair</h3>
                 <p className="text-red-500 font-bold text-base sm:text-lg lg:text-xl">620-659</p>
               </div>
             </div>
@@ -386,12 +408,8 @@ export default function Home() {
             {/* Poor */}
             <div className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-1500">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">
-                  Poor
-                </h3>
-                <p className="text-gray-500 font-bold text-base sm:text-lg lg:text-xl">
-                  &lt;620
-                </p>
+                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Poor</h3>
+                <p className="text-gray-500 font-bold text-base sm:text-lg lg:text-xl">&lt;620</p>
               </div>
             </div>
           </div>
