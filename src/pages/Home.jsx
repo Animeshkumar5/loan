@@ -62,7 +62,7 @@ export default function Home() {
             {/* Modal Header */}
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-t-3xl">
               <div className="inline-block mb-3">
-                <span className="bg-white bg-opacity-20 text-black text-sm font-semibold px-4 py-2 rounded-full">
+                <span className="bg-white bg-opacity-20 text-white text-sm font-semibold px-4 py-2 rounded-full">
                   ⚡ Quick & Easy Process
                 </span>
               </div>
@@ -185,45 +185,45 @@ export default function Home() {
                   className="w-full max-w-md lg:max-w-lg h-auto object-contain drop-shadow-2xl"
                 />
 
-                {/* FLOATING CARDS - Responsive */}
+                {/* FLOATING CARDS - All visible on mobile */}
                 {/* Card 1 - Top Right */}
-                <div className="absolute top-8 sm:top-12 lg:top-20 right-2 sm:right-5 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-xs text-gray-500">Interest Rate</span>
+                <div className="absolute top-4 sm:top-8 lg:top-20 right-1 sm:right-2 lg:right-5 w-24 sm:w-32 lg:w-40 bg-white rounded-xl sm:rounded-2xl shadow-xl p-2 sm:p-3 lg:p-4 border border-gray-100 animate-float">
+                  <div className="flex items-center gap-1 sm:gap-2 mb-1">
+                    <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-[10px] sm:text-xs text-gray-500">Interest Rate</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">9.2%</h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">Low Interest</p>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-900">9.2%</h3>
+                  <p className="text-gray-500 text-[10px] sm:text-xs lg:text-sm">Low Interest</p>
                 </div>
 
                 {/* Card 2 - Bottom Right */}
-                <div className="absolute bottom-12 sm:bottom-16 lg:bottom-20 right-5 sm:right-10 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float animation-delay-400">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-xs text-gray-500">Rating</span>
+                <div className="absolute bottom-8 sm:bottom-12 lg:bottom-20 right-1 sm:right-5 lg:right-10 w-24 sm:w-32 lg:w-40 bg-white rounded-xl sm:rounded-2xl shadow-xl p-2 sm:p-3 lg:p-4 border border-gray-100 animate-float animation-delay-400">
+                  <div className="flex items-center gap-1 sm:gap-2 mb-1">
+                    <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-blue-500 rounded-full"></div>
+                    <span className="text-[10px] sm:text-xs text-gray-500">Rating</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">90%</h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">Satisfied Customers</p>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-900">90%</h3>
+                  <p className="text-gray-500 text-[10px] sm:text-xs lg:text-sm">Satisfied</p>
                 </div>
 
                 {/* Card 3 - Top Left */}
-                <div className="hidden sm:block absolute top-12 lg:top-20 left-5 lg:left-10 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float animation-delay-800">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                    <span className="text-xs text-gray-500">Security</span>
+                <div className="absolute top-4 sm:top-8 lg:top-20 left-1 sm:left-5 lg:left-10 w-24 sm:w-32 lg:w-40 bg-white rounded-xl sm:rounded-2xl shadow-xl p-2 sm:p-3 lg:p-4 border border-gray-100 animate-float animation-delay-800">
+                  <div className="flex items-center gap-1 sm:gap-2 mb-1">
+                    <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-purple-500 rounded-full"></div>
+                    <span className="text-[10px] sm:text-xs text-gray-500">Security</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">100%</h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">Secure</p>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-900">100%</h3>
+                  <p className="text-gray-500 text-[10px] sm:text-xs lg:text-sm">Secure</p>
                 </div>
 
                 {/* Card 4 - Bottom Left */}
-                <div className="hidden sm:block absolute bottom-16 lg:bottom-20 left-0 lg:left-0 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float animation-delay-1200">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                    <span className="text-xs text-gray-500">Speed</span>
+                <div className="absolute bottom-8 sm:bottom-12 lg:bottom-20 left-1 sm:left-0 lg:left-0 w-24 sm:w-32 lg:w-40 bg-white rounded-xl sm:rounded-2xl shadow-xl p-2 sm:p-3 lg:p-4 border border-gray-100 animate-float animation-delay-1200">
+                  <div className="flex items-center gap-1 sm:gap-2 mb-1">
+                    <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-orange-500 rounded-full"></div>
+                    <span className="text-[10px] sm:text-xs text-gray-500">Speed</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">Instant</h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">Approvals</p>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-900">Instant</h3>
+                  <p className="text-gray-500 text-[10px] sm:text-xs lg:text-sm">Approvals</p>
                 </div>
               </div>
             </div>
@@ -231,133 +231,50 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 2. FEATURED LOAN TYPES – Dwellys-style cards */}
-      <section className="bg-white">
-        <div className="container mx-auto px-4 sm:px-6 relative z-20 -mt-12 lg:-mt-20 mb-16 lg:mb-24">
-          {/* Section heading */}
-          <div className="text-center mb-8 sm:mb-10">
-            <p className="text-sm sm:text-base text-blue-500 font-semibold tracking-wide uppercase">
-              Loan deals at a glance
-            </p>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-bold text-blue-900">
-              Popular Loan Options
-            </h2>
-            <p className="mt-3 text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">
-              Compare different loan types and pick the one that fits your goals.
-            </p>
-          </div>
-
-          {/* Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {[
-              {
-                title: "Personal Loan",
-                badge: "Most Popular",
-                typeTag: "Unsecured",
-                amountLabel: "Up to $100K",
-                desc: "For emergencies, weddings, travel and more with flexible EMIs.",
-                img: "/cards/personal.jpg",
-                meta1: "Instant approval",
-                meta2: "Up to 5 yrs tenure",
-              },
-              {
-                title: "Car Loan",
-                badge: "For New & Used",
-                typeTag: "Vehicle",
-                amountLabel: "Up to $60K",
-                desc: "Low interest car finance with quick approval and minimal docs.",
-                img: "/cards/car.jpg",
-                meta1: "Up to 90% on-road",
-                meta2: "Tenure up to 7 yrs",
-              },
-              {
-                title: "Home Loan",
-                badge: "Low Rate",
-                typeTag: "Secured",
-                amountLabel: "Up to $250K",
-                desc: "Finance your dream home with easy documentation support.",
-                img: "/cards/home.jpg",
-                meta1: "Top-up available",
-                meta2: "Balance transfer",
-              },
-              {
-                title: "Business Loan",
-                badge: "For SMEs",
-                typeTag: "Working Capital",
-                amountLabel: "Up to $150K",
-                desc: "Boost cashflow, buy inventory or expand your business.",
-                img: "/cards/business.jpg",
-                meta1: "Collateral-free options",
-                meta2: "Flexible repayment",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="group bg-white rounded-3xl shadow-[0_18px_45px_rgba(15,23,42,0.06)] overflow-hidden border border-gray-100 flex flex-col hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(15,23,42,0.08)] transition duration-300"
-              >
-                {/* Image + top labels */}
-                <div className="relative h-40 sm:h-44 lg:h-48 w-full overflow-hidden">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent"></div>
-
-                  {/* Top-left badges */}
-                  <div className="absolute top-3 left-3 flex items-center gap-2">
-                    <span className="px-3 py-1 rounded-full bg-red-500 text-white text-[11px] font-semibold shadow-sm">
-                      {item.badge}
-                    </span>
-                    <span className="px-3 py-1 rounded-full bg-indigo-900/90 text-white text-[11px] font-semibold shadow-sm">
-                      {item.typeTag}
-                    </span>
-                  </div>
-
-                  {/* Bottom amount pill */}
-                  <div className="absolute bottom-3 left-3">
-                    <span className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-500 text-white text-xs sm:text-sm font-semibold shadow-md">
-                      {item.amountLabel}
-                    </span>
-                  </div>
-
-                  {/* Save / heart icon */}
-                  <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-slate-500 hover:text-red-500 shadow-sm">
-                    ♥
-                  </button>
-                </div>
-
-                {/* Card body */}
-                <div className="flex-1 px-4 sm:px-5 pt-4 pb-4 sm:pb-5">
-                  {/* Small meta row */}
-                  <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-gray-500 mb-2">
-                    <span className="inline-flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                      {item.meta1}
-                    </span>
-                    <span className="w-1 h-1 rounded-full bg-gray-300"></span>
-                    <span>{item.meta2}</span>
-                  </div>
-
-                  <h3 className="text-base sm:text-lg font-bold text-blue-900 mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 mb-4">
-                    {item.desc}
-                  </p>
-
-                  {/* Bottom info row */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs text-gray-500 border-t border-gray-100 pt-3 mt-auto">
-                    <span>⭐ 4.8 rating</span>
-                    <span>👥 10k+ customers</span>
-                    <span>⏱ 24hr approval</span>
-                  </div>
-                </div>
+      {/* 2. LOAN CATEGORY CARDS */}
+      <div className="container mx-auto px-4 sm:px-6 relative z-20 -mt-12 lg:-mt-20 mb-16 lg:mb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {[
+            {
+              title: "Personal Loans",
+              desc: "Flexible personal loan options with competitive interest rates.",
+              img: "/cards/personal.jpg"
+            },
+            {
+              title: "Car Loan",
+              desc: "Get fast approval and low EMI rates for new or used cars.",
+              img: "/cards/car.jpg"
+            },
+            {
+              title: "Home Loan",
+              desc: "Affordable home loan solutions with easy documentation.",
+              img: "/cards/home.jpg"
+            },
+            {
+              title: "Business Loan",
+              desc: "Grow your business with our smart financing options.",
+              img: "/cards/business.jpg"
+            }
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 transform hover:-translate-y-2 transition duration-300 cursor-pointer group"
+            >
+              <div className="h-32 sm:h-40 w-full overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                />
               </div>
-            ))}
-          </div>
+              <div className="p-4 sm:p-6 text-center">
+                <h3 className="text-lg sm:text-xl font-bold text-blue-900 mb-2">{item.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600">{item.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
 
       {/* 3. LOAN OPTIONS SECTION (existing component) */}
       <LoanOptions setIsModalOpen={setIsModalOpen} />
