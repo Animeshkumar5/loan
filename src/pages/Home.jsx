@@ -276,7 +276,7 @@ export default function Home() {
                 typeTag: "Secured",
                 amountLabel: "Up to $250K",
                 desc: "Finance your dream home with easy documentation support.",
-                img: "/cards/home.jpg",
+                img: "/cards/home2.jpg",
                 meta1: "Top-up available",
                 meta2: "Balance transfer",
               },
