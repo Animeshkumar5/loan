@@ -220,50 +220,111 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 2. LOAN CATEGORY CARDS */}
-      <div className="container mx-auto px-4 sm:px-6 relative z-20 -mt-12 lg:-mt-20 mb-16 lg:mb-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {[
-            {
-              title: "Personal Loans",
-              desc: "Flexible personal loan options with competitive interest rates.",
-              img: "/cards/personal.jpg"
-            },
-            {
-              title: "Car Loan",
-              desc: "Get fast approval and low EMI rates for new or used cars.",
-              img: "/cards/car.jpg"
-            },
-            {
-              title: "Home Loan",
-              desc: "Affordable home loan solutions with easy documentation.",
-              img: "/cards/home.jpg"
-            },
-            {
-              title: "Business Loan",
-              desc: "Grow your business with our smart financing options.",
-              img: "/cards/business.jpg"
-            }
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 transform hover:-translate-y-2 transition duration-300 cursor-pointer group"
-            >
-              <div className="h-32 sm:h-40 w-full overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                />
+      {/* 2. LOAN CATEGORY CARDS - Auto-Scrolling Carousel */}
+      <div className="container mx-auto relative z-20 -mt-12 lg:-mt-20 mb-16 lg:mb-24 overflow-hidden">
+        <div className="relative px-4 sm:px-6">
+          {/* Gradient Overlays for smooth edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+          
+          {/* Scrolling Container */}
+          <div className="flex gap-6 animate-scroll-loop hover:pause-animation">
+            {/* First set of cards */}
+            {[
+              {
+                title: "Personal Loans",
+                desc: "Flexible personal loan options with competitive interest rates.",
+                img: "/cards/personal.jpg"
+              },
+              {
+                title: "Car Loan",
+                desc: "Get fast approval and low EMI rates for new or used cars.",
+                img: "/cards/car.jpg"
+              },
+              {
+                title: "Home Loan",
+                desc: "Affordable home loan solutions with easy documentation.",
+                img: "/cards/home.jpg"
+              },
+              {
+                title: "Business Loan",
+                desc: "Grow your business with our smart financing options.",
+                img: "/cards/business.jpg"
+              },
+              {
+                title: "Insurance",
+                desc: "Secure your life and assets with trusted insurance plans.",
+                img: "/cards/personal.jpg"
+              }
+            ].map((item, index) => (
+              <div
+                key={`first-${index}`}
+                className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 cursor-pointer group flex-shrink-0 w-[280px] sm:w-[300px]"
+              >
+                <div className="h-40 w-full overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-600 line-clamp-2">{item.desc}</p>
+                </div>
               </div>
-              <div className="p-4 sm:p-6 text-center">
-                <h3 className="text-lg sm:text-xl font-bold text-blue-900 mb-2">{item.title}</h3>
-                <p className="text-sm sm:text-base text-gray-600">{item.desc}</p>
+            ))}
+            
+            {/* Duplicate set for seamless loop */}
+            {[
+              {
+                title: "Personal Loans",
+                desc: "Flexible personal loan options with competitive interest rates.",
+                img: "/cards/personal.jpg"
+              },
+              {
+                title: "Car Loan",
+                desc: "Get fast approval and low EMI rates for new or used cars.",
+                img: "/cards/car.jpg"
+              },
+              {
+                title: "Home Loan",
+                desc: "Affordable home loan solutions with easy documentation.",
+                img: "/cards/home.jpg"
+              },
+              {
+                title: "Business Loan",
+                desc: "Grow your business with our smart financing options.",
+                img: "/cards/business.jpg"
+              },
+              {
+                title: "Insurance",
+                desc: "Secure your life and assets with trusted insurance plans.",
+                img: "/cards/personal.jpg"
+              }
+            ].map((item, index) => (
+              <div
+                key={`second-${index}`}
+                className="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 cursor-pointer group flex-shrink-0 w-[280px] sm:w-[300px]"
+              >
+                <div className="h-40 w-full overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="text-xl font-bold text-blue-900 mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-600 line-clamp-2">{item.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
+
+      <LoanOptions setIsModalOpen={setIsModalOpen} />
 
       <LoanOptions setIsModalOpen={setIsModalOpen} />
 
