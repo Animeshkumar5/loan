@@ -97,3 +97,4 @@
 .input-style {
   @apply border p-3 rounded-xl text-gray-700 focus:outline-blue-600 w-full;
 }
+
