@@ -33,7 +33,7 @@ export default function Home() {
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
 
   return (
-    <div className="bg-gray-50 font-sans">
+    <div className="bg-gray-50 font-sans -mt-6">
 
       {/* FORM MODAL */}
       {isFormModalOpen && (
@@ -390,21 +390,26 @@ export default function Home() {
               {
                 title: 'Debt Consolidation',
                 desc: 'Easy to manage payment with debt Consolidation',
+                link: '/debt-consolidation',
               },
               {
                 title: 'Credit Card Consolidation',
                 desc: 'Combine all balances into one easy payment',
+                link: '/credit-card-consolidation',
               },
               {
                 title: 'Small Loans',
                 desc: 'Get a small loan, no collateral or equity required',
+                link: '/small-loans',
               },
               {
                 title: 'Home Improvement',
                 desc: 'Renovate or repair your home',
+                link: '/home-improvement',
               },
             ].map((item, index) => (
-              <div
+              <a
+                href={item.link}
                 key={index}
                 className="bg-white p-6 sm:p-8 rounded-2xl shadow-md flex justify-between items-center hover:shadow-lg transition cursor-pointer group"
               >
@@ -415,7 +420,7 @@ export default function Home() {
                   <p className="text-sm sm:text-base text-gray-500">{item.desc}</p>
                 </div>
                 <ArrowRightIcon />
-              </div>
+              </a>
             ))}
           </div>
         </div>
