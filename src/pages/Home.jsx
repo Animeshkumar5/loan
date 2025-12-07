@@ -280,16 +280,6 @@ export default function Home() {
                 meta2: "Flexible repayment",
               },
               {
-                title: "Education Loan",
-                badge: "For Students",
-                typeTag: "Higher Studies",
-                amountLabel: "Up to $80K",
-                desc: "Finance tuition, living expenses and more for your education.",
-                img: "/cards/education.jpg", // add this image
-                meta1: "Moratorium available",
-                meta2: "Tax benefits*",
-              },
-              {
                 title: "Insurance & Protection",
                 badge: "Add-on Cover",
                 typeTag: "Protection",
@@ -330,10 +320,7 @@ export default function Home() {
                     </span>
                   </div>
 
-                  {/* Save / heart icon */}
-                  <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center text-slate-500 hover:text-red-500 shadow-sm">
-                    ♥
-                  </button>
+                  
                 </div>
 
                 {/* Card body */}
@@ -357,7 +344,6 @@ export default function Home() {
 
                   {/* Bottom info row */}
                   <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs text-gray-500 border-t border-gray-100 pt-3 mt-auto">
-                    <span>⭐ 4.8 rating</span>
                     <span>👥 10k+ customers</span>
                     <span>⏱ 24hr approval</span>
                   </div>
