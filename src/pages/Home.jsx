@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AboutPreview from "../components/AboutPreview";
 import HeroEnquiryForm from "../components/HeroEnquiryForm";
 import LoanOptions from '../components/LoanOptions';
+import { Link } from 'react-router-dom';
 
 // --- ICONS ---
 const TagIcon = () => (
@@ -356,7 +357,7 @@ export default function Home() {
 
       <LoanOptions setIsModalOpen={setIsModalOpen} />
 
-      {/* 4. LOAN TYPES GRID */}
+      {/* 4. LOAN TYPES GRID - FIXED WITH LINK */}
       <div className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
@@ -382,8 +383,8 @@ export default function Home() {
                 link: '/home-improvement',
               },
             ].map((item, index) => (
-              <a
-                href={item.link}
+              <Link
+                to={item.link}
                 key={index}
                 className="bg-white p-6 sm:p-8 rounded-2xl shadow-md flex justify-between items-center hover:shadow-lg transition cursor-pointer group"
               >
@@ -392,7 +393,7 @@ export default function Home() {
                   <p className="text-sm sm:text-base text-gray-500">{item.desc}</p>
                 </div>
                 <ArrowRightIcon />
-              </a>
+              </Link>
             ))}
           </div>
         </div>
