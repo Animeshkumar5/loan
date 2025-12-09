@@ -1,9 +1,9 @@
 import emailjs from "@emailjs/browser";
 
-// Your actual EmailJS keys
-const SERVICE_ID = "service_eck2wy1";
-const TEMPLATE_ID = "template_07ubz0e"; 
-const PUBLIC_KEY = "NWu5aFs5Ta1MfNrbN";
+// Load from .env file (Vite)
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export const sendMail = async (form) => {
   const templateParams = {
