@@ -6,10 +6,11 @@ export default function HeroEnquiryForm() {
     name: "",
     phone: "",
     email: "",
-    location: "",
-    amount: "50000",
+    city: "",
+    pincode: "",
     loanType: "",
-    message: "",
+    employmentType: "",
+    earning: "",
   });
 
   const [status, setStatus] = useState("");
@@ -26,20 +27,37 @@ export default function HeroEnquiryForm() {
         name: "",
         phone: "",
         email: "",
-        location: "",
-        amount: "50000",
+        city: "",
+        pincode: "",
         loanType: "",
-        message: "",
+        employmentType: "",
+        earning: "",
       });
     } catch {
       setStatus("Error submitting enquiry!");
     }
   };
 
-  // Format number with commas
-  const formatAmount = (num) => {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
+  const loanTypes = [
+    "Personal Loan",
+    "Business Loan",
+    "Used Car Loan",
+    "Home Loan",
+    "Life Insurance"
+  ];
+
+  const employmentTypes = [
+    "Salaried",
+    "Self Employed",
+    "Business"
+  ];
+
+  const earningRanges = [
+    "Less than ₹20k",
+    "₹20k - ₹50k",
+    "₹50k - ₹1 Lakh",
+    "₹1 Lakh+"
+  ];
 
   return (
     <div className="bg-white shadow-xl rounded-2xl p-6 border border-gray-200">
@@ -48,90 +66,102 @@ export default function HeroEnquiryForm() {
         Fill your details — our team will contact you instantly.
       </p>
 
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <form onSubmit={handleSubmit} className="space-y-5">
 
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-          className="input-style"
-          required
-        />
-
-        <input
-          type="text"
-          placeholder="Phone Number"
-          value={form.phone}
-          onChange={(e) => setForm({ ...form, phone: e.target.value })}
-          className="input-style"
-          required
-        />
-
-        <input
-          type="email"
-          placeholder="Email Address"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          className="input-style"
-        />
-
-        <input
-          type="text"
-          placeholder="Location / City"
-          value={form.location}
-          onChange={(e) => setForm({ ...form, location: e.target.value })}
-          className="input-style"
-        />
-
-        {/* LOAN AMOUNT INPUT */}
-        <div className="relative">
+        {/* Name */}
+        <div>
+          <label className="block text-gray-700 font-semibold mb-2 text-sm">
+            Full Name *
+          </label>
           <input
-            type="number"
-            placeholder="Loan Amount"
-            value={form.amount}
-            onChange={(e) => setForm({ ...form, amount: e.target.value })}
-            className="input-style"
-            min="10000"
-            max="500000"
-            step="5000"
+            type="text"
+            placeholder="Enter your full name"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             required
           />
         </div>
 
-        {/* LOAN AMOUNT SLIDER */}
-        <div className="flex flex-col">
-          <label className="text-gray-700 font-semibold mb-2 text-sm">
-            Adjust Amount: ₹{formatAmount(form.amount)}
+        {/* Email */}
+        <div>
+          <label className="block text-gray-700 font-semibold mb-2 text-sm">
+            Email Address *
           </label>
-          <div className="relative pt-2">
-            <input
-              type="range"
-              min="10000"
-              max="500000"
-              step="5000"
-              value={form.amount}
-              onChange={(e) => setForm({ ...form, amount: e.target.value })}
-              className="w-full h-3 bg-blue-200 rounded-lg appearance-none cursor-pointer slider-thumb"
-            />
-            <div className="flex justify-between text-xs text-gray-500 mt-2">
-              <span>₹10K</span>
-              <span>₹500K</span>
-            </div>
-          </div>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            required
+          />
         </div>
 
-        {/* LOAN TYPE - Slider Buttons */}
-        <div className="loan-type-section">
-          <label className="loan-type-label">Loan Type</label>
+        {/* Mobile Number */}
+        <div>
+          <label className="block text-gray-700 font-semibold mb-2 text-sm">
+            Mobile Number *
+          </label>
+          <input
+            type="tel"
+            placeholder="Enter your mobile number"
+            value={form.phone}
+            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            pattern="[0-9]{10}"
+            required
+          />
+        </div>
 
-          <div className="loan-type-slider-container">
-            {["Salary", "Business", "Home Loan", "Insurance"].map((type) => (
+        {/* City */}
+        <div>
+          <label className="block text-gray-700 font-semibold mb-2 text-sm">
+            City *
+          </label>
+          <input
+            type="text"
+            placeholder="Enter your city"
+            value={form.city}
+            onChange={(e) => setForm({ ...form, city: e.target.value })}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            required
+          />
+        </div>
+
+        {/* Pincode */}
+        <div>
+          <label className="block text-gray-700 font-semibold mb-2 text-sm">
+            Pincode *
+          </label>
+          <input
+            type="text"
+            placeholder="Enter your pincode"
+            value={form.pincode}
+            onChange={(e) => setForm({ ...form, pincode: e.target.value })}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            pattern="[0-9]{6}"
+            maxLength="6"
+            required
+          />
+        </div>
+
+        {/* What loan are you looking for? */}
+        <div>
+          <label className="block text-gray-700 font-semibold mb-3 text-sm">
+            What loan are you looking for? *
+          </label>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {loanTypes.map((type) => (
               <button
                 key={type}
                 type="button"
                 onClick={() => setForm({ ...form, loanType: type })}
-                className={`loan-type-slide ${form.loanType === type ? 'active' : ''}`}
+                className={`px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200 ${
+                  form.loanType === type
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transform scale-105'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
+                }`}
               >
                 {type}
               </button>
@@ -139,83 +169,79 @@ export default function HeroEnquiryForm() {
           </div>
         </div>
 
-        <textarea
-          placeholder="Message (optional)"
-          rows="3"
-          value={form.message}
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className="input-style md:col-span-2"
-        />
+        {/* Employment Type */}
+        <div>
+          <label className="block text-gray-700 font-semibold mb-3 text-sm">
+            Employment Type *
+          </label>
+          <div className="grid grid-cols-3 gap-3">
+            {employmentTypes.map((type) => (
+              <button
+                key={type}
+                type="button"
+                onClick={() => setForm({ ...form, employmentType: type })}
+                className={`px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200 ${
+                  form.employmentType === type
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transform scale-105'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
+                }`}
+              >
+                {type}
+              </button>
+            ))}
+          </div>
+        </div>
 
-        <button className="md:col-span-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 rounded-xl transition transform hover:scale-105 shadow-lg">
+        {/* Monthly Earning */}
+        <div>
+          <label className="block text-gray-700 font-semibold mb-3 text-sm">
+            Monthly Earning *
+          </label>
+          <div className="space-y-3">
+            {earningRanges.map((range) => (
+              <label
+                key={range}
+                className={`flex items-center p-4 rounded-lg cursor-pointer transition-all duration-200 ${
+                  form.earning === range
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                    : 'bg-gray-50 hover:bg-gray-100 border border-gray-300'
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="earning"
+                  value={range}
+                  checked={form.earning === range}
+                  onChange={(e) => setForm({ ...form, earning: e.target.value })}
+                  className="w-5 h-5 text-blue-600 mr-3"
+                  required
+                />
+                <span className="font-semibold text-sm">{range}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Submit Button */}
+        <button 
+          type="submit"
+          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 rounded-xl transition transform hover:scale-105 shadow-lg"
+        >
           Submit Enquiry
         </button>
       </form>
 
       {status && (
-        <p className={`text-sm font-semibold mt-3 text-center ${status.includes('success') ? 'text-green-600' : status.includes('Error') ? 'text-red-600' : 'text-blue-600'}`}>
+        <p className={`text-sm font-semibold mt-4 text-center ${
+          status.includes('success') 
+            ? 'text-green-600' 
+            : status.includes('Error') 
+            ? 'text-red-600' 
+            : 'text-blue-600'
+        }`}>
           {status}
         </p>
       )}
-
-      <style jsx>{`
-        .slider-thumb::-webkit-slider-thumb {
-          appearance: none;
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-          cursor: pointer;
-          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-          transition: transform 0.2s;
-          margin-top: -8px;
-        }
-
-        .slider-thumb::-webkit-slider-thumb:hover {
-          transform: scale(1.3);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        }
-
-        .slider-thumb::-moz-range-thumb {
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-          cursor: pointer;
-          border: none;
-          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-          transition: transform 0.2s;
-        }
-
-        .slider-thumb::-moz-range-thumb:hover {
-          transform: scale(1.3);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        }
-
-        .slider-thumb::-webkit-slider-runnable-track {
-          background: linear-gradient(
-            to right,
-            #3b82f6 0%,
-            #3b82f6 ${((form.amount - 10000) / (500000 - 10000)) * 100}%,
-            #bfdbfe ${((form.amount - 10000) / (500000 - 10000)) * 100}%,
-            #bfdbfe 100%
-          );
-          height: 10px;
-          border-radius: 5px;
-        }
-
-        .slider-thumb::-moz-range-track {
-          background: #bfdbfe;
-          height: 10px;
-          border-radius: 5px;
-        }
-
-        .slider-thumb::-moz-range-progress {
-          background: #3b82f6;
-          height: 10px;
-          border-radius: 5px;
-        }
-      `}</style>
     </div>
   );
 }

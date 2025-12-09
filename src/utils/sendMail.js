@@ -10,10 +10,12 @@ export const sendMail = async (form) => {
     name: form.name,
     phone: form.phone,
     email: form.email,
-    location: form.location,
-    amount: form.amount,
-    loanType: form.loanType,
-    message: form.message || "No message",
+    city: form.city || "Not provided",
+    pincode: form.pincode || "Not provided",
+    loanType: form.loanType || "Not specified",
+    employmentType: form.employmentType || "Not specified",
+    earning: form.earning || "Not specified",
+    message: form.message || "No additional message",
     date: new Date().toLocaleString(),
   };
 
