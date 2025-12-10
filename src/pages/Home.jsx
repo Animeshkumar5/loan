@@ -3,6 +3,8 @@ import AboutPreview from "../components/AboutPreview";
 import HeroEnquiryForm from "../components/HeroEnquiryForm";
 import LoanOptions from '../components/LoanOptions';
 import { Link } from 'react-router-dom';
+import LoanSteps from "../components/LoanSteps";
+
 
 // --- ICONS ---
 const TagIcon = () => (
@@ -436,6 +438,8 @@ export default function Home() {
       </div>
 
       <AboutPreview />
+      <LoanSteps />
+
 
       {/* 5. FEATURES */}
       <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 bg-white">
