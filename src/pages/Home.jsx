@@ -4,6 +4,7 @@ import AboutPreview from "../components/AboutPreview";
 import HeroEnquiryForm from "../components/HeroEnquiryForm";
 import LoanOptions from '../components/LoanOptions';
 import LoanSteps from "../components/LoanSteps";
+import { Helmet } from 'react-helmet-async';
 
 // --- ICONS ---
 const TagIcon = () => (
@@ -54,6 +55,12 @@ export default function Home() {
 
   return (
     <div className="bg-gray-50 font-sans -mt-6">
+      
+      <Helmet>
+        <title>Fast & Easy Personal Loans - Get Quote Instantly</title>
+        <meta name="description" content="Get approved for personal loans up to $100k with low interest rates starting at 3.84%. Quick 24hr approval process." />
+      </Helmet>
+      
 
       {/* FORM MODAL */}
       {isFormModalOpen && (
