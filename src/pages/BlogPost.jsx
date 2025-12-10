@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { blogPosts } from './Blogs'; // Import data from Blogs.jsx (or a separate data file)
+import { blogPosts } from './Blogs'; 
 
 export default function BlogPost() {
   const { id } = useParams();
