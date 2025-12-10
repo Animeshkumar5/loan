@@ -123,12 +123,13 @@ export default function Home() {
                   </span>
                 </div>
 
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-900 leading-tight">
-                  Personal Loans
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                    Simplified
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-slate-800">
+                  <span className="block">Let’s find you</span>
+                  <span className="block text-slate-900 font-extrabold">
+                    the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Best Insurance</span>
                   </span>
                 </h1>
+
 
 
                 {/* Quick benefits row */}
