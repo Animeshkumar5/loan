@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import AboutPreview from "../components/AboutPreview";
 import HeroEnquiryForm from "../components/HeroEnquiryForm";
 import LoanOptions from '../components/LoanOptions';
-import { Link } from 'react-router-dom';
 import LoanSteps from "../components/LoanSteps";
-
 
 // --- ICONS ---
 const TagIcon = () => (
@@ -34,6 +33,24 @@ const CloseIcon = () => (
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
+  const loanTypes = [
+    "Best Insurance",
+    "Personal Loan",
+    "Business Loan",
+    "Home Loan",
+    "Used Car Loan"
+  ];
+
+  // Text rotation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % loanTypes.length);
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="bg-gray-50 font-sans -mt-6">
@@ -50,7 +67,7 @@ export default function Home() {
               backdropFilter: 'blur(40px)'
             }}
           ></div>
-          
+           
           {/* Modal Content */}
           <div className="relative bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto z-10 animate-fade-up">
             {/* Close Button */}
@@ -106,7 +123,8 @@ export default function Home() {
 
       {/* 1. HERO SECTION */}
       <div className="relative bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen lg:h-screen flex items-center overflow-hidden py-12 lg:py-0">
-        {/* Decorative Background Elements */}
+        
+        {/* Background Blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
           <div className="absolute top-40 right-10 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
@@ -116,65 +134,54 @@ export default function Home() {
         <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-            {/* LEFT CONTENT - Hero Text */}
+            {/* LEFT CONTENT */}
             <div className="order-2 lg:order-1 space-y-6 text-center lg:text-left">
-              <div className="space-y-4">
-                <div className="inline-block">
-                  <span className="bg-blue-100 text-blue-600 text-sm font-semibold px-4 py-2 rounded-full">
-                    ⚡ Quick & Easy Process
+              {/* Badge */}
+              <div className="inline-block">
+                <span className="bg-blue-100 text-blue-600 text-sm font-semibold px-4 py-2 rounded-full">
+                  ⚡ Quick & Easy Process
+                </span>
+              </div>
+
+              {/* Animated Text Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-slate-800">
+                <span className="block">Let's find you</span>
+                <span className="block text-slate-900 font-extrabold">
+                  the{' '}
+                  <span 
+                    key={currentTextIndex} 
+                    className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 inline-block animate-text-slide"
+                  >
+                    {loanTypes[currentTextIndex]}
                   </span>
-                </div>
+                </span>
+              </h1>
 
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-slate-800">
-                  <span className="block">Let’s find you</span>
-                  <span className="block text-slate-900 font-extrabold">
-                    the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Best Insurance</span>
-                  </span>
-                </h1>
-
-
-
-                {/* Quick benefits row */}
-                <div className="mt-4 flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center lg:justify-start">
-                   {/* Left item */}
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full border-2 border-indigo-400 flex items-center justify-center bg-indigo-50/70">
-                        {/* purple checklist icon */}
-                          <img
-                              src="/icons/checklist.png"   // yahan apna checklist icon ka path daalna
-                              alt="Insurers icon"
-                              className="w-5 h-5"
-                          />
-                          </div>
-                          <p className="text-sm sm:text-base font-semibold text-indigo-600 leading-snug text-left">
-                            51 insurers offering
-                            <br className="hidden sm:block" />
-                            lowest prices
-                          </p>
-                    </div>
-
-                  {/* Right item */}
+              {/* Features Row */}
+              <div className="mt-4 flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center lg:justify-start">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full border-2 border-orange-400 flex items-center justify-center bg-orange-50/80">
-                    {/* orange lightning icon */}
-                      <img
-                      src="/icons/lightning.png"   // yahan apna lightning icon ka path daalna
-                      alt="Fast icon"
-                      className="w-5 h-5"
-                    />
-                    </div>
-                    <p className="text-sm sm:text-base font-semibold text-orange-500 leading-snug text-left">
-                      Quick, easy &amp;
-                      <br className="hidden sm:block" />
-                      hassle free
-                    </p>
+                      <div className="w-10 h-10 rounded-full border-2 border-indigo-400 flex items-center justify-center bg-indigo-50/70">
+                        {/* Replace with your checklist icon */}
+                        <CheckIcon /> 
+                      </div>
+                      <p className="text-sm sm:text-base font-semibold text-indigo-600 leading-snug text-left">
+                        51 insurers offering<br className="hidden sm:block" />lowest prices
+                      </p>
                   </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full border-2 border-orange-400 flex items-center justify-center bg-orange-50/80">
+                    {/* Replace with your lightning icon */}
+                    <TagIcon />
+                  </div>
+                  <p className="text-sm sm:text-base font-semibold text-orange-500 leading-snug text-left">
+                    Quick, easy &amp;<br className="hidden sm:block" />hassle free
+                  </p>
+                </div>
               </div>
 
-              </div>
-
-              {/* CTA Button */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                 <button
                   onClick={() => setIsFormModalOpen(true)}
                   className="bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 px-8 rounded-full hover:shadow-xl transform hover:scale-105 transition duration-300"
@@ -186,8 +193,8 @@ export default function Home() {
                 </button>
               </div>
 
-              {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-4 pt-6">
+              {/* Stats Box */}
+              <div className="grid grid-cols-3 gap-4 pt-8">
                 <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
                   <div className="text-2xl font-bold text-blue-600">$100K</div>
                   <div className="text-xs text-gray-500 mt-1">Max Loan</div>
@@ -203,56 +210,56 @@ export default function Home() {
               </div>
             </div>
 
-            {/* RIGHT IMAGE - Visual Section */}
-            <div className="order-1 lg:order-2 relative h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center">
-              <div className="relative w-full h-full flex items-center justify-center">
-                <img
-                  src="/heroloanfinal.png"
-                  alt="Loan Hero"
-                  className="w-full max-w-md lg:max-w-lg h-auto object-contain drop-shadow-2xl"
-                />
+            {/* RIGHT CONTENT - Man & Floating Cards */}
+            <div className="order-1 lg:order-2 relative h-[500px] lg:h-[600px] flex items-center justify-center">
+              
+              {/* Main Image (Man in Suit) */}
+              <img
+                src="/heroloanfinal.png" 
+                alt="Happy businessman"
+                className="h-full object-contain relative z-10"
+              />
 
-                {/* FLOATING CARDS - Responsive */}
-                {/* Card 1 - Top Right */}
-                <div className="absolute top-8 sm:top-12 lg:top-20 right-2 sm:right-5 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-xs text-gray-500">Interest Rate</span>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">9.2%</h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">Low Interest</p>
+              {/* FLOATING CARD 1: Interest Rate (Top Right) */}
+              <div className="absolute top-20 right-0 z-20 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 w-36 animate-float delay-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                  <span className="text-xs text-gray-500 font-medium">Interest Rate</span>
                 </div>
-
-                {/* Card 2 - Bottom Right */}
-                <div className="absolute bottom-12 sm:bottom-16 lg:bottom-20 right-5 sm:right-10 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float animation-delay-400">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-xs text-gray-500">Rating</span>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">90%</h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">Satisfied Customers</p>
-                </div>
-
-                {/* Card 3 - Top Left */}
-                <div className="hidden sm:block absolute top-12 lg:top-20 left-5 lg:left-10 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float animation-delay-800">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                    <span className="text-xs text-gray-500">Security</span>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">100%</h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">Secure</p>
-                </div>
-
-                {/* Card 4 - Bottom Left */}
-                <div className="hidden sm:block absolute bottom-16 lg:bottom-20 left-0 lg:left-0 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float animation-delay-1200">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                    <span className="text-xs text-gray-500">Speed</span>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">Instant</h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">Approvals</p>
-                </div>
+                <p className="text-2xl font-bold text-blue-900">9.2%</p>
+                <p className="text-xs text-gray-400">Low Interest</p>
               </div>
+
+              {/* FLOATING CARD 2: Security (Top Left) */}
+              <div className="absolute top-24 left-10 z-20 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 w-36 animate-float delay-1000">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                  <span className="text-xs text-gray-500 font-medium">Security</span>
+                </div>
+                <p className="text-2xl font-bold text-blue-900">100%</p>
+                <p className="text-xs text-gray-400">Secure</p>
+              </div>
+
+              {/* FLOATING CARD 3: Speed (Bottom Left) */}
+              <div className="absolute bottom-20 left-0 z-20 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 w-36 animate-float delay-2000">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-2 h-2 rounded-full bg-orange-500"></div>
+                  <span className="text-xs text-gray-500 font-medium">Speed</span>
+                </div>
+                <p className="text-2xl font-bold text-blue-900">Instant</p>
+                <p className="text-xs text-gray-400">Approvals</p>
+              </div>
+
+               {/* FLOATING CARD 4: Rating (Bottom Right) */}
+               <div className="absolute bottom-24 right-5 z-20 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 w-36 animate-float delay-3000">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                  <span className="text-xs text-gray-500 font-medium">Rating</span>
+                </div>
+                <p className="text-2xl font-bold text-blue-900">90%</p>
+                <p className="text-xs text-gray-400">Satisfied Customers</p>
+              </div>
+
             </div>
 
           </div>
@@ -324,7 +331,7 @@ export default function Home() {
                 typeTag: "Protection",
                 amountLabel: "Loan Shield",
                 desc: "Secure your EMIs against job loss, illness or accidents.",
-                img: "/cards/insurance.jpg", // add this image
+                img: "/cards/insurance.jpg",
                 meta1: "Family protection",
                 meta2: "Critical illness cover",
               },
@@ -358,7 +365,6 @@ export default function Home() {
                       {item.amountLabel}
                     </span>
                   </div>
-
                   
                 </div>
 
@@ -440,7 +446,6 @@ export default function Home() {
       <AboutPreview />
       <LoanSteps />
 
-
       {/* 5. FEATURES */}
       <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 bg-white">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center">
@@ -470,7 +475,8 @@ export default function Home() {
 
           {/* ROTATING ITEMS */}
           <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] -ml-[150px] sm:-ml-[200px] lg:-ml-[250px] -mt-[150px] sm:-mt-[200px] lg:-mt-[250px] animate-orbit z-20 pointer-events-none origin-center">
-            {/* Excellent */}
+            
+            {/* 1. Excellent (Top) */}
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float">
                 <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Excellent</h3>
@@ -478,7 +484,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Good */}
+            {/* 2. Good (Right) */}
             <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-1000">
                 <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Good</h3>
@@ -486,7 +492,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Fair */}
+            {/* 3. Fair (Bottom) */}
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-2000">
                 <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Fair</h3>
@@ -494,13 +500,14 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Poor */}
+            {/* 4. Poor (Left) */}
             <div className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-1500">
                 <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Poor</h3>
                 <p className="text-gray-500 font-bold text-base sm:text-lg lg:text-xl">&lt;620</p>
               </div>
             </div>
+
           </div>
         </div>
       </div>
