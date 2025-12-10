@@ -1,8 +1,24 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async'; 
 
 export default function About() {
   return (
     <div className="p-10 max-w-4xl mx-auto">
+      
+      {/* 2. SEO Section */}
+      <Helmet>
+        <title>About Us - Trusted Fast & Secure Loans | XYZ Loan Company</title>
+        <meta 
+          name="description" 
+          content="Founded in 2024, XYZ Loan Company provides accessible financial freedom with transparency, speed, and trust. Learn more about our fast approval and low rates." 
+        />
+        <meta 
+          name="keywords" 
+          content="about xyz loan company, trusted loan provider, fast loan approval, secure loans, low interest rates, financial freedom" 
+        />
+        <link rel="canonical" href="https://yourwebsite.com/about" />
+      </Helmet>
+
       <h1 className="text-4xl font-bold text-blue-900 mb-6">About XYZ Loan Company</h1>
       <p className="text-lg text-gray-700 mb-4">
         Founded in 2024, XYZ Loan Company aims to make financial freedom accessible to everyone. 
