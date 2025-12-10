@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AboutPreview from "../components/AboutPreview";
 import HeroEnquiryForm from "../components/HeroEnquiryForm";
-import LoanOptions from "../components/LoanOptions";
+import LoanOptions from '../components/LoanOptions';
+import { Link } from 'react-router-dom';
+import LoanSteps from "../components/LoanSteps";
+
 
 // --- ICONS ---
 const TagIcon = () => (
@@ -200,16 +203,52 @@ export default function Home() {
                   </span>
                 </div>
 
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-blue-900 leading-tight">
-                  Personal Loans
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                    Simplified
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-slate-800">
+                  <span className="block">Let’s find you</span>
+                  <span className="block text-slate-900 font-extrabold">
+                    the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Best Insurance</span>
                   </span>
                 </h1>
 
-                <p className="text-lg sm:text-xl text-gray-600 max-w-lg mx-auto lg:mx-0">
-                  Fast approval • Low interest • Trusted by thousands
-                </p>
+
+
+                {/* Quick benefits row */}
+                <div className="mt-4 flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center lg:justify-start">
+                   {/* Left item */}
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full border-2 border-indigo-400 flex items-center justify-center bg-indigo-50/70">
+                        {/* purple checklist icon */}
+                          <img
+                              src="/icons/checklist.png"   // yahan apna checklist icon ka path daalna
+                              alt="Insurers icon"
+                              className="w-5 h-5"
+                          />
+                          </div>
+                          <p className="text-sm sm:text-base font-semibold text-indigo-600 leading-snug text-left">
+                            51 insurers offering
+                            <br className="hidden sm:block" />
+                            lowest prices
+                          </p>
+                    </div>
+
+                  {/* Right item */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full border-2 border-orange-400 flex items-center justify-center bg-orange-50/80">
+                    {/* orange lightning icon */}
+                      <img
+                      src="/icons/lightning.png"   // yahan apna lightning icon ka path daalna
+                      alt="Fast icon"
+                      className="w-5 h-5"
+                    />
+                    </div>
+                    <p className="text-sm sm:text-base font-semibold text-orange-500 leading-snug text-left">
+                      Quick, easy &amp;
+                      <br className="hidden sm:block" />
+                      hassle free
+                    </p>
+                  </div>
+              </div>
+
               </div>
 
               {/* CTA Button */}
@@ -492,6 +531,8 @@ export default function Home() {
       </div>
 
       <AboutPreview />
+      <LoanSteps />
+
 
       {/* 5. FEATURES */}
       <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 bg-white">
