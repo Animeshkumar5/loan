@@ -19,7 +19,7 @@ export default function About() {
         <link rel="canonical" href="https://yourwebsite.com/about" />
       </Helmet>
 
-      <h1 className="text-4xl font-bold text-blue-900 mb-6">About XYZ Loan Company</h1>
+      <h1 className="text-4xl font-bold text-blue-900 mb-6">About paisaSolutions</h1>
       <p className="text-lg text-gray-700 mb-4">
         Founded in 2024, XYZ Loan Company aims to make financial freedom accessible to everyone. 
         We believe in transparency, speed, and trust.

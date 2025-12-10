@@ -271,7 +271,7 @@ export default function Contact() {
               </svg>
             </div>
             <h3 className="font-bold text-gray-900 mb-1">Phone</h3>
-            <p className="text-sm text-gray-600">+91 1234567890</p>
+            <p className="text-sm text-gray-600">+91 8795555728</p>
           </div>
 
           <div className="bg-white rounded-xl p-6 shadow-lg text-center border border-gray-200">
@@ -281,7 +281,7 @@ export default function Contact() {
               </svg>
             </div>
             <h3 className="font-bold text-gray-900 mb-1">Email</h3>
-            <p className="text-sm text-gray-600">info@loancompany.com</p>
+            <p className="text-sm text-gray-600">Support@paisasolutions</p>
           </div>
 
           <div className="bg-white rounded-xl p-6 shadow-lg text-center border border-gray-200">
@@ -292,7 +292,7 @@ export default function Contact() {
               </svg>
             </div>
             <h3 className="font-bold text-gray-900 mb-1">Location</h3>
-            <p className="text-sm text-gray-600">Mumbai, India</p>
+            <p className="text-sm text-gray-600">India</p>
           </div>
         </div>
       </div>

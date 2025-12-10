@@ -56,11 +56,22 @@ export default function Home() {
   return (
     <div className="bg-gray-50 font-sans -mt-6">
       
-    <Helmet>
-  <title>Fast & Easy Personal Loans - Get Quote Instantly</title>
-  <meta name="description" content="Get approved for personal loans up to $100k with low interest rates starting at 3.84%. Quick 24hr approval process." />
-  <meta name="keywords" content="personal loan, business loan, car loan, fast loan approval, low interest loans, debt consolidation" />
-  </Helmet>
+    {/* --- SEO SECTION --- */}
+      <Helmet>
+        <title>Personal Loan Near Me - Low Interest & Fast Approval | XYZ Loans</title>
+        
+        <meta 
+          name="description" 
+          content="Looking for a personal loan near me? Apply now for low-interest personal loans, business loans for startups, and used car loans. Trusted home loan agents and best insurance agents near you." 
+        />
+        
+        <meta 
+          name="keywords" 
+          content="Personal loan near me, Low-interest personal loan, Home loan agents, Business loan for startup, Used car loan apply now, Best insurance agent near me" 
+        />
+        
+      </Helmet>
+      {/* ------------------- */}
 
       {/* FORM MODAL */}
       {isFormModalOpen && (

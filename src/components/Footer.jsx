@@ -11,7 +11,7 @@ export default function Footer() {
           {/* 1. LOGO */}
           <div className="md:w-1/4">
             <h2 className="text-2xl font-bold text-blue-600 flex items-center gap-1">
-              XYZ <span className="text-gray-500">Loans</span>
+              Paisa <span className="text-gray-500">Solutions</span>
             </h2>
           </div>
 
@@ -39,7 +39,7 @@ export default function Footer() {
 
         {/* 4. COPYRIGHT */}
         <div className="mt-16 pt-8 text-center text-sm text-gray-500">
-          Copyright © {new Date().getFullYear()} | XYZ Loans Financial.
+          Copyright © {new Date().getFullYear()} | Paisasolutions.
         </div>
 
       </div>
