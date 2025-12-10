@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom"; // Removed 'BrowserRouter as Router'
+import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import PersonalLoan from "./pages/PersonalLoan";
@@ -14,13 +14,14 @@ import DebtConsolidation from "./pages/DebtConsolidation";
 import CreditCardConsolidation from "./pages/CreditCardConsolidation";
 import SmallLoans from "./pages/SmallLoans";
 import HomeImprovement from "./pages/HomeImprovement";
+import Blogs from "./pages/Blogs";
+import BlogPost from "./pages/BlogPost";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 function App() {
   return (
-    // <Router>  <-- REMOVED THIS
     <div className="font-sans text-gray-900 flex flex-col min-h-screen">
 
       {/* Navbar */}
@@ -42,6 +43,10 @@ function App() {
           <Route path="/credit-card-consolidation" element={<CreditCardConsolidation />} />
           <Route path="/small-loans" element={<SmallLoans />} />
           <Route path="/home-improvement" element={<HomeImprovement />} />
+          
+          {/* Blog Routes */}
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/:id" element={<BlogPost />} />
         </Routes>
       </div>
 
@@ -49,7 +54,6 @@ function App() {
       <Footer />
 
     </div>
-    // </Router> <-- REMOVED THIS
   );
 }
 
