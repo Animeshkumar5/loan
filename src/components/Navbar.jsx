@@ -15,14 +15,15 @@ function Navbar() {
   return (
     <nav className="fixed w-full z-50 bg-white/95 backdrop-blur shadow-sm top-0 left-0">
       <div className="container mx-auto px-6 py-4">
-        <div className="flex justify-between items-center lg:justify-center">
+        <div className="flex justify-between items-center">
           
-          {/* Logo - Only visible on mobile */}
-          <NavLink to="/" className="lg:hidden flex items-center" onClick={closeMenu}>
+          {/* --- LOGO (Increased Size) --- */}
+          <NavLink to="/" className="flex items-center" onClick={closeMenu}>
             <img 
-              src="/logo.png" 
+              src="/final logo.png" 
               alt="Logo" 
-              className="h-8 w-auto"
+              // Changed h-8 -> h-12 (Mobile) and lg:h-12 -> lg:h-20 (Desktop)
+              className="h-15 lg:h-20 w-auto object-contain transition-all duration-300"
             />
           </NavLink>
 
@@ -37,7 +38,7 @@ function Navbar() {
             <span className={`block w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
           </button>
 
-          {/* Desktop Menu - Centered */}
+          {/* Desktop Menu */}
           <div className="hidden lg:flex space-x-10 items-center">
             <NavLink
               to="/"
@@ -75,7 +76,6 @@ function Navbar() {
               FAQ
             </NavLink>
 
-            {/* NEW BLOGS LINK */}
             <NavLink
               to="/blogs"
               className={({ isActive }) =>
@@ -101,7 +101,7 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu - Slides down */}
+        {/* Mobile Menu */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
             isMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
@@ -141,7 +141,6 @@ function Navbar() {
               FAQ
             </NavLink>
 
-            {/* NEW MOBILE BLOGS LINK */}
             <NavLink
               to="/blogs"
               onClick={closeMenu}

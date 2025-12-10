@@ -58,7 +58,7 @@ export default function Home() {
       
     {/* --- SEO SECTION --- */}
       <Helmet>
-        <title>Personal Loan Near Me - Low Interest & Fast Approval | paisasolutions</title>
+        <title>Personal Loan Near Me - Low Interest & Fast Approval | XYZ Loans</title>
         
         <meta 
           name="description" 
@@ -70,6 +70,7 @@ export default function Home() {
           content="Personal loan near me, Low-interest personal loan, Home loan agents, Business loan for startup, Used car loan apply now, Best insurance agent near me" 
         />
         
+        <link rel="canonical" href="https://yourwebsite.com/" />
       </Helmet>
       {/* ------------------- */}
 
@@ -228,54 +229,70 @@ export default function Home() {
               </div>
             </div>
 
-            {/* RIGHT CONTENT - Man & Floating Cards */}
-            <div className="order-1 lg:order-2 relative h-[500px] lg:h-[600px] flex items-center justify-center">
+            {/* RIGHT CONTENT - Man & Floating Cards (UPDATED RESPONSIVE) */}
+            <div className="order-1 lg:order-2 relative h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center">
               
               {/* Main Image (Man in Suit) */}
               <img
                 src="/heroloanfinal.png" 
                 alt="Happy businessman"
-                className="h-full object-contain relative z-10"
+                className="h-full w-auto object-contain relative z-10"
               />
 
               {/* FLOATING CARD 1: Interest Rate (Top Right) */}
-              <div className="absolute top-20 right-0 z-20 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 w-36 animate-float delay-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                  <span className="text-xs text-gray-500 font-medium">Interest Rate</span>
+              <div 
+                className="absolute top-4 right-0 sm:top-12 sm:right-5 lg:top-20 
+                           bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 
+                           w-28 sm:w-36 lg:w-40 animate-float z-20 delay-0"
+              >
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500"></div>
+                  <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Interest Rate</span>
                 </div>
-                <p className="text-2xl font-bold text-blue-900">9.2%</p>
-                <p className="text-xs text-gray-400">Low Interest</p>
+                <p className="text-lg sm:text-2xl font-bold text-blue-900">9.2%</p>
+                <p className="text-[10px] sm:text-xs text-gray-400">Low Interest</p>
               </div>
 
               {/* FLOATING CARD 2: Security (Top Left) */}
-              <div className="absolute top-24 left-10 z-20 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 w-36 animate-float delay-1000">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-                  <span className="text-xs text-gray-500 font-medium">Security</span>
+              <div 
+                className="absolute top-10 left-0 sm:top-20 sm:left-4 lg:left-10
+                           bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 
+                           w-28 sm:w-36 lg:w-40 animate-float z-20 delay-1000"
+              >
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-500"></div>
+                  <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Security</span>
                 </div>
-                <p className="text-2xl font-bold text-blue-900">100%</p>
-                <p className="text-xs text-gray-400">Secure</p>
+                <p className="text-lg sm:text-2xl font-bold text-blue-900">100%</p>
+                <p className="text-[10px] sm:text-xs text-gray-400">Secure</p>
               </div>
 
               {/* FLOATING CARD 3: Speed (Bottom Left) */}
-              <div className="absolute bottom-20 left-0 z-20 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 w-36 animate-float delay-2000">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-                  <span className="text-xs text-gray-500 font-medium">Speed</span>
+              <div 
+                className="absolute bottom-10 left-0 sm:bottom-20 sm:left-0 lg:left-0
+                           bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 
+                           w-28 sm:w-36 lg:w-40 animate-float z-20 delay-2000"
+              >
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-orange-500"></div>
+                  <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Speed</span>
                 </div>
-                <p className="text-2xl font-bold text-blue-900">Instant</p>
-                <p className="text-xs text-gray-400">Approvals</p>
+                <p className="text-lg sm:text-2xl font-bold text-blue-900">Instant</p>
+                <p className="text-[10px] sm:text-xs text-gray-400">Approvals</p>
               </div>
 
                {/* FLOATING CARD 4: Rating (Bottom Right) */}
-               <div className="absolute bottom-24 right-5 z-20 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 w-36 animate-float delay-3000">
-                <div className="flex items-center gap-2 mb-1">
-                  <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                  <span className="text-xs text-gray-500 font-medium">Rating</span>
+               <div 
+                 className="absolute bottom-4 right-0 sm:bottom-16 sm:right-10 lg:bottom-24
+                            bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 
+                            w-28 sm:w-36 lg:w-40 animate-float z-20 delay-3000"
+               >
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-blue-500"></div>
+                  <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Rating</span>
                 </div>
-                <p className="text-2xl font-bold text-blue-900">90%</p>
-                <p className="text-xs text-gray-400">Satisfied Customers</p>
+                <p className="text-lg sm:text-2xl font-bold text-blue-900">90%</p>
+                <p className="text-[10px] sm:text-xs text-gray-400">Satisfied Customers</p>
               </div>
 
             </div>

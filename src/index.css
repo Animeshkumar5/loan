@@ -666,3 +666,30 @@
 .animate-wave {
   animation: wave-pulse 2s infinite;
 }
+/* --- UPDATED FLOAT ANIMATION (Copy this) --- */
+
+/* Standard Float (Desktop) */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Gentle Float (Mobile) - Less movement to prevent layout issues */
+@keyframes float-mobile {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Class Application */
+.animate-float {
+  animation: float 6s ease-in-out infinite; /* Slower (6s) is smoother */
+}
+
+/* Mobile Override */
+@media (max-width: 640px) {
+  .animate-float {
+    animation: float-mobile 5s ease-in-out infinite;
+  }
+}

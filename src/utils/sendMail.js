@@ -15,7 +15,6 @@ export const sendMail = async (form) => {
     loanType: form.loanType || "Not specified",
     employmentType: form.employmentType || "Not specified",
     earning: form.earning || "Not specified",
-    message: form.message || "No additional message",
     date: new Date().toLocaleString(),
   };
 
