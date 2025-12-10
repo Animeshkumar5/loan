@@ -56,11 +56,11 @@ export default function Home() {
   return (
     <div className="bg-gray-50 font-sans -mt-6">
       
-      <Helmet>
-        <title>Fast & Easy Personal Loans - Get Quote Instantly</title>
-        <meta name="description" content="Get approved for personal loans up to $100k with low interest rates starting at 3.84%. Quick 24hr approval process." />
-      </Helmet>
-      
+    <Helmet>
+  <title>Fast & Easy Personal Loans - Get Quote Instantly</title>
+  <meta name="description" content="Get approved for personal loans up to $100k with low interest rates starting at 3.84%. Quick 24hr approval process." />
+  <meta name="keywords" content="personal loan, business loan, car loan, fast loan approval, low interest loans, debt consolidation" />
+  </Helmet>
 
       {/* FORM MODAL */}
       {isFormModalOpen && (
