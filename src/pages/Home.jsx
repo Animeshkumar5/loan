@@ -58,7 +58,7 @@ export default function Home() {
       
     {/* --- SEO SECTION --- */}
       <Helmet>
-        <title>Personal Loan Near Me - Low Interest & Fast Approval | XYZ Loans</title>
+        <title>Personal Loan Near Me - Low Interest & Fast Approval | paisasolutions</title>
         
         <meta 
           name="description" 

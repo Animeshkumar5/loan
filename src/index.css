@@ -652,3 +652,17 @@
 .animate-text-slide {
   animation: textSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
+
+/* Add to index.css */
+@keyframes wave-pulse {
+  0% {
+    box-shadow: 0 0 0 0px var(--wave-color);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+}
+
+.animate-wave {
+  animation: wave-pulse 2s infinite;
+}

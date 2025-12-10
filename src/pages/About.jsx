@@ -7,7 +7,7 @@ export default function About() {
       
       {/* 2. SEO Section */}
       <Helmet>
-        <title>About Us - Trusted Fast & Secure Loans | XYZ Loan Company</title>
+        <title>About Us - Trusted Fast & Secure Loans | paisasolutions Company</title>
         <meta 
           name="description" 
           content="Founded in 2024, XYZ Loan Company provides accessible financial freedom with transparency, speed, and trust. Learn more about our fast approval and low rates." 
