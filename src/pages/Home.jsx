@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
 import AboutPreview from "../components/AboutPreview";
 import HeroEnquiryForm from "../components/HeroEnquiryForm";
 import LoanOptions from '../components/LoanOptions';
@@ -9,70 +8,26 @@ import LoanSteps from "../components/LoanSteps";
 
 // --- ICONS ---
 const TagIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6 text-blue-500"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
-    />
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
   </svg>
 );
 
 const CheckIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6 text-white"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-    />
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
 );
 
 const ArrowRightIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6 text-orange-500"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M9 5l7 7-7 7"
-    />
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
   </svg>
 );
 
 const CloseIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-6 w-6"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M6 18L18 6M6 6l12 12"
-    />
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
 
@@ -82,21 +37,20 @@ export default function Home() {
 
   return (
     <div className="bg-gray-50 font-sans -mt-6">
-      
+
       {/* FORM MODAL */}
       {isFormModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop with Liquid Blur */}
-          <div
+          <div 
             className="absolute inset-0 backdrop-blur-xl bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-pink-500/30"
             onClick={() => setIsFormModalOpen(false)}
             style={{
-              backgroundImage:
-                "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.3) 0%, transparent 50%)",
-              backdropFilter: "blur(40px)",
+              backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.3) 0%, transparent 50%)',
+              backdropFilter: 'blur(40px)'
             }}
           ></div>
-
+          
           {/* Modal Content */}
           <div className="relative bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto z-10 animate-fade-up">
             {/* Close Button */}
@@ -115,65 +69,33 @@ export default function Home() {
                 </span>
               </div>
               <h2 className="text-3xl font-bold mb-2">Get Your Loan Quote</h2>
-              <p className="text-blue-100">
-                Fill in your details to get started
-              </p>
+              <p className="text-blue-100">Fill in your details to get started</p>
             </div>
 
             {/* Form Content */}
             <div className="p-8">
               <HeroEnquiryForm />
-
+              
               {/* Trust Indicators */}
               <div className="mt-6 pt-6 border-t border-gray-100">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                   <div className="flex flex-col items-center">
-                    <svg
-                      className="w-8 h-8 text-green-500 mb-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
+                    <svg className="w-8 h-8 text-green-500 mb-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm font-semibold text-gray-700">
-                      100% Secure
-                    </span>
+                    <span className="text-sm font-semibold text-gray-700">100% Secure</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <svg
-                      className="w-8 h-8 text-green-500 mb-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
+                    <svg className="w-8 h-8 text-green-500 mb-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm font-semibold text-gray-700">
-                      No Hidden Fees
-                    </span>
+                    <span className="text-sm font-semibold text-gray-700">No Hidden Fees</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <svg
-                      className="w-8 h-8 text-green-500 mb-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                        clipRule="evenodd"
-                      />
+                    <svg className="w-8 h-8 text-green-500 mb-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
-                    <span className="text-sm font-semibold text-gray-700">
-                      Fast Approval
-                    </span>
+                    <span className="text-sm font-semibold text-gray-700">Fast Approval</span>
                   </div>
                 </div>
               </div>
@@ -193,7 +115,7 @@ export default function Home() {
 
         <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            
+
             {/* LEFT CONTENT - Hero Text */}
             <div className="order-2 lg:order-1 space-y-6 text-center lg:text-left">
               <div className="space-y-4">
@@ -276,9 +198,7 @@ export default function Home() {
                 </div>
                 <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
                   <div className="text-2xl font-bold text-blue-600">24hrs</div>
-                  <div className="text-xs text-gray-500 mt-1">
-                    Fast Approval
-                  </div>
+                  <div className="text-xs text-gray-500 mt-1">Fast Approval</div>
                 </div>
               </div>
             </div>
@@ -292,18 +212,15 @@ export default function Home() {
                   className="w-full max-w-md lg:max-w-lg h-auto object-contain drop-shadow-2xl"
                 />
 
+                {/* FLOATING CARDS - Responsive */}
                 {/* Card 1 - Top Right */}
                 <div className="absolute top-8 sm:top-12 lg:top-20 right-2 sm:right-5 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float">
                   <div className="flex items-center gap-2 mb-1">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     <span className="text-xs text-gray-500">Interest Rate</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">
-                    9.2%
-                  </h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">
-                    Low Interest
-                  </p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">9.2%</h3>
+                  <p className="text-gray-500 text-xs sm:text-sm">Low Interest</p>
                 </div>
 
                 {/* Card 2 - Bottom Right */}
@@ -312,39 +229,32 @@ export default function Home() {
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                     <span className="text-xs text-gray-500">Rating</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">
-                    90%
-                  </h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">
-                    Satisfied Customers
-                  </p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">90%</h3>
+                  <p className="text-gray-500 text-xs sm:text-sm">Satisfied Customers</p>
                 </div>
 
                 {/* Card 3 - Top Left */}
-                <div className="absolute top-12 lg:top-20 left-5 lg:left-10 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float animation-delay-800">
+                <div className="hidden sm:block absolute top-12 lg:top-20 left-5 lg:left-10 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float animation-delay-800">
                   <div className="flex items-center gap-2 mb-1">
                     <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                     <span className="text-xs text-gray-500">Security</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">
-                    100%
-                  </h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">100%</h3>
                   <p className="text-gray-500 text-xs sm:text-sm">Secure</p>
                 </div>
 
                 {/* Card 4 - Bottom Left */}
-                <div className="absolute bottom-16 lg:bottom-20 left-0 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float animation-delay-1200">
+                <div className="hidden sm:block absolute bottom-16 lg:bottom-20 left-0 lg:left-0 w-32 sm:w-36 lg:w-40 bg-white rounded-2xl shadow-xl p-3 sm:p-4 border border-gray-100 animate-float animation-delay-1200">
                   <div className="flex items-center gap-2 mb-1">
                     <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
                     <span className="text-xs text-gray-500">Speed</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">
-                    Instant
-                  </h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900">Instant</h3>
                   <p className="text-gray-500 text-xs sm:text-sm">Approvals</p>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -361,8 +271,7 @@ export default function Home() {
               Popular Loan Options
             </h2>
             <p className="mt-3 text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">
-              Compare different loan types and pick the one that fits your
-              goals.
+              Compare different loan types and pick the one that fits your goals.
             </p>
           </div>
 
@@ -415,7 +324,7 @@ export default function Home() {
                 typeTag: "Protection",
                 amountLabel: "Loan Shield",
                 desc: "Secure your EMIs against job loss, illness or accidents.",
-                img: "/cards/insurance.jpg",
+                img: "/cards/insurance.jpg", // add this image
                 meta1: "Family protection",
                 meta2: "Critical illness cover",
               },
@@ -449,6 +358,8 @@ export default function Home() {
                       {item.amountLabel}
                     </span>
                   </div>
+
+                  
                 </div>
 
                 {/* Card body */}
@@ -490,24 +401,24 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {[
               {
-                title: "Debt Consolidation",
-                desc: "Easy to manage payment with debt Consolidation",
-                link: "/debt-consolidation",
+                title: 'Debt Consolidation',
+                desc: 'Easy to manage payment with debt Consolidation',
+                link: '/debt-consolidation',
               },
               {
-                title: "Credit Card Consolidation",
-                desc: "Combine all balances into one easy payment",
-                link: "/credit-card-consolidation",
+                title: 'Credit Card Consolidation',
+                desc: 'Combine all balances into one easy payment',
+                link: '/credit-card-consolidation',
               },
               {
-                title: "Small Loans",
-                desc: "Get a small loan, no collateral or equity required",
-                link: "/small-loans",
+                title: 'Small Loans',
+                desc: 'Get a small loan, no collateral or equity required',
+                link: '/small-loans',
               },
               {
-                title: "Home Improvement",
-                desc: "Renovate or repair your home",
-                link: "/home-improvement",
+                title: 'Home Improvement',
+                desc: 'Renovate or repair your home',
+                link: '/home-improvement',
               },
             ].map((item, index) => (
               <Link
@@ -516,12 +427,8 @@ export default function Home() {
                 className="bg-white p-6 sm:p-8 rounded-2xl shadow-md flex justify-between items-center hover:shadow-lg transition cursor-pointer group"
               >
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-2 group-hover:text-blue-600 transition">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-gray-500">
-                    {item.desc}
-                  </p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-blue-900 mb-2 group-hover:text-blue-600 transition">{item.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-500">{item.desc}</p>
                 </div>
                 <ArrowRightIcon />
               </Link>
@@ -538,21 +445,15 @@ export default function Home() {
       <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 bg-white">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center">
           <div className="p-6 rounded-xl hover:bg-blue-50 transition">
-            <h3 className="text-blue-500 font-bold text-lg mb-2">
-              Loans up to $100k
-            </h3>
+            <h3 className="text-blue-500 font-bold text-lg mb-2">Loans up to $100k</h3>
             <p className="text-gray-500 text-sm">AS SOON AS NEXT DAY</p>
           </div>
           <div className="p-6 rounded-xl hover:bg-blue-50 transition">
-            <h3 className="text-blue-500 font-bold text-lg mb-2">
-              Get Personal Offers
-            </h3>
+            <h3 className="text-blue-500 font-bold text-lg mb-2">Get Personal Offers</h3>
             <p className="text-gray-500 text-sm">NO IMPACT TO CREDIT SCORE</p>
           </div>
           <div className="p-6 rounded-xl hover:bg-blue-50 transition">
-            <h3 className="text-blue-500 font-bold text-lg mb-2">
-              Rates start at 3.84%
-            </h3>
+            <h3 className="text-blue-500 font-bold text-lg mb-2">Rates start at 3.84%</h3>
             <p className="text-gray-500 text-sm">LOW APR OPTIONS AVAILABLE</p>
           </div>
         </div>
@@ -563,12 +464,8 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 relative min-h-[400px] sm:h-[500px] lg:h-[600px] flex justify-center items-center">
           {/* CENTER CIRCLE */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-64 sm:h-64 lg:w-96 lg:h-96 rounded-full border-4 sm:border-6 border-orange-500 flex flex-col justify-center items-center text-center p-4 sm:p-6 lg:p-8 z-10 bg-white shadow-lg">
-            <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold text-black mb-2 sm:mb-3">
-              Explore Your Options
-            </h2>
-            <p className="text-xs sm:text-base lg:text-lg text-gray-600">
-              Compare personal loans by credit rating
-            </p>
+            <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold text-black mb-2 sm:mb-3">Explore Your Options</h2>
+            <p className="text-xs sm:text-base lg:text-lg text-gray-600">Compare personal loans by credit rating</p>
           </div>
 
           {/* ROTATING ITEMS */}
@@ -576,53 +473,38 @@ export default function Home() {
             {/* Excellent */}
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">
-                  Excellent
-                </h3>
-                <p className="text-green-500 font-bold text-base sm:text-lg lg:text-xl">
-                  720+
-                </p>
+                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Excellent</h3>
+                <p className="text-green-500 font-bold text-base sm:text-lg lg:text-xl">720+</p>
               </div>
             </div>
 
             {/* Good */}
             <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-1000">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">
-                  Good
-                </h3>
-                <p className="text-blue-500 font-bold text-base sm:text-lg lg:text-xl">
-                  550-719
-                </p>
+                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Good</h3>
+                <p className="text-blue-500 font-bold text-base sm:text-lg lg:text-xl">550-719</p>
               </div>
             </div>
 
             {/* Fair */}
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-2000">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">
-                  Fair
-                </h3>
-                <p className="text-red-500 font-bold text-base sm:text-lg lg:text-xl">
-                  620-659
-                </p>
+                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Fair</h3>
+                <p className="text-red-500 font-bold text-base sm:text-lg lg:text-xl">620-659</p>
               </div>
             </div>
 
             {/* Poor */}
             <div className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
               <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-1500">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">
-                  Poor
-                </h3>
-                <p className="text-gray-500 font-bold text-base sm:text-lg lg:text-xl">
-                  &lt;620
-                </p>
+                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Poor</h3>
+                <p className="text-gray-500 font-bold text-base sm:text-lg lg:text-xl">&lt;620</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   );
 }
