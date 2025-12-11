@@ -17,6 +17,7 @@ import SmallLoans from "./pages/SmallLoans";
 import HomeImprovement from "./pages/HomeImprovement";
 import Blogs from "./pages/Blogs";
 import BlogPost from "./pages/BlogPost";
+import NotFound from "./pages/NotFound"; // 1. Import NotFound
 
 // Component Imports
 import Navbar from "./components/Navbar";
@@ -55,6 +56,9 @@ function App() {
           {/* Blog Routes */}
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogPost />} />
+
+          {/* 2. 404 Catch-All Route (Must be last) */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
 
