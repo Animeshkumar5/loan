@@ -17,18 +17,19 @@ function Navbar() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center relative">
           
-          {/* --- LOGO (Significantly Increased Size) --- */}
+          {/* --- LOGO (Maximized Size for Tagline Visibility) --- */}
           <NavLink to="/" className="flex items-center" onClick={closeMenu}>
             <img 
-              src="/final logo.png" 
+              src="/1.png" 
               alt="PaisaSolutions Logo" 
-              // Mobile: h-24 (96px) | Desktop: h-40 (160px)
-              // Negative margins increased to -my-8 (mobile) and -my-12 (desktop) to prevent navbar expansion
-              className="h-24 lg:h-40 w-auto object-contain transition-all duration-300 -my-8 lg:-my-12 relative z-50"
+              // Mobile: h-28 (112px) | Desktop: h-52 (208px)
+              // Negative margins: -my-10 (mobile) | -my-16 (desktop)
+              // This makes the logo much larger than the navbar itself, letting it "hang" over.
+              className="h-28 lg:h-52 w-auto object-contain transition-all duration-300 -my-10 lg:-my-16 relative z-50"
             />
           </NavLink>
 
-          {/* Hamburger Button - Only visible on mobile */}
+          {/* Hamburger Button */}
           <button
             onClick={toggleMenu}
             className="lg:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none z-50"
@@ -108,7 +109,7 @@ function Navbar() {
             isMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="flex flex-col space-y-4 py-4 pt-8"> 
+          <div className="flex flex-col space-y-4 py-4 pt-12"> {/* Increased pt-12 to push links below large logo */}
             <NavLink
               to="/"
               onClick={closeMenu}

@@ -693,3 +693,10 @@
     animation: float-mobile 5s ease-in-out infinite;
   }
 }
+/* Mobile specific override for the alert bar */
+@media (max-width: 640px) {
+  .fixed.bottom-0 {
+    padding-bottom: 2rem; /* Adds extra safe area at bottom */
+    padding-top: 1.5rem;
+  }
+}
