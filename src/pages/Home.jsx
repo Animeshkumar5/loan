@@ -26,15 +26,8 @@ const ArrowRightIcon = () => (
   </svg>
 );
 
-const CloseIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-  </svg>
-);
-
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  // Removed Modal State since form is now visible directly
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   const loanTypes = [
@@ -49,7 +42,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTextIndex((prev) => (prev + 1) % loanTypes.length);
-    }, 3000); // Change every 3 seconds
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, []);
@@ -60,89 +53,19 @@ export default function Home() {
     {/* --- SEO SECTION --- */}
       <Helmet>
         <title>Personal Loan Near Me - Low Interest & Fast Approval | PaisaSolutions</title>
-        
         <meta 
           name="description" 
           content="Looking for a personal loan near me? Apply now for low-interest personal loans, business loans for startups, and used car loans. Trusted home loan agents and best insurance agents near you." 
         />
-        
         <meta 
           name="keywords" 
           content="Personal loan near me, Low-interest personal loan, Home loan agents, Business loan for startup, Used car loan apply now, Best insurance agent near me" 
         />
-        
         <link rel="canonical" href="https://yourwebsite.com/" />
       </Helmet>
-      {/* ------------------- */}
-
-      {/* FORM MODAL */}
-      {isFormModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop with Liquid Blur */}
-          <div 
-            className="absolute inset-0 backdrop-blur-xl bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-pink-500/30"
-            onClick={() => setIsFormModalOpen(false)}
-            style={{
-              backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.3) 0%, transparent 50%)',
-              backdropFilter: 'blur(40px)'
-            }}
-          ></div>
-           
-          {/* Modal Content */}
-          <div className="relative bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto z-10 animate-fade-up">
-            {/* Close Button */}
-            <button
-              onClick={() => setIsFormModalOpen(false)}
-              className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition"
-            >
-              <CloseIcon />
-            </button>
-
-            {/* Modal Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-black p-8 rounded-t-3xl">
-              <div className="inline-block mb-3">
-                <span className="bg-white bg-opacity-20 text-black text-sm font-semibold px-4 py-2 rounded-full">
-                  ⚡ Quick & Easy Process
-                </span>
-              </div>
-              <h2 className="text-3xl font-bold mb-2">Get Your Loan Quote</h2>
-              <p className="text-blue-100">Fill in your details to get started</p>
-            </div>
-
-            {/* Form Content */}
-            <div className="p-8">
-              <HeroEnquiryForm />
-              
-              {/* Trust Indicators */}
-              <div className="mt-6 pt-6 border-t border-gray-100">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-                  <div className="flex flex-col items-center">
-                    <svg className="w-8 h-8 text-green-500 mb-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-sm font-semibold text-gray-700">100% Secure</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <svg className="w-8 h-8 text-green-500 mb-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-sm font-semibold text-gray-700">No Hidden Fees</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <svg className="w-8 h-8 text-green-500 mb-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-sm font-semibold text-gray-700">Fast Approval</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* 1. HERO SECTION */}
-      <div className="relative bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen lg:h-screen flex items-center overflow-hidden py-12 lg:py-0">
+      <div className="relative bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen flex items-center overflow-hidden py-12 lg:py-20">
         
         {/* Background Blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -152,10 +75,10 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-            {/* LEFT CONTENT */}
-            <div className="order-2 lg:order-1 space-y-6 text-center lg:text-left">
+            {/* LEFT CONTENT - Text & Stats */}
+            <div className="space-y-8 text-center lg:text-left">
               {/* Badge */}
               <div className="inline-block">
                 <span className="bg-blue-100 text-blue-600 text-sm font-semibold px-4 py-2 rounded-full">
@@ -198,75 +121,37 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                <button
-                  onClick={() => setIsFormModalOpen(true)}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 px-8 rounded-full hover:shadow-xl transform hover:scale-105 transition duration-300"
-                >
-                  Get Your Loan →
-                </button>
-              </div>
-
               {/* Stats Box */}
-              <div className="grid grid-cols-3 gap-4 pt-8">
-                <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+              <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200">
+                <div className="text-center p-4">
                   <div className="text-2xl font-bold text-blue-600">$100K</div>
                   <div className="text-xs text-gray-500 mt-1">Max Loan</div>
                 </div>
-                <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                <div className="text-center p-4 border-l border-gray-200">
                   <div className="text-2xl font-bold text-blue-600">3.84%</div>
                   <div className="text-xs text-gray-500 mt-1">Starting APR</div>
                 </div>
-                <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                <div className="text-center p-4 border-l border-gray-200">
                   <div className="text-2xl font-bold text-blue-600">24hrs</div>
                   <div className="text-xs text-gray-500 mt-1">Fast Approval</div>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT CONTENT - Man & Floating Cards */}
-            <div className="order-1 lg:order-2 relative h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center">
+            {/* RIGHT CONTENT - DIRECT FORM */}
+            <div className="relative flex items-center justify-center w-full">
+              {/* Decorative Circle Behind Form */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full filter blur-3xl opacity-50 transform scale-90"></div>
               
-              {/* Main Image (Man in Suit) */}
-              <img
-                src="/heroloanfinal.png" 
-                alt="Happy businessman"
-                className="h-full w-auto object-contain relative z-10"
-              />
-
-              {/* Floating Cards */}
-              <div className="absolute top-4 right-0 sm:top-12 sm:right-5 lg:top-20 bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 w-28 sm:w-36 lg:w-40 animate-float z-20 delay-0">
-                <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500"></div>
-                  <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Interest Rate</span>
-                </div>
-                <p className="text-lg sm:text-2xl font-bold text-blue-900">9.2%</p>
-                <p className="text-[10px] sm:text-xs text-gray-400">Low Interest</p>
-              </div>
-              <div className="absolute top-10 left-0 sm:top-20 sm:left-4 lg:left-10 bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 w-28 sm:w-36 lg:w-40 animate-float z-20 delay-1000">
-                <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-500"></div>
-                  <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Security</span>
-                </div>
-                <p className="text-lg sm:text-2xl font-bold text-blue-900">100%</p>
-                <p className="text-[10px] sm:text-xs text-gray-400">Secure</p>
-              </div>
-              <div className="absolute bottom-10 left-0 sm:bottom-20 sm:left-0 lg:left-0 bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 w-28 sm:w-36 lg:w-40 animate-float z-20 delay-2000">
-                <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-orange-500"></div>
-                  <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Speed</span>
-                </div>
-                <p className="text-lg sm:text-2xl font-bold text-blue-900">Instant</p>
-                <p className="text-[10px] sm:text-xs text-gray-400">Approvals</p>
-              </div>
-               <div className="absolute bottom-4 right-0 sm:bottom-16 sm:right-10 lg:bottom-24 bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 w-28 sm:w-36 lg:w-40 animate-float z-20 delay-3000">
-                <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
-                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-blue-500"></div>
-                  <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Rating</span>
-                </div>
-                <p className="text-lg sm:text-2xl font-bold text-blue-900">90%</p>
-                <p className="text-[10px] sm:text-xs text-gray-400">Satisfied Customers</p>
+              <div className="w-full relative z-10">
+                 {/* Embedded Enquiry Form */}
+                 <HeroEnquiryForm />
+                 
+                 {/* Mobile-only trust badges below form */}
+                 <div className="mt-4 flex justify-center gap-4 text-xs text-gray-500 lg:hidden">
+                    <span className="flex items-center gap-1">🔒 100% Secure</span>
+                    <span className="flex items-center gap-1">✨ No Spam</span>
+                 </div>
               </div>
             </div>
 
@@ -276,7 +161,7 @@ export default function Home() {
       
       <WhyChooseUs />
 
-      {/* 2. FEATURED LOAN TYPES – UPDATED WITH LINKS AND BUTTONS */}
+      {/* 2. FEATURED LOAN TYPES */}
       <section className="bg-white pt-12 lg:pt-20"> 
         <div className="container mx-auto px-4 sm:px-6 relative z-20 mb-16 lg:mb-24">
           <div className="text-center mb-8 sm:mb-10">
@@ -294,65 +179,65 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {[
               {
-      title: "Personal Loan",
-      badge: "Most Popular",
-      typeTag: "Unsecured",
-      amountLabel: "Up to $100K",
-      desc: "For emergencies, weddings, travel and more with flexible EMIs.",
-      img: "/cards/personal.jpg",
-      meta1: "Instant approval",
-      meta2: "Up to 5 yrs tenure",
-      link: "/personal-loan", // FIXED: Lowercase
-      applyText: "Apply Loan"
-    },
-    {
-      title: "Car Loan",
-      badge: "For New & Used",
-      typeTag: "Vehicle",
-      amountLabel: "Up to $60K",
-      desc: "Low interest car finance with quick approval and minimal docs.",
-      img: "/cards/car.jpg",
-      meta1: "Up to 90% on-road",
-      meta2: "Tenure up to 7 yrs",
-      link: "/car-loan", // FIXED: Lowercase
-      applyText: "Apply Loan"
-    },
-    {
-      title: "Home Loan",
-      badge: "Low Rate",
-      typeTag: "Secured",
-      amountLabel: "Up to $250K",
-      desc: "Finance your dream home with easy documentation support.",
-      img: "/cards/home2.jpg",
-      meta1: "Top-up available",
-      meta2: "Balance transfer",
-      link: "/home-loan", // FIXED: Lowercase
-      applyText: "Apply Loan"
-    },
-    {
-      title: "Business Loan",
-      badge: "For SMEs",
-      typeTag: "Working Capital",
-      amountLabel: "Up to $150K",
-      desc: "Boost cashflow, buy inventory or expand your business.",
-      img: "/cards/business.jpg",
-      meta1: "Collateral-free options",
-      meta2: "Flexible repayment",
-      link: "/business-loan", // FIXED: Lowercase
-      applyText: "Apply Loan"
-    },
-    {
-      title: "Insurance & Protection",
-      badge: "Add-on Cover",
-      typeTag: "Protection",
-      amountLabel: "Loan Shield",
-      desc: "Secure your EMIs against job loss, illness or accidents.",
-      img: "/cards/insurance.jpg",
-      meta1: "Family protection",
-      meta2: "Critical illness cover",
-      link: "/insurance", // FIXED: Lowercase
-      applyText: "Apply Insurance"
-    },
+                title: "Personal Loan",
+                badge: "Most Popular",
+                typeTag: "Unsecured",
+                amountLabel: "Up to $100K",
+                desc: "For emergencies, weddings, travel and more with flexible EMIs.",
+                img: "/cards/personal.jpg",
+                meta1: "Instant approval",
+                meta2: "Up to 5 yrs tenure",
+                link: "/personal-loan",
+                applyText: "Apply Loan"
+              },
+              {
+                title: "Car Loan",
+                badge: "For New & Used",
+                typeTag: "Vehicle",
+                amountLabel: "Up to $60K",
+                desc: "Low interest car finance with quick approval and minimal docs.",
+                img: "/cards/car.jpg",
+                meta1: "Up to 90% on-road",
+                meta2: "Tenure up to 7 yrs",
+                link: "/car-loan",
+                applyText: "Apply Loan"
+              },
+              {
+                title: "Home Loan",
+                badge: "Low Rate",
+                typeTag: "Secured",
+                amountLabel: "Up to $250K",
+                desc: "Finance your dream home with easy documentation support.",
+                img: "/cards/home2.jpg",
+                meta1: "Top-up available",
+                meta2: "Balance transfer",
+                link: "/home-loan",
+                applyText: "Apply Loan"
+              },
+              {
+                title: "Business Loan",
+                badge: "For SMEs",
+                typeTag: "Working Capital",
+                amountLabel: "Up to $150K",
+                desc: "Boost cashflow, buy inventory or expand your business.",
+                img: "/cards/business.jpg",
+                meta1: "Collateral-free options",
+                meta2: "Flexible repayment",
+                link: "/business-loan",
+                applyText: "Apply Loan"
+              },
+              {
+                title: "Insurance & Protection",
+                badge: "Add-on Cover",
+                typeTag: "Protection",
+                amountLabel: "Loan Shield",
+                desc: "Secure your EMIs against job loss, illness or accidents.",
+                img: "/cards/insurance.jpg",
+                meta1: "Family protection",
+                meta2: "Critical illness cover",
+                link: "/insurance",
+                applyText: "Apply Insurance"
+              },
             ].map((item, index) => (
               <div
                 key={index}
@@ -385,7 +270,6 @@ export default function Home() {
 
                 {/* Card body */}
                 <div className="flex-1 px-4 sm:px-5 pt-4 pb-4 sm:pb-5 flex flex-col">
-                  {/* Small meta row */}
                   <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-gray-500 mb-2">
                     <span className="inline-flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
@@ -395,7 +279,6 @@ export default function Home() {
                     <span>{item.meta2}</span>
                   </div>
 
-                  {/* Title linked */}
                   <Link to={item.link} className="text-base sm:text-lg font-bold text-blue-900 mb-1 hover:text-blue-600 transition">
                     {item.title}
                   </Link>
@@ -403,7 +286,6 @@ export default function Home() {
                     {item.desc}
                   </p>
 
-                  {/* NEW: Action Buttons Row */}
                   <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                     <Link 
                       to={item.link} 
@@ -427,7 +309,7 @@ export default function Home() {
         </div>
       </section>
 
-      <LoanOptions setIsModalOpen={setIsModalOpen} />
+      <LoanOptions setIsModalOpen={() => {}} />
 
       {/* 4. LOAN TYPES GRID - FIXED WITH LINK */}
       <div className="py-12 sm:py-16 lg:py-20 bg-gray-50">
