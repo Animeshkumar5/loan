@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { sendMail } from "../utils/sendMail";
+// Removed: import { sendMail } from "../utils/sendMail";
 
 export default function HeroEnquiryForm() {
   const [form, setForm] = useState({
@@ -15,26 +15,48 @@ export default function HeroEnquiryForm() {
 
   const [status, setStatus] = useState("");
 
+  // 🔴 IMPORTANT: Replace this URL with your specific SheetDB API URL
+  const SHEETDB_URL = process.env.REACT_APP_SHEETDB_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("Sending...");
 
     try {
-      await sendMail(form);
-      setStatus("Enquiry submitted successfully!");
-
-      setForm({
-        name: "",
-        phone: "",
-        email: "",
-        city: "",
-        pincode: "",
-        loanType: "",
-        employmentType: "",
-        earning: "",
+      const response = await fetch(SHEETDB_URL, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        // SheetDB requires the data to be wrapped in a "data" key
+        body: JSON.stringify({
+          data: form,
+        }),
       });
-    } catch {
-      setStatus("Error submitting enquiry!");
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setStatus("Enquiry submitted successfully!");
+        // Clear the form
+        setForm({
+          name: "",
+          phone: "",
+          email: "",
+          city: "",
+          pincode: "",
+          loanType: "",
+          employmentType: "",
+          earning: "",
+        });
+      } else {
+        console.error("SheetDB Error:", result);
+        setStatus("Error submitting enquiry. Please try again.");
+      }
+    } catch (err) {
+      console.error("Network Error:", err);
+      setStatus("Network error. Please check your connection.");
     }
   };
 

@@ -14,18 +14,49 @@ export default function Contact() {
 
   const [status, setStatus] = useState("");
 
+  // REPLACE THIS WITH YOUR ACTUAL SHEETDB URL
+  const SHEETDB_URL = process.env.REACT_APP_SHEETDB_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("Sending...");
 
     try {
-      // Simulating API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setStatus("Message sent successfully!");
-      setForm({ name: "", phone: "", email: "", city: "", pincode: "", loanType: "", employmentType: "", earning: "" });
+      const response = await fetch(SHEETDB_URL, {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        // SheetDB expects data wrapped in a "data" object
+        body: JSON.stringify({
+          data: form,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setStatus("Message sent successfully!");
+        // Clear form after success
+        setForm({
+          name: "",
+          phone: "",
+          email: "",
+          city: "",
+          pincode: "",
+          loanType: "",
+          employmentType: "",
+          earning: "",
+        });
+      } else {
+        // If SheetDB returns an error
+        console.error("SheetDB Error:", result);
+        setStatus("Failed to send. Please try again.");
+      }
     } catch (err) {
-      console.log(err);
-      setStatus("Failed to send message. Try again!");
+      console.error("Network Error:", err);
+      setStatus("Failed to connect. Check internet connection.");
     }
   };
 
@@ -36,7 +67,6 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 pb-24">
-      
       {/* Main Content */}
       <div className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
