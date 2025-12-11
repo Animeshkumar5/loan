@@ -15,7 +15,7 @@ export default function Contact() {
   const [status, setStatus] = useState("");
 
   // REPLACE THIS WITH YOUR ACTUAL SHEETDB URL
-  const SHEETDB_URL = process.env.REACT_APP_SHEETDB_URL;
+const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
 
   const handleSubmit = async (e) => {
     e.preventDefault();
