@@ -5,6 +5,7 @@ import HeroEnquiryForm from "../components/HeroEnquiryForm";
 import LoanOptions from '../components/LoanOptions';
 import LoanSteps from "../components/LoanSteps";
 import { Helmet } from 'react-helmet-async';
+import WhyChooseUs from "../components/WhyChooseUs";
 
 // --- ICONS ---
 const TagIcon = () => (
@@ -58,7 +59,7 @@ export default function Home() {
       
     {/* --- SEO SECTION --- */}
       <Helmet>
-        <title>Personal Loan Near Me - Low Interest & Fast Approval | XYZ Loans</title>
+        <title>Personal Loan Near Me - Low Interest & Fast Approval | PaisaSolutions</title>
         
         <meta 
           name="description" 
@@ -180,7 +181,6 @@ export default function Home() {
               <div className="mt-4 flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center lg:justify-start">
                   <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full border-2 border-indigo-400 flex items-center justify-center bg-indigo-50/70">
-                        {/* Replace with your checklist icon */}
                         <CheckIcon /> 
                       </div>
                       <p className="text-sm sm:text-base font-semibold text-indigo-600 leading-snug text-left">
@@ -190,7 +190,6 @@ export default function Home() {
 
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full border-2 border-orange-400 flex items-center justify-center bg-orange-50/80">
-                    {/* Replace with your lightning icon */}
                     <TagIcon />
                   </div>
                   <p className="text-sm sm:text-base font-semibold text-orange-500 leading-snug text-left">
@@ -226,7 +225,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* RIGHT CONTENT - Man & Floating Cards (UPDATED RESPONSIVE) */}
+            {/* RIGHT CONTENT - Man & Floating Cards */}
             <div className="order-1 lg:order-2 relative h-[400px] sm:h-[500px] lg:h-[600px] flex items-center justify-center">
               
               {/* Main Image (Man in Suit) */}
@@ -236,12 +235,8 @@ export default function Home() {
                 className="h-full w-auto object-contain relative z-10"
               />
 
-              {/* FLOATING CARD 1: Interest Rate (Top Right) */}
-              <div 
-                className="absolute top-4 right-0 sm:top-12 sm:right-5 lg:top-20 
-                           bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 
-                           w-28 sm:w-36 lg:w-40 animate-float z-20 delay-0"
-              >
+              {/* Floating Cards */}
+              <div className="absolute top-4 right-0 sm:top-12 sm:right-5 lg:top-20 bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 w-28 sm:w-36 lg:w-40 animate-float z-20 delay-0">
                 <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
                   <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500"></div>
                   <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Interest Rate</span>
@@ -249,13 +244,7 @@ export default function Home() {
                 <p className="text-lg sm:text-2xl font-bold text-blue-900">9.2%</p>
                 <p className="text-[10px] sm:text-xs text-gray-400">Low Interest</p>
               </div>
-
-              {/* FLOATING CARD 2: Security (Top Left) */}
-              <div 
-                className="absolute top-10 left-0 sm:top-20 sm:left-4 lg:left-10
-                           bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 
-                           w-28 sm:w-36 lg:w-40 animate-float z-20 delay-1000"
-              >
+              <div className="absolute top-10 left-0 sm:top-20 sm:left-4 lg:left-10 bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 w-28 sm:w-36 lg:w-40 animate-float z-20 delay-1000">
                 <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
                   <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-500"></div>
                   <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Security</span>
@@ -263,13 +252,7 @@ export default function Home() {
                 <p className="text-lg sm:text-2xl font-bold text-blue-900">100%</p>
                 <p className="text-[10px] sm:text-xs text-gray-400">Secure</p>
               </div>
-
-              {/* FLOATING CARD 3: Speed (Bottom Left) */}
-              <div 
-                className="absolute bottom-10 left-0 sm:bottom-20 sm:left-0 lg:left-0
-                           bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 
-                           w-28 sm:w-36 lg:w-40 animate-float z-20 delay-2000"
-              >
+              <div className="absolute bottom-10 left-0 sm:bottom-20 sm:left-0 lg:left-0 bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 w-28 sm:w-36 lg:w-40 animate-float z-20 delay-2000">
                 <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
                   <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-orange-500"></div>
                   <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Speed</span>
@@ -277,13 +260,7 @@ export default function Home() {
                 <p className="text-lg sm:text-2xl font-bold text-blue-900">Instant</p>
                 <p className="text-[10px] sm:text-xs text-gray-400">Approvals</p>
               </div>
-
-               {/* FLOATING CARD 4: Rating (Bottom Right) */}
-               <div 
-                 className="absolute bottom-4 right-0 sm:bottom-16 sm:right-10 lg:bottom-24
-                            bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 
-                            w-28 sm:w-36 lg:w-40 animate-float z-20 delay-3000"
-               >
+               <div className="absolute bottom-4 right-0 sm:bottom-16 sm:right-10 lg:bottom-24 bg-white p-2 sm:p-4 rounded-xl sm:rounded-2xl shadow-lg border border-gray-100 w-28 sm:w-36 lg:w-40 animate-float z-20 delay-3000">
                 <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
                   <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-blue-500"></div>
                   <span className="text-[10px] sm:text-xs text-gray-500 font-medium">Rating</span>
@@ -291,17 +268,17 @@ export default function Home() {
                 <p className="text-lg sm:text-2xl font-bold text-blue-900">90%</p>
                 <p className="text-[10px] sm:text-xs text-gray-400">Satisfied Customers</p>
               </div>
-
             </div>
 
           </div>
         </div>
       </div>
+      
+      <WhyChooseUs />
 
-      {/* 2. FEATURED LOAN TYPES – Dwellys-style cards */}
-      <section className="bg-white">
-        <div className="container mx-auto px-4 sm:px-6 relative z-20 -mt-12 lg:-mt-20 mb-16 lg:mb-24">
-          {/* Section heading */}
+      {/* 2. FEATURED LOAN TYPES – UPDATED WITH LINKS AND BUTTONS */}
+      <section className="bg-white pt-12 lg:pt-20"> 
+        <div className="container mx-auto px-4 sm:px-6 relative z-20 mb-16 lg:mb-24">
           <div className="text-center mb-8 sm:mb-10">
             <p className="text-sm sm:text-base text-blue-500 font-semibold tracking-wide uppercase">
               Loan deals at a glance
@@ -314,66 +291,75 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {[
               {
-                title: "Personal Loan",
-                badge: "Most Popular",
-                typeTag: "Unsecured",
-                amountLabel: "Up to $100K",
-                desc: "For emergencies, weddings, travel and more with flexible EMIs.",
-                img: "/cards/personal.jpg",
-                meta1: "Instant approval",
-                meta2: "Up to 5 yrs tenure",
-              },
-              {
-                title: "Car Loan",
-                badge: "For New & Used",
-                typeTag: "Vehicle",
-                amountLabel: "Up to $60K",
-                desc: "Low interest car finance with quick approval and minimal docs.",
-                img: "/cards/car.jpg",
-                meta1: "Up to 90% on-road",
-                meta2: "Tenure up to 7 yrs",
-              },
-              {
-                title: "Home Loan",
-                badge: "Low Rate",
-                typeTag: "Secured",
-                amountLabel: "Up to $250K",
-                desc: "Finance your dream home with easy documentation support.",
-                img: "/cards/home2.jpg",
-                meta1: "Top-up available",
-                meta2: "Balance transfer",
-              },
-              {
-                title: "Business Loan",
-                badge: "For SMEs",
-                typeTag: "Working Capital",
-                amountLabel: "Up to $150K",
-                desc: "Boost cashflow, buy inventory or expand your business.",
-                img: "/cards/business.jpg",
-                meta1: "Collateral-free options",
-                meta2: "Flexible repayment",
-              },
-              {
-                title: "Insurance & Protection",
-                badge: "Add-on Cover",
-                typeTag: "Protection",
-                amountLabel: "Loan Shield",
-                desc: "Secure your EMIs against job loss, illness or accidents.",
-                img: "/cards/insurance.jpg",
-                meta1: "Family protection",
-                meta2: "Critical illness cover",
-              },
+      title: "Personal Loan",
+      badge: "Most Popular",
+      typeTag: "Unsecured",
+      amountLabel: "Up to $100K",
+      desc: "For emergencies, weddings, travel and more with flexible EMIs.",
+      img: "/cards/personal.jpg",
+      meta1: "Instant approval",
+      meta2: "Up to 5 yrs tenure",
+      link: "/personal-loan", // FIXED: Lowercase
+      applyText: "Apply Loan"
+    },
+    {
+      title: "Car Loan",
+      badge: "For New & Used",
+      typeTag: "Vehicle",
+      amountLabel: "Up to $60K",
+      desc: "Low interest car finance with quick approval and minimal docs.",
+      img: "/cards/car.jpg",
+      meta1: "Up to 90% on-road",
+      meta2: "Tenure up to 7 yrs",
+      link: "/car-loan", // FIXED: Lowercase
+      applyText: "Apply Loan"
+    },
+    {
+      title: "Home Loan",
+      badge: "Low Rate",
+      typeTag: "Secured",
+      amountLabel: "Up to $250K",
+      desc: "Finance your dream home with easy documentation support.",
+      img: "/cards/home2.jpg",
+      meta1: "Top-up available",
+      meta2: "Balance transfer",
+      link: "/home-loan", // FIXED: Lowercase
+      applyText: "Apply Loan"
+    },
+    {
+      title: "Business Loan",
+      badge: "For SMEs",
+      typeTag: "Working Capital",
+      amountLabel: "Up to $150K",
+      desc: "Boost cashflow, buy inventory or expand your business.",
+      img: "/cards/business.jpg",
+      meta1: "Collateral-free options",
+      meta2: "Flexible repayment",
+      link: "/business-loan", // FIXED: Lowercase
+      applyText: "Apply Loan"
+    },
+    {
+      title: "Insurance & Protection",
+      badge: "Add-on Cover",
+      typeTag: "Protection",
+      amountLabel: "Loan Shield",
+      desc: "Secure your EMIs against job loss, illness or accidents.",
+      img: "/cards/insurance.jpg",
+      meta1: "Family protection",
+      meta2: "Critical illness cover",
+      link: "/insurance", // FIXED: Lowercase
+      applyText: "Apply Insurance"
+    },
             ].map((item, index) => (
               <div
                 key={index}
                 className="group bg-white rounded-3xl shadow-[0_18px_45px_rgba(15,23,42,0.06)] overflow-hidden border border-gray-100 flex flex-col hover:-translate-y-2 hover:shadow-[0_22px_55px_rgba(15,23,42,0.08)] transition duration-300"
               >
-                {/* Image + top labels */}
-                <div className="relative h-40 sm:h-44 lg:h-48 w-full overflow-hidden">
+                {/* Image + top labels - Now linked */}
+                <Link to={item.link} className="relative h-40 sm:h-44 lg:h-48 w-full overflow-hidden block">
                   <img
                     src={item.img}
                     alt={item.title}
@@ -381,7 +367,6 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent"></div>
 
-                  {/* Top-left badges */}
                   <div className="absolute top-3 left-3 flex items-center gap-2">
                     <span className="px-3 py-1 rounded-full bg-red-500 text-white text-[11px] font-semibold shadow-sm">
                       {item.badge}
@@ -391,17 +376,15 @@ export default function Home() {
                     </span>
                   </div>
 
-                  {/* Bottom amount pill */}
                   <div className="absolute bottom-3 left-3">
                     <span className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-500 text-white text-xs sm:text-sm font-semibold shadow-md">
                       {item.amountLabel}
                     </span>
                   </div>
-                  
-                </div>
+                </Link>
 
                 {/* Card body */}
-                <div className="flex-1 px-4 sm:px-5 pt-4 pb-4 sm:pb-5">
+                <div className="flex-1 px-4 sm:px-5 pt-4 pb-4 sm:pb-5 flex flex-col">
                   {/* Small meta row */}
                   <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-gray-500 mb-2">
                     <span className="inline-flex items-center gap-1">
@@ -412,18 +395,31 @@ export default function Home() {
                     <span>{item.meta2}</span>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-blue-900 mb-1">
+                  {/* Title linked */}
+                  <Link to={item.link} className="text-base sm:text-lg font-bold text-blue-900 mb-1 hover:text-blue-600 transition">
                     {item.title}
-                  </h3>
+                  </Link>
                   <p className="text-xs sm:text-sm text-gray-600 mb-4">
                     {item.desc}
                   </p>
 
-                  {/* Bottom info row */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs text-gray-500 border-t border-gray-100 pt-3 mt-auto">
-                    <span>👥 10k+ customers</span>
-                    <span>⏱ 24hr approval</span>
+                  {/* NEW: Action Buttons Row */}
+                  <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <Link 
+                      to={item.link} 
+                      className="text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                    >
+                      Read Article <span className="text-lg">→</span>
+                    </Link>
+                    
+                    <Link 
+                      to="/contact" 
+                      className="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold py-2 px-4 rounded-full transition shadow-md"
+                    >
+                      {item.applyText}
+                    </Link>
                   </div>
+
                 </div>
               </div>
             ))}
@@ -474,7 +470,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+      
       <AboutPreview />
       <LoanSteps />
 

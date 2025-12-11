@@ -25,7 +25,6 @@ import QuickApplyAlert from "./components/QuickApplyAlert";
 
 function App() {
   return (
-    // FIXED: Removed 'pb-24' from here so there is no white gap below the footer
     <div className="font-sans text-gray-900 flex flex-col min-h-screen">
 
       {/* Navbar */}
@@ -34,15 +33,20 @@ function App() {
       {/* Content */}
       <div className="pt-24 flex-grow">
         <Routes>
+          {/* Main Pages */}
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
+
+          {/* Loan Services (Lowercase paths to match Home.jsx links) */}
           <Route path="/personal-loan" element={<PersonalLoan />} />
           <Route path="/business-loan" element={<BusinessLoan />} />
           <Route path="/home-loan" element={<HomeLoan />} />
           <Route path="/car-loan" element={<CarLoan />} />
           <Route path="/insurance" element={<Insurance />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/contact" element={<Contact />} />
+          
+          {/* Other Services */}
           <Route path="/debt-consolidation" element={<DebtConsolidation />} />
           <Route path="/credit-card-consolidation" element={<CreditCardConsolidation />} />
           <Route path="/small-loans" element={<SmallLoans />} />
