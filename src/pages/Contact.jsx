@@ -262,7 +262,7 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
                 </svg>
               </div>
               <h3 className="font-bold text-gray-900 mb-1">Location</h3>
-              <p className="text-sm text-gray-600">India</p>
+              <p className="text-sm text-gray-600">Gurgaon, India</p>
             </div>
           </div>
         </div>
