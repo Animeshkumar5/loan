@@ -205,10 +205,7 @@ export default function Home() {
                   onClick={() => setIsFormModalOpen(true)}
                   className="bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 px-8 rounded-full hover:shadow-xl transform hover:scale-105 transition duration-300"
                 >
-                  Get Your Loan Quote →
-                </button>
-                <button className="bg-white text-blue-600 font-bold py-4 px-8 rounded-full border-2 border-blue-600 hover:bg-blue-50 transition duration-300">
-                  Learn More
+                  Get Your Loan →
                 </button>
               </div>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
+// Page Imports
 import Home from "./pages/Home";
 import PersonalLoan from "./pages/PersonalLoan";
 import BusinessLoan from "./pages/BusinessLoan";
@@ -17,11 +18,14 @@ import HomeImprovement from "./pages/HomeImprovement";
 import Blogs from "./pages/Blogs";
 import BlogPost from "./pages/BlogPost";
 
+// Component Imports
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import QuickApplyAlert from "./components/QuickApplyAlert";
 
 function App() {
   return (
+    // FIXED: Removed 'pb-24' from here so there is no white gap below the footer
     <div className="font-sans text-gray-900 flex flex-col min-h-screen">
 
       {/* Navbar */}
@@ -52,6 +56,9 @@ function App() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Global Sticky Alert */}
+      <QuickApplyAlert />
 
     </div>
   );

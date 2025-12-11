@@ -1,9 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import LoanSteps from "../components/LoanSteps"; // Import LoanSteps
+import LoanSteps from "../components/LoanSteps"; 
 
 export default function About() {
   return (
+    // REMOVED 'pb-24' to ensure no white gap between content and footer
     <div className="bg-gray-50 min-h-screen">
       
       {/* 2. SEO Section */}
