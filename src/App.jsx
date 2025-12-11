@@ -17,12 +17,13 @@ import SmallLoans from "./pages/SmallLoans";
 import HomeImprovement from "./pages/HomeImprovement";
 import Blogs from "./pages/Blogs";
 import BlogPost from "./pages/BlogPost";
-import NotFound from "./pages/NotFound"; // 1. Import NotFound
+import NotFound from "./pages/NotFound";
 
 // Component Imports
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import QuickApplyAlert from "./components/QuickApplyAlert";
+import ScrollToTop from "./components/ScrollToTop"; // 1. Import Here
 
 function App() {
   return (
@@ -57,13 +58,16 @@ function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:id" element={<BlogPost />} />
 
-          {/* 2. 404 Catch-All Route (Must be last) */}
+          {/* 404 Catch-All Route (Must be last) */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
 
       {/* Footer */}
       <Footer />
+
+      {/* 2. Scroll To Top Component */}
+      <ScrollToTop />
 
       {/* Global Sticky Alert */}
       <QuickApplyAlert />
