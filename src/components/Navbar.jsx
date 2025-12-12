@@ -14,18 +14,20 @@ function Navbar() {
 
   return (
     <nav className="fixed w-full z-50 bg-white/95 backdrop-blur shadow-sm top-0 left-0">
-      <div className="container mx-auto px-6 py-4">
+      {/* Container: kept minimal padding on mobile to maximize space */}
+      <div className="container mx-auto px-4 py-3 lg:px-6 lg:py-4">
         <div className="flex justify-between items-center relative">
           
-          {/* --- LOGO (Maximized Size for Tagline Visibility) --- */}
+          {/* --- LOGO (SUPER SIZED FOR MOBILE) --- */}
           <NavLink to="/" className="flex items-center" onClick={closeMenu}>
             <img 
               src="/1.png" 
               alt="PaisaSolutions Logo" 
-              // Mobile: h-28 (112px) | Desktop: h-52 (208px)
-              // Negative margins: -my-10 (mobile) | -my-16 (desktop)
-              // This makes the logo much larger than the navbar itself, letting it "hang" over.
-              className="h-28 lg:h-52 w-auto object-contain transition-all duration-300 -my-10 lg:-my-16 relative z-50"
+              // UPDATES HERE:
+              // 1. h-44 (176px): Very large on mobile
+              // 2. -my-16: Pulls the layout together so the navbar doesn't get too tall
+              // 3. lg:h-52: Keeps desktop size large as well
+              className="h-44 lg:h-52 w-auto object-contain transition-all duration-300 -my-16 lg:-my-16 relative z-50"
             />
           </NavLink>
 
@@ -106,10 +108,11 @@ function Navbar() {
         {/* Mobile Menu */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
+            isMenuOpen ? 'max-h-96 opacity-100 mt-8' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="flex flex-col space-y-4 py-4 pt-12"> {/* Increased pt-12 to push links below large logo */}
+          {/* Added ample top padding (pt-10) so the menu starts well below the huge logo */}
+          <div className="flex flex-col space-y-4 py-4 pt-10">
             <NavLink
               to="/"
               onClick={closeMenu}
