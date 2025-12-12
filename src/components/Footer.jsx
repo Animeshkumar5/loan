@@ -13,8 +13,10 @@ export default function Footer() {
           <div className="md:w-1/3">
             <Link to="/" className="inline-block group mb-4">
               {/* Main Logo Text */}
-              <h2 className="text-3xl font-extrabold tracking-tight text-white">
+              <h2 className="text-3xl font-extrabold tracking-tight text-white flex items-baseline">
                 Paisa<span className="text-blue-500">Solutions</span>
+                {/* Added .com with smaller text size */}
+                <span className="text-xl ml-0.5">.com</span>
               </h2>
               {/* Tagline */}
               <p className="text-xs text-gray-400 tracking-widest font-medium uppercase mt-1 group-hover:text-blue-400 transition-colors">
