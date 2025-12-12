@@ -18,13 +18,30 @@ function Navbar() {
         <div className="flex justify-between items-center lg:justify-center">
           
           {/* Logo - Only visible on mobile */}
-          <NavLink to="/" className="lg:hidden flex items-center" onClick={closeMenu}>
-            <img 
-              src="/logo.png" 
-              alt="Logo" 
-              className="h-8 w-auto"
-            />
-          </NavLink>
+          {/* Mobile logo */}
+        <NavLink
+          to="/"
+          className="flex items-center lg:hidden"
+          onClick={closeMenu}
+        >
+          <img
+            src="/logo.png"
+            alt="Growth Capital"
+            className="h-14 w-auto"
+          />
+        </NavLink>
+
+        {/* Desktop logo */}
+        <NavLink
+          to="/"
+          className="hidden lg:flex items-center"
+        >
+          <img
+            src="/logo.png"
+            alt="Growth Capital"
+            className="h-10 w-auto"
+          />
+        </NavLink>
 
           {/* Hamburger Button - Only visible on mobile */}
           <button
