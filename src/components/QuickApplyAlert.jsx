@@ -33,9 +33,8 @@ export default function QuickApplyAlert() {
         <div className="flex items-center gap-2">
           {/* Smaller Icon Container */}
           <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg animate-pulse">
-            <svg className="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            {/* UPDATED: Replaced Dollar SVG with Rupee Symbol Text */}
+            <span className="text-white font-bold text-lg sm:text-xl">₹</span>
           </div>
           <div className="flex items-center gap-1">
             {/* UPDATED: Smaller Text Size (text-sm) */}

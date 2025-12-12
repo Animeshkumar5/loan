@@ -153,7 +153,7 @@ export default function About() {
             <p className="text-gray-500 font-medium">Happy Customers</p>
           </div>
           <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
-            <h3 className="text-4xl font-bold text-blue-600 mb-2">$50M+</h3>
+            <h3 className="text-4xl font-bold text-blue-600 mb-2">₹50M+</h3>
             <p className="text-gray-500 font-medium">Loans Disbursed</p>
           </div>
           <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">

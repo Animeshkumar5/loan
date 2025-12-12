@@ -14,8 +14,9 @@ const TagIcon = () => (
   </svg>
 );
 
+// FIX: Changed text-white to text-indigo-600 to make it visible on light background
 const CheckIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
 );
@@ -27,7 +28,6 @@ const ArrowRightIcon = () => (
 );
 
 export default function Home() {
-  // Removed Modal State since form is now visible directly
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   const loanTypes = [
@@ -124,7 +124,7 @@ export default function Home() {
               {/* Stats Box */}
               <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-200">
                 <div className="text-center p-4">
-                  <div className="text-2xl font-bold text-blue-600">$100K</div>
+                  <div className="text-2xl font-bold text-blue-600">₹100K</div>
                   <div className="text-xs text-gray-500 mt-1">Max Loan</div>
                 </div>
                 <div className="text-center p-4 border-l border-gray-200">
@@ -182,7 +182,7 @@ export default function Home() {
                 title: "Personal Loan",
                 badge: "Most Popular",
                 typeTag: "Unsecured",
-                amountLabel: "Up to $100K",
+                amountLabel: "Up to ₹100K",
                 desc: "For emergencies, weddings, travel and more with flexible EMIs.",
                 img: "/cards/personal.jpg",
                 meta1: "Instant approval",
@@ -194,7 +194,7 @@ export default function Home() {
                 title: "Car Loan",
                 badge: "For New & Used",
                 typeTag: "Vehicle",
-                amountLabel: "Up to $60K",
+                amountLabel: "Up to ₹60K",
                 desc: "Low interest car finance with quick approval and minimal docs.",
                 img: "/cards/car.jpg",
                 meta1: "Up to 90% on-road",
@@ -206,7 +206,7 @@ export default function Home() {
                 title: "Home Loan",
                 badge: "Low Rate",
                 typeTag: "Secured",
-                amountLabel: "Up to $250K",
+                amountLabel: "Up to ₹250K",
                 desc: "Finance your dream home with easy documentation support.",
                 img: "/cards/home2.jpg",
                 meta1: "Top-up available",
@@ -218,7 +218,7 @@ export default function Home() {
                 title: "Business Loan",
                 badge: "For SMEs",
                 typeTag: "Working Capital",
-                amountLabel: "Up to $150K",
+                amountLabel: "Up to ₹150K",
                 desc: "Boost cashflow, buy inventory or expand your business.",
                 img: "/cards/business.jpg",
                 meta1: "Collateral-free options",
@@ -360,7 +360,7 @@ export default function Home() {
       <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 bg-white">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center">
           <div className="p-6 rounded-xl hover:bg-blue-50 transition">
-            <h3 className="text-blue-500 font-bold text-lg mb-2">Loans up to $100k</h3>
+            <h3 className="text-blue-500 font-bold text-lg mb-2">Loans up to ₹100k</h3>
             <p className="text-gray-500 text-sm">AS SOON AS NEXT DAY</p>
           </div>
           <div className="p-6 rounded-xl hover:bg-blue-50 transition">
