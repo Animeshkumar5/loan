@@ -126,6 +126,174 @@
   scrollbar-width: none;     
 }
 
+/* ===== MOBILE-SPECIFIC STYLES ===== */
+
+/* Mobile Viewport Fix */
+@media (max-width: 640px) {
+  /* Ensure full viewport height on mobile */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Hero Section Mobile Optimization */
+  .hero-section {
+    min-height: auto !important;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Quick Stats Mobile Grid - Force 2x2 Layout */
+  .quick-stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .quick-stat-card {
+    padding: 0.75rem !important;
+    min-height: 80px;
+  }
+
+  .quick-stat-value {
+    font-size: 1.25rem !important;
+    line-height: 1.2;
+  }
+
+  .quick-stat-label {
+    font-size: 0.625rem !important;
+    line-height: 1.2;
+  }
+
+  /* Button Stack on Mobile */
+  .cta-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .cta-buttons button {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  /* Hero Image Sizing */
+  .hero-image-container {
+    height: 300px !important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Floating Cards Mobile Size */
+  .floating-card-mobile {
+    width: 100px !important;
+    padding: 0.5rem !important;
+  }
+
+  .floating-card-mobile h3 {
+    font-size: 1rem !important;
+  }
+
+  .floating-card-mobile p {
+    font-size: 0.625rem !important;
+  }
+
+  /* Modal Mobile Optimization */
+  .form-modal {
+    max-height: 85vh !important;
+    margin: 1rem !important;
+  }
+
+  /* Loan Type Cards Mobile */
+  .loan-card {
+    min-height: 320px;
+  }
+
+  .loan-card-image {
+    height: 140px !important;
+  }
+
+  /* Form Inputs Mobile */
+  .input-style {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+
+  /* Prevent Text Zoom */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+
+  /* Touch Target Sizes */
+  button, a, .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mobile Navigation */
+  .mobile-nav {
+    padding: 0.5rem 1rem;
+  }
+
+  /* Section Padding Mobile */
+  .section-mobile {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Card Grids Mobile */
+  .card-grid-mobile {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Text Size Adjustments */
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Reduce Animation on Mobile for Performance */
+  .reduce-motion-mobile * {
+    animation-duration: 0.5s !important;
+  }
+}
+
+/* Small Mobile Devices (< 375px) */
+@media (max-width: 374px) {
+  .quick-stats-grid {
+    gap: 0.5rem;
+  }
+
+  .quick-stat-card {
+    padding: 0.5rem !important;
+    min-height: 70px;
+  }
+
+  .quick-stat-value {
+    font-size: 1.125rem !important;
+  }
+
+  .quick-stat-label {
+    font-size: 0.563rem !important;
+  }
+
+  h1 {
+    font-size: 1.75rem !important;
+  }
+}
+
 /* ===== CONTACT FORM STYLES ===== */
 
 /* Contact Container */
@@ -135,11 +303,23 @@
   margin: 0 auto;
 }
 
+@media (max-width: 640px) {
+  .contact-container {
+    padding: 1.5rem 1rem;
+  }
+}
+
 .contact-title {
   font-size: 1.875rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
   color: #1e3a8a;
+}
+
+@media (max-width: 640px) {
+  .contact-title {
+    font-size: 1.5rem;
+  }
 }
 
 .contact-subtitle {
@@ -281,6 +461,12 @@
   display: none; /* Chrome, Safari, Opera */
 }
 
+@media (max-width: 640px) {
+  .loan-type-slider-container {
+    gap: 0.375rem;
+  }
+}
+
 /* Individual Slide Button */
 .loan-type-slide {
   flex: 1;
@@ -299,6 +485,14 @@
   position: relative;
   overflow: visible;
   z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .loan-type-slide {
+    min-width: 100px;
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+  }
 }
 
 /* Hover Effect */
@@ -361,6 +555,13 @@
   }
 }
 
+@media (max-width: 640px) {
+  .submit-button {
+    padding: 1rem;
+    font-size: 0.875rem;
+  }
+}
+
 .submit-button:hover {
   background: linear-gradient(to right, #2563eb, #7c3aed);
   transform: scale(1.05);
@@ -391,4 +592,111 @@
 
 .status-sending {
   color: #3b82f6;
+}
+
+/* ===== MOBILE TOUCH IMPROVEMENTS ===== */
+
+@media (max-width: 640px) {
+  /* Better touch targets */
+  button, a[href], input[type="submit"], input[type="button"] {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Improve tap highlight */
+  * {
+    -webkit-tap-highlight-color: rgba(59, 130, 246, 0.2);
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent double-tap zoom */
+  * {
+    touch-action: manipulation;
+  }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* Text Loop Animation */
+@keyframes textSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Starts slightly below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);    /* Slides into place */
+  }
+}
+
+.animate-text-slide {
+  animation: textSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Add to index.css */
+@keyframes wave-pulse {
+  0% {
+    box-shadow: 0 0 0 0px var(--wave-color);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+}
+
+.animate-wave {
+  animation: wave-pulse 2s infinite;
+}
+/* --- UPDATED FLOAT ANIMATION (Copy this) --- */
+
+/* Standard Float (Desktop) */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Gentle Float (Mobile) - Less movement to prevent layout issues */
+@keyframes float-mobile {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Class Application */
+.animate-float {
+  animation: float 6s ease-in-out infinite; /* Slower (6s) is smoother */
+}
+
+/* Mobile Override */
+@media (max-width: 640px) {
+  .animate-float {
+    animation: float-mobile 5s ease-in-out infinite;
+  }
+}
+/* Mobile specific override for the alert bar */
+@media (max-width: 640px) {
+  .fixed.bottom-0 {
+    padding-bottom: 2rem; /* Adds extra safe area at bottom */
+    padding-top: 1.5rem;
+  }
 }
