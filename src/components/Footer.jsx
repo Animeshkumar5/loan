@@ -146,19 +146,12 @@ export default function Footer() {
                 </div>
 
                 <div className="space-y-3">
-                    {/* Sales Enquiry */}
-                    <div>
-                        <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Sales Enquiry</p>
-                        <a href="tel:18005703888" className="text-xl font-bold text-white hover:text-blue-400 transition block font-mono tracking-tight">
-                            1800 570 3888
-                        </a>
-                    </div>
                     
                     {/* Service Helpline */}
                     <div>
                         <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Service Helpline</p>
                         <a href="tel:18002585616" className="text-xl font-bold text-white hover:text-blue-400 transition block font-mono tracking-tight">
-                            1800 258 5616
+                            879-555-5728
                         </a>
                     </div>
                 </div>
