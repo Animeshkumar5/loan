@@ -136,10 +136,7 @@ export default function Insurance() {
                 {[
                   "KYC (Aadhaar & PAN)",
                   "Passport Size Photo",
-                  "Address Proof",
-                  "Medical Report (If required)",
-                  "Vehicle RC (For Motor)",
-                  "Previous Policy Copy (If renewal)"
+                  "Address Proof"
                 ].map((doc, i) => (
                   <div key={i} className="flex items-center gap-3 p-4 border border-gray-200 rounded-xl hover:border-pink-500 hover:bg-pink-50 transition">
                     <div className="w-2 h-2 bg-pink-500 rounded-full"></div>

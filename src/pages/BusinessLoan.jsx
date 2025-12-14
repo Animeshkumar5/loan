@@ -136,10 +136,9 @@ export default function BusinessLoan() {
                 {[
                   "KYC of Directors/Partners",
                   "Business Registration Proof (GST/Udyam)",
-                  "Last 2 Years ITR & Financials",
-                  "Last 12 Months Bank Statements",
+                  "CIBIL Score: 650 or above",
                   "Business Address Proof",
-                  "Partnership Deed / MOA (if applicable)"
+                  
                 ].map((doc, i) => (
                   <div key={i} className="flex items-center gap-3 p-4 border border-gray-200 rounded-xl hover:border-slate-500 hover:bg-slate-50 transition">
                     <div className="w-2 h-2 bg-slate-500 rounded-full"></div>

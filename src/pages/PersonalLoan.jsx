@@ -115,7 +115,7 @@ export default function PersonalLoan() {
                   "Age: 21 to 60 years",
                   "Employment: Salaried or Self-Employed",
                   "Minimum Income: ₹25,000 per month",
-                  "CIBIL Score: 700 or above",
+                  "CIBIL Score: 650 or above",
                   "Work Experience: Min 1 year total (6 months in current org)"
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-gray-700 bg-gray-50 p-4 rounded-xl">
@@ -138,8 +138,8 @@ export default function PersonalLoan() {
                   "Aadhaar Card / Passport",
                   "Last 3 Months Salary Slips",
                   "Last 6 Months Bank Statement",
-                  "Address Proof (Utility Bill)",
-                  "Passport Size Photograph"
+                  "Current Address Proof",
+                  "Passport Size Photograph/Selfie"
                 ].map((doc, i) => (
                   <div key={i} className="flex items-center gap-3 p-4 border border-gray-200 rounded-xl hover:border-purple-500 hover:bg-purple-50 transition">
                     <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
