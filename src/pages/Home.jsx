@@ -14,7 +14,6 @@ const TagIcon = () => (
   </svg>
 );
 
-// FIX: Changed text-white to text-indigo-600 to make it visible on light background
 const CheckIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -38,7 +37,6 @@ export default function Home() {
     "Used Car Loan"
   ];
 
-  // Text rotation effect
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTextIndex((prev) => (prev + 1) % loanTypes.length);
@@ -50,7 +48,7 @@ export default function Home() {
   return (
     <div className="bg-gray-50 font-sans -mt-6">
       
-    {/* --- SEO SECTION --- */}
+      {/* --- SEO SECTION --- */}
       <Helmet>
         <title>Personal Loan Near Me - Low Interest & Fast Approval | PaisaSolutions</title>
         <meta 
@@ -65,7 +63,8 @@ export default function Home() {
       </Helmet>
 
       {/* 1. HERO SECTION */}
-      <div className="relative bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen flex items-center overflow-hidden py-12 lg:py-20">
+      {/* FIX: Added 'hero-section' class here for the CSS override */}
+      <div className="relative bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen flex items-center overflow-hidden py-12 lg:py-14 xl:py-20 hero-section">
         
         {/* Background Blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -75,10 +74,10 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 xl:gap-12 items-center">
 
             {/* LEFT CONTENT - Text & Stats */}
-            <div className="space-y-8 text-center lg:text-left">
+            <div className="space-y-6 lg:space-y-6 xl:space-y-8 text-center lg:text-left">
               {/* Badge */}
               <div className="inline-block">
                 <span className="bg-blue-100 text-blue-600 text-sm font-semibold px-4 py-2 rounded-full">
@@ -87,7 +86,7 @@ export default function Home() {
               </div>
 
               {/* Animated Text Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-slate-800">
+              <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight text-slate-800">
                 <span className="block">Let's find you</span>
                 <span className="block text-slate-900 font-extrabold">
                   the{' '}
@@ -140,14 +139,11 @@ export default function Home() {
 
             {/* RIGHT CONTENT - DIRECT FORM */}
             <div className="relative flex items-center justify-center w-full">
-              {/* Decorative Circle Behind Form */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full filter blur-3xl opacity-50 transform scale-90"></div>
               
               <div className="w-full relative z-10">
-                 {/* Embedded Enquiry Form */}
                  <HeroEnquiryForm />
                  
-                 {/* Mobile-only trust badges below form */}
                  <div className="mt-4 flex justify-center gap-4 text-xs text-gray-500 lg:hidden">
                     <span className="flex items-center gap-1">🔒 100% Secure</span>
                     <span className="flex items-center gap-1">✨ No Spam</span>
@@ -160,7 +156,7 @@ export default function Home() {
       </div>
       
       <WhyChooseUs />
-
+      
       {/* 2. FEATURED LOAN TYPES */}
       <section className="bg-white pt-12 lg:pt-20"> 
         <div className="container mx-auto px-4 sm:px-6 relative z-20 mb-16 lg:mb-24">
