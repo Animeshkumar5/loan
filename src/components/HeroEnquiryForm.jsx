@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// Removed: import { sendMail } from "../utils/sendMail";
+import { sendEmails } from "../service/sendmail"; // Ensure this path is correct
 
 export default function HeroEnquiryForm() {
   const [form, setForm] = useState({
@@ -15,30 +15,18 @@ export default function HeroEnquiryForm() {
 
   const [status, setStatus] = useState("");
 
-  // 🔴 IMPORTANT: Replace this URL with your specific SheetDB API URL
-const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("Sending...");
 
     try {
-      const response = await fetch(SHEETDB_URL, {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        // SheetDB requires the data to be wrapped in a "data" key
-        body: JSON.stringify({
-          data: form,
-        }),
-      });
+      // --- SEND EMAILS VIA EMAILJS ---
+      const emailResult = await sendEmails(form);
 
-      const result = await response.json();
-
-      if (response.ok) {
-        setStatus("Enquiry submitted successfully!");
+      // Check if email sending succeeded
+      if (emailResult.success) {
+        setStatus("Enquiry submitted successfully! Check your inbox.");
+        
         // Clear the form
         setForm({
           name: "",
@@ -51,12 +39,13 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
           earning: "",
         });
       } else {
-        console.error("SheetDB Error:", result);
+        // Log errors for debugging
+        console.error("Email Submission Error:", emailResult);
         setStatus("Error submitting enquiry. Please try again.");
       }
     } catch (err) {
-      console.error("Network Error:", err);
-      setStatus("Network error. Please check your connection.");
+      console.error("Unexpected Error:", err);
+      setStatus("Something went wrong. Please check your connection.");
     }
   };
 
@@ -87,12 +76,6 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
 
   return (
     <div className="bg-white">
-      {/* Form Header (Optional, if not covered by Modal Header) */}
-      {/* <div className="mb-6">
-        <h2 className="text-2xl font-bold text-blue-900">Quick Loan Enquiry</h2>
-        <p className="text-gray-500 text-sm">Fill details to get an instant callback.</p>
-      </div> */}
-
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
 
         {/* Full Name */}
@@ -248,7 +231,7 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
       {/* Status Message */}
       {status && (
         <div className={`mt-4 p-3 rounded-lg text-sm font-semibold text-center ${
-          status.includes('success') 
+          status.includes('successfully') 
             ? 'bg-green-50 text-green-700 border border-green-200' 
             : 'bg-red-50 text-red-700 border border-red-200'
         }`}>

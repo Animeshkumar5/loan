@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { sendEmails } from "../service/sendmail"; // Ensure this path is correct
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -14,31 +15,18 @@ export default function Contact() {
 
   const [status, setStatus] = useState("");
 
-  // REPLACE THIS WITH YOUR ACTUAL SHEETDB URL
-const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("Sending...");
 
     try {
-      const response = await fetch(SHEETDB_URL, {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        // SheetDB expects data wrapped in a "data" object
-        body: JSON.stringify({
-          data: form,
-        }),
-      });
+      // --- SEND EMAILS VIA EMAILJS ---
+      // Uses the helper function from sendmail.js
+      const emailResult = await sendEmails(form);
 
-      const result = await response.json();
-
-      if (response.ok) {
-        setStatus("Message sent successfully!");
-        // Clear form after success
+      if (emailResult.success) {
+        setStatus("Message sent successfully! Check your inbox.");
+        // Reset form after success
         setForm({
           name: "",
           phone: "",
@@ -50,12 +38,12 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
           earning: "",
         });
       } else {
-        // If SheetDB returns an error
-        console.error("SheetDB Error:", result);
-        setStatus("Failed to send. Please try again.");
+        // Log error for debugging
+        console.error("Email Error:", emailResult);
+        setStatus("Failed to send message. Please try again.");
       }
     } catch (err) {
-      console.error("Network Error:", err);
+      console.error("Unexpected Error:", err);
       setStatus("Failed to connect. Check internet connection.");
     }
   };
@@ -67,7 +55,6 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 pb-24">
-      {/* Main Content */}
       <div className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -80,11 +67,11 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
             </p>
           </div>
 
-          {/* Form Section - ID kept for Global Alert scrolling */}
+          {/* Form Card */}
           <div id="contact-form" className="bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-200">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               
-              {/* Left Section - Form */}
+              {/* Form Section */}
               <div className="p-8 lg:p-10">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
                 
@@ -113,7 +100,7 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
                     />
                   </div>
 
-                  {/* Mobile Number */}
+                  {/* Phone */}
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2 text-sm">Mobile Number *</label>
                     <input
@@ -184,7 +171,7 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
                     </div>
                   </div>
 
-                  {/* Monthly Earning */}
+                  {/* Earning */}
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2 text-sm">Monthly Earning *</label>
                     <div className="relative">
@@ -220,7 +207,7 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
                 </div>
               </div>
 
-              {/* Right Section - Image */}
+              {/* Image Section */}
               <div className="relative h-full min-h-[400px] lg:min-h-full">
                 <img 
                   src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&q=80" 
@@ -232,7 +219,7 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
             </div>
           </div>
 
-          {/* Contact Info Below */}
+          {/* Contact Details */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 mb-8">
             <div className="bg-white rounded-xl p-6 shadow-lg text-center border border-gray-200">
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
@@ -267,7 +254,6 @@ const SHEETDB_URL = import.meta.env.VITE_SHEETDB_URL
           </div>
         </div>
       </div>
-      
     </div>
   );
 }
