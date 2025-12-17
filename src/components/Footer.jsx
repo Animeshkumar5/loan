@@ -86,7 +86,7 @@ export default function Footer() {
                 <div>
                   <p className="text-xs text-gray-500">Email Us</p>
                   <a href="mailto:support@paisasolutions.com" className="text-gray-300 hover:text-white transition text-sm">
-                    support@paisasolutions.com
+                    Info@paisasolutions.com
                   </a>
                 </div>
               </div>
