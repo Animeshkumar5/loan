@@ -7,37 +7,46 @@ const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export const sendEmails = async (formData) => {
   try {
-    // 1. Send Notification to OWNER
+    // 1. Send Notification to OWNER (Admin)
     const ownerEmailPromise = emailjs.send(
       SERVICE_ID,
       TEMPLATE_ID_OWNER,
       {
+        // Basic Info
         from_name: formData.name,
         from_email: formData.email,
         phone: formData.phone,
         city: formData.city,
         pincode: formData.pincode,
+        
+        // Loan & Financials
         loan_type: formData.loanType,
-        employment_type: formData.employmentType,
         earning: formData.earning,
+        
+        // --- NEW FIELDS MAPPING ---
+        pan_card: formData.panCard,
+        existing_loan: formData.existingLoan,
+        
+        // Employment Details
+        employment_type: formData.employmentType,
+        
+        // Conditional Fields (Send "N/A" if empty to avoid blank spots in email)
+        company_name: formData.companyName || "N/A",
+        sector: formData.sector || "N/A",
+        business_name: formData.businessName || "N/A",
       },
       PUBLIC_KEY
     );
 
-    // 2. Send Welcome Email to USER
+    // 2. Send Welcome Email to USER (Customer)
     const userWelcomePromise = emailjs.send(
       SERVICE_ID,
       TEMPLATE_ID_USER,
       {
-        // --- FIX IS HERE ---
-        // Your screenshot shows {{to_email}} in the "To Email" box.
-        // So we MUST send the data as 'to_email'.
         to_email: formData.email,   
-        
-        // Your body content uses {{to_name}}
         to_name: formData.name,     
-        
         loan_type: formData.loanType,
+        // You generally don't need to send the detailed financial info back to the user
       },
       PUBLIC_KEY
     );
