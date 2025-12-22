@@ -8,8 +8,13 @@ export default function Contact() {
     email: "",
     city: "",
     pincode: "",
+    panCard: "",
+    existingLoan: "",   // New Field
     loanType: "",
     employmentType: "",
+    companyName: "",
+    sector: "",
+    businessName: "",
     earning: "",
   });
 
@@ -21,24 +26,27 @@ export default function Contact() {
 
     try {
       // --- SEND EMAILS VIA EMAILJS ---
-      // Uses the helper function from sendmail.js
       const emailResult = await sendEmails(form);
 
       if (emailResult.success) {
         setStatus("Message sent successfully! Check your inbox.");
-        // Reset form after success
+        // Reset all fields after success
         setForm({
           name: "",
           phone: "",
           email: "",
           city: "",
           pincode: "",
+          panCard: "",
+          existingLoan: "",
           loanType: "",
           employmentType: "",
+          companyName: "",
+          sector: "",
+          businessName: "",
           earning: "",
         });
       } else {
-        // Log error for debugging
         console.error("Email Error:", emailResult);
         setStatus("Failed to send message. Please try again.");
       }
@@ -51,6 +59,7 @@ export default function Contact() {
   const loanTypes = ["Personal Loan", "Business Loan", "Home Loan", "Life Insurance", "Used Car Loan"];
   const employmentTypes = ["Salaried", "Self Employed", "Business"];
   const earningRanges = ["Less than ₹20k", "₹20k - ₹50k", "₹50k - ₹1 Lakh", "₹1 Lakh+"];
+  
   const inputClassName = "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition bg-white text-gray-700";
 
   return (
@@ -109,6 +118,7 @@ export default function Contact() {
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
                       className={inputClassName}
+                      maxLength="10"
                     />
                   </div>
 
@@ -134,6 +144,35 @@ export default function Contact() {
                         className={inputClassName}
                         maxLength="6"
                       />
+                    </div>
+                  </div>
+
+                  {/* --- PAN Card & Existing Loan (Side by Side) --- */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-gray-700 font-semibold mb-2 text-sm">PAN Card *</label>
+                      <input
+                        type="text"
+                        placeholder="ABCDE1234F"
+                        value={form.panCard}
+                        onChange={(e) => setForm({ ...form, panCard: e.target.value.toUpperCase() })}
+                        className={`${inputClassName} uppercase`}
+                        maxLength="10"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-gray-700 font-semibold mb-2 text-sm">Existing Loan? *</label>
+                      <div className="relative">
+                        <select
+                          value={form.existingLoan}
+                          onChange={(e) => setForm({ ...form, existingLoan: e.target.value })}
+                          className={`${inputClassName} appearance-none`}
+                        >
+                          <option value="" disabled>Select</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
 
@@ -170,6 +209,68 @@ export default function Contact() {
                       </select>
                     </div>
                   </div>
+
+                  {/* --- Conditional Fields based on Employment Type --- */}
+                  
+                  {/* Scenario: SALARIED */}
+                  {form.employmentType === "Salaried" && (
+                    <>
+                      {/* Company Name */}
+                      <div>
+                        <label className="block text-gray-700 font-semibold mb-2 text-sm">Company Name *</label>
+                        <input
+                          type="text"
+                          placeholder="Enter company name"
+                          value={form.companyName}
+                          onChange={(e) => setForm({ ...form, companyName: e.target.value })}
+                          className={inputClassName}
+                        />
+                      </div>
+
+                      {/* Sector (Govt vs Private) */}
+                      <div>
+                        <label className="block text-gray-700 font-semibold mb-2 text-sm">Sector *</label>
+                        <div className="flex gap-6 mt-2">
+                          <label className="flex items-center space-x-2 cursor-pointer">
+                            <input
+                              type="radio"
+                              name="sector"
+                              value="Government"
+                              checked={form.sector === "Government"}
+                              onChange={(e) => setForm({ ...form, sector: e.target.value })}
+                              className="w-5 h-5 text-blue-600 focus:ring-blue-500 border-gray-300"
+                            />
+                            <span className="text-gray-700">Government</span>
+                          </label>
+                          <label className="flex items-center space-x-2 cursor-pointer">
+                            <input
+                              type="radio"
+                              name="sector"
+                              value="Private"
+                              checked={form.sector === "Private"}
+                              onChange={(e) => setForm({ ...form, sector: e.target.value })}
+                              className="w-5 h-5 text-blue-600 focus:ring-blue-500 border-gray-300"
+                            />
+                            <span className="text-gray-700">Private</span>
+                          </label>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {/* Scenario: BUSINESS */}
+                  {form.employmentType === "Business" && (
+                    <div>
+                      <label className="block text-gray-700 font-semibold mb-2 text-sm">Business Name *</label>
+                      <input
+                        type="text"
+                        placeholder="Enter your business name"
+                        value={form.businessName}
+                        onChange={(e) => setForm({ ...form, businessName: e.target.value })}
+                        className={inputClassName}
+                      />
+                    </div>
+                  )}
 
                   {/* Earning */}
                   <div>

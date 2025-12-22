@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { sendEmails } from "../service/sendmail"; // Ensure this path is correct
+import { sendEmails } from "../service/sendmail"; 
 
 export default function HeroEnquiryForm() {
   const [form, setForm] = useState({
@@ -8,8 +8,13 @@ export default function HeroEnquiryForm() {
     email: "",
     city: "",
     pincode: "",
+    panCard: "",
+    existingLoan: "",   // New Field
     loanType: "",
     employmentType: "",
+    companyName: "",    // Renamed from companyAddress
+    sector: "",         
+    businessName: "",   
     earning: "",
   });
 
@@ -20,26 +25,26 @@ export default function HeroEnquiryForm() {
     setStatus("Sending...");
 
     try {
-      // --- SEND EMAILS VIA EMAILJS ---
       const emailResult = await sendEmails(form);
 
-      // Check if email sending succeeded
       if (emailResult.success) {
         setStatus("Enquiry submitted successfully! Check your inbox.");
-        
-        // Clear the form
         setForm({
           name: "",
           phone: "",
           email: "",
           city: "",
           pincode: "",
+          panCard: "",
+          existingLoan: "",
           loanType: "",
           employmentType: "",
+          companyName: "",
+          sector: "",
+          businessName: "",
           earning: "",
         });
       } else {
-        // Log errors for debugging
         console.error("Email Submission Error:", emailResult);
         setStatus("Error submitting enquiry. Please try again.");
       }
@@ -106,7 +111,7 @@ export default function HeroEnquiryForm() {
           />
         </div>
 
-        {/* Email Address (Full Width) */}
+        {/* Email Address */}
         <div className="col-span-1 md:col-span-2">
           <label className={labelClassName}>Email Address *</label>
           <input
@@ -145,6 +150,42 @@ export default function HeroEnquiryForm() {
             maxLength="6"
             required
           />
+        </div>
+
+        {/* --- PAN Card (Now takes 1 column) --- */}
+        <div className="col-span-1">
+          <label className={labelClassName}>PAN Card Number *</label>
+          <input
+            type="text"
+            placeholder="ABCDE1234F"
+            value={form.panCard}
+            onChange={(e) => setForm({ ...form, panCard: e.target.value.toUpperCase() })}
+            className={`${inputClassName} uppercase`}
+            maxLength="10"
+            required
+          />
+        </div>
+
+        {/* --- NEW ADDITION: Existing Loan (Beside PAN Card) --- */}
+        <div className="col-span-1">
+          <label className={labelClassName}>Any Existing Loan? *</label>
+          <div className="relative">
+            <select
+              value={form.existingLoan}
+              onChange={(e) => setForm({ ...form, existingLoan: e.target.value })}
+              className={`${inputClassName} appearance-none cursor-pointer`}
+              required
+            >
+              <option value="" disabled>Select Option</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+              <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+              </svg>
+            </div>
+          </div>
         </div>
 
         {/* Loan Type */}
@@ -216,7 +257,73 @@ export default function HeroEnquiryForm() {
           </div>
         </div>
 
-        {/* Submit Button - Full Width */}
+        {/* --- Conditional Fields based on Employment Type --- */}
+        
+        {/* Scenario: SALARIED */}
+        {form.employmentType === "Salaried" && (
+          <>
+            {/* Company Name */}
+            <div className="col-span-1 md:col-span-2">
+              <label className={labelClassName}>Company Name *</label>
+              <input
+                type="text"
+                placeholder="Enter company name"
+                value={form.companyName}
+                onChange={(e) => setForm({ ...form, companyName: e.target.value })}
+                className={inputClassName}
+                required
+              />
+            </div>
+
+            {/* Sector (Govt vs Private) */}
+            <div className="col-span-1 md:col-span-2">
+              <label className={labelClassName}>Sector *</label>
+              <div className="flex gap-6 mt-2">
+                <label className="flex items-center space-x-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="sector"
+                    value="Government"
+                    checked={form.sector === "Government"}
+                    onChange={(e) => setForm({ ...form, sector: e.target.value })}
+                    className="w-5 h-5 text-blue-600 focus:ring-blue-500 border-gray-300"
+                    required
+                  />
+                  <span className="text-gray-700">Government</span>
+                </label>
+                <label className="flex items-center space-x-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="sector"
+                    value="Private"
+                    checked={form.sector === "Private"}
+                    onChange={(e) => setForm({ ...form, sector: e.target.value })}
+                    className="w-5 h-5 text-blue-600 focus:ring-blue-500 border-gray-300"
+                    required
+                  />
+                  <span className="text-gray-700">Private</span>
+                </label>
+              </div>
+            </div>
+          </>
+        )}
+
+        {/* Scenario: BUSINESS */}
+        {form.employmentType === "Business" && (
+          <div className="col-span-1 md:col-span-2">
+            <label className={labelClassName}>Business Name *</label>
+            <input
+              type="text"
+              placeholder="Enter your business name"
+              value={form.businessName}
+              onChange={(e) => setForm({ ...form, businessName: e.target.value })}
+              className={inputClassName}
+              required
+            />
+          </div>
+        )}
+
+        {/* Submit Button */}
         <div className="col-span-1 md:col-span-2 pt-2">
           <button 
             type="submit"
