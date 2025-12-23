@@ -3,7 +3,7 @@ import React from 'react';
 export default function FAQ() {
   const faqs = [
     { q: "How do I apply for a loan?", a: "You can apply online through our website in just 5 minutes." },
-    { q: "What is the interest rate?", a: "Rates start at 5% but depend on your credit score." },
+    { q: "What is the interest rate?", a: "Rates start at 9.5% but depend on your credit score." },
     { q: "Do you require collateral?", a: "For personal loans, no collateral is required." },
   ];
 

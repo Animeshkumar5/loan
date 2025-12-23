@@ -27,7 +27,7 @@ export default function About() {
           About <span className="text-blue-600">PaisaSolutions.com</span>
         </h1>
         <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Founded in 2024, PaisaSolutions.com was built on a simple premise: <strong>Financial freedom should be accessible to everyone.</strong> We bridge the gap between your dreams and reality by providing transparent, fast, and secure financial products tailored to your unique needs.
+          Founded in 2025, PaisaSolutions.com was built on a simple premise: <strong>Financial freedom should be accessible to everyone.</strong> We bridge the gap between your dreams and reality by providing transparent, fast, and secure financial products tailored to your unique needs.
         </p>
       </div>
 
@@ -45,7 +45,7 @@ export default function About() {
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-gray-800">Who We Are</h2>
             <p className="text-gray-600 leading-relaxed">
-              We are a team of financial experts and technology enthusiasts dedicated to simplifying the borrowing process. Gone are the days of endless paperwork and weeks of waiting. At PaisaSolutions.com, we leverage cutting-edge technology to assess eligibility instantly and disburse funds rapidly.
+              India’s First Debt Consolidation Marketplace and easy Loan Comparison Platform for Personal & Business Loans. Paisasolution.com caters to the loan requirements of the whole working population, which includes salaried individuals, self-employed professionals, and business owners.
             </p>
             <p className="text-gray-600 leading-relaxed">
               Whether you are an individual looking to consolidate debt, a family buying their first home, or an entrepreneur ready to scale, we stand by you as a reliable partner, not just a lender.
