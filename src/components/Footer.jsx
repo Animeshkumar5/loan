@@ -150,7 +150,7 @@ export default function Footer() {
                     {/* Service Helpline */}
                     <div>
                         <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Service Helpline</p>
-                        <a href="tel:18002585616" className="text-xl font-bold text-white hover:text-blue-400 transition block font-mono tracking-tight">
+                        <a href="tel:879-555-5728" className="text-xl font-bold text-white hover:text-blue-400 transition block font-mono tracking-tight">
                             879-555-5728
                         </a>
                     </div>
