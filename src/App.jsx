@@ -19,11 +19,16 @@ import Blogs from "./pages/Blogs";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 
+// --- NEW IMPORTS: Admin & Auth ---
+import Login from "./pages/Login"; 
+import AdminPanel from "./components/AdminPanel"; 
+import ProtectedRoute from "./components/ProtectedRoute"; 
+
 // Component Imports
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import QuickApplyAlert from "./components/QuickApplyAlert";
-import ScrollToTop from "./components/ScrollToTop"; // 1. Import Here
+import ScrollToTop from "./components/ScrollToTop"; 
 
 function App() {
   return (
@@ -41,7 +46,22 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
 
-          {/* Loan Services (Lowercase paths to match Home.jsx links) */}
+          {/* --- NEW ROUTES: Admin System --- */}
+          
+          {/* 1. Login Page (Public) */}
+          <Route path="/login" element={<Login />} />
+
+          {/* 2. Admin Dashboard (Protected) */}
+          <Route 
+            path="/admin" 
+            element={
+              <ProtectedRoute>
+                <AdminPanel />
+              </ProtectedRoute>
+            } 
+          />
+
+          {/* Loan Services */}
           <Route path="/personal-loan" element={<PersonalLoan />} />
           <Route path="/business-loan" element={<BusinessLoan />} />
           <Route path="/home-loan" element={<HomeLoan />} />
@@ -66,7 +86,7 @@ function App() {
       {/* Footer */}
       <Footer />
 
-      {/* 2. Scroll To Top Component */}
+      {/* Scroll To Top Component */}
       <ScrollToTop />
 
       {/* Global Sticky Alert */}

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { sendEmails } from "../service/sendmail"; 
 
+// --- CHANGE 1: Import Firebase functions ---
+import { db } from "../firebase"; 
+import { collection, addDoc } from "firebase/firestore"; 
+
 export default function HeroEnquiryForm() {
   const [form, setForm] = useState({
     name: "",
@@ -9,10 +13,10 @@ export default function HeroEnquiryForm() {
     city: "",
     pincode: "",
     panCard: "",
-    existingLoan: "",   // New Field
+    existingLoan: "",   
     loanType: "",
     employmentType: "",
-    companyName: "",    // Renamed from companyAddress
+    companyName: "",    
     sector: "",         
     businessName: "",   
     earning: "",
@@ -22,13 +26,22 @@ export default function HeroEnquiryForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Sending...");
+    setStatus("Processing..."); // Changed text to indicate work is happening
 
     try {
+      // --- CHANGE 2: Save to Firestore Database First ---
+      // We add a 'createdAt' field so you know when the lead came in
+      await addDoc(collection(db, "enquiries"), {
+        ...form,
+        createdAt: new Date()
+      });
+
+      // --- CHANGE 3: Send Email (Existing Logic) ---
+      // We wait for the DB save to finish, then send the email
       const emailResult = await sendEmails(form);
 
       if (emailResult.success) {
-        setStatus("Enquiry submitted successfully! Check your inbox.");
+        setStatus("Enquiry submitted successfully! We will contact you soon.");
         setForm({
           name: "",
           phone: "",
@@ -46,7 +59,8 @@ export default function HeroEnquiryForm() {
         });
       } else {
         console.error("Email Submission Error:", emailResult);
-        setStatus("Error submitting enquiry. Please try again.");
+        // Even if email fails, data is saved in DB, so we can be less harsh with the error
+        setStatus("Details saved, but email notification failed. We will contact you.");
       }
     } catch (err) {
       console.error("Unexpected Error:", err);
@@ -83,6 +97,8 @@ export default function HeroEnquiryForm() {
     <div className="bg-white">
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
 
+        {/* ... (Rest of your JSX input fields remain exactly the same) ... */}
+        
         {/* Full Name */}
         <div className="col-span-1">
           <label className={labelClassName}>Full Name *</label>
@@ -152,7 +168,7 @@ export default function HeroEnquiryForm() {
           />
         </div>
 
-        {/* --- PAN Card (Now takes 1 column) --- */}
+        {/* PAN Card */}
         <div className="col-span-1">
           <label className={labelClassName}>PAN Card Number *</label>
           <input
@@ -166,7 +182,7 @@ export default function HeroEnquiryForm() {
           />
         </div>
 
-        {/* --- NEW ADDITION: Existing Loan (Beside PAN Card) --- */}
+        {/* Existing Loan */}
         <div className="col-span-1">
           <label className={labelClassName}>Any Existing Loan? *</label>
           <div className="relative">
@@ -257,12 +273,9 @@ export default function HeroEnquiryForm() {
           </div>
         </div>
 
-        {/* --- Conditional Fields based on Employment Type --- */}
-        
-        {/* Scenario: SALARIED */}
+        {/* Conditional Fields based on Employment Type */}
         {form.employmentType === "Salaried" && (
           <>
-            {/* Company Name */}
             <div className="col-span-1 md:col-span-2">
               <label className={labelClassName}>Company Name *</label>
               <input
@@ -275,7 +288,6 @@ export default function HeroEnquiryForm() {
               />
             </div>
 
-            {/* Sector (Govt vs Private) */}
             <div className="col-span-1 md:col-span-2">
               <label className={labelClassName}>Sector *</label>
               <div className="flex gap-6 mt-2">
@@ -308,7 +320,6 @@ export default function HeroEnquiryForm() {
           </>
         )}
 
-        {/* Scenario: BUSINESS */}
         {form.employmentType === "Business" && (
           <div className="col-span-1 md:col-span-2">
             <label className={labelClassName}>Business Name *</label>
@@ -338,7 +349,7 @@ export default function HeroEnquiryForm() {
       {/* Status Message */}
       {status && (
         <div className={`mt-4 p-3 rounded-lg text-sm font-semibold text-center ${
-          status.includes('successfully') 
+          status.includes('successfully') || status.includes('Details saved')
             ? 'bg-green-50 text-green-700 border border-green-200' 
             : 'bg-red-50 text-red-700 border border-red-200'
         }`}>
