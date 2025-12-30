@@ -63,6 +63,8 @@ export default function AdminPanel() {
                   <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Contact</th>
                   <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Requirement</th>
                   <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Income</th>
+                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">PAN Card</th> {/* NEW COLUMN */}
+                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Company / Business</th> {/* NEW COLUMN */}
                   <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">City</th>
                 </tr>
               </thead>
@@ -87,8 +89,25 @@ export default function AdminPanel() {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {person.earning}
+                      ₹{person.earning}
                     </td>
+                    
+                    {/* NEW: PAN Card Details */}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 uppercase font-mono">
+                      {person.panCard || "-"}
+                    </td>
+
+                    {/* NEW: Company or Business Name */}
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {person.companyName ? (
+                        <span className="text-gray-700">{person.companyName} <span className="text-xs text-gray-400">(Co.)</span></span>
+                      ) : person.businessName ? (
+                         <span className="text-gray-700">{person.businessName} <span className="text-xs text-gray-400">(Biz)</span></span>
+                      ) : (
+                        "-"
+                      )}
+                    </td>
+
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {person.city}
                     </td>

@@ -14,7 +14,7 @@ export default function Login() {
     try {
       // Try to sign in with Firebase
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/admin"); // If successful, go to Admin Panel
+      navigate("/admin"); 
     } catch (err) {
       setError("Invalid email or password. Please try again.");
     }

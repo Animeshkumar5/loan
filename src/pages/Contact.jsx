@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { sendEmails } from "../service/sendmail"; // Ensure this path is correct
+import { sendEmails } from "../service/sendmail"; 
+// --- CHANGE 1: Import Firebase functions ---
+import { db } from "../firebase"; 
+import { collection, addDoc } from "firebase/firestore"; 
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -9,27 +12,36 @@ export default function Contact() {
     city: "",
     pincode: "",
     panCard: "",
-    existingLoan: "",   // New Field
+    existingLoan: "",   
     loanType: "",
     employmentType: "",
     companyName: "",
     sector: "",
     businessName: "",
-    earning: "",
+    earning: "", // This now stores the exact amount entered
   });
 
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Sending...");
+    setStatus("Processing..."); // Updated status text
 
     try {
-      // --- SEND EMAILS VIA EMAILJS ---
+      // --- CHANGE 2: Save to Firestore Database First ---
+      // We save it to 'enquiries' collection (same as hero form)
+      // We add 'source: "Contact Page"' so you know where the lead came from
+      await addDoc(collection(db, "enquiries"), {
+        ...form,
+        createdAt: new Date(),
+        source: "Contact Page" 
+      });
+
+      // --- CHANGE 3: Send Email ---
       const emailResult = await sendEmails(form);
 
       if (emailResult.success) {
-        setStatus("Message sent successfully! Check your inbox.");
+        setStatus("Message sent successfully! We will contact you soon.");
         // Reset all fields after success
         setForm({
           name: "",
@@ -48,19 +60,19 @@ export default function Contact() {
         });
       } else {
         console.error("Email Error:", emailResult);
-        setStatus("Failed to send message. Please try again.");
+        setStatus("Details saved, but email notification failed. We will contact you.");
       }
     } catch (err) {
       console.error("Unexpected Error:", err);
-      setStatus("Failed to connect. Check internet connection.");
+      setStatus("Something went wrong. Please check your connection.");
     }
   };
 
   const loanTypes = ["Personal Loan", "Business Loan", "Home Loan", "Life Insurance", "Used Car Loan"];
   const employmentTypes = ["Salaried", "Self Employed", "Business"];
-  const earningRanges = ["Less than ₹20k", "₹20k - ₹50k", "₹50k - ₹1 Lakh", "₹1 Lakh+"];
+  // Note: earningRanges array removed as we now use an input field
   
-  const inputClassName = "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition bg-white text-gray-700";
+  const inputClassName = "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition bg-white text-gray-700 outline-none";
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 pb-24">
@@ -84,7 +96,7 @@ export default function Contact() {
               <div className="p-8 lg:p-10">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
                 
-                <div className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Name */}
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2 text-sm">Full Name *</label>
@@ -94,6 +106,7 @@ export default function Contact() {
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       className={inputClassName}
+                      required
                     />
                   </div>
 
@@ -106,6 +119,7 @@ export default function Contact() {
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       className={inputClassName}
+                      required
                     />
                   </div>
 
@@ -119,6 +133,8 @@ export default function Contact() {
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
                       className={inputClassName}
                       maxLength="10"
+                      pattern="[0-9]{10}"
+                      required
                     />
                   </div>
 
@@ -132,6 +148,7 @@ export default function Contact() {
                         value={form.city}
                         onChange={(e) => setForm({ ...form, city: e.target.value })}
                         className={inputClassName}
+                        required
                       />
                     </div>
                     <div>
@@ -143,6 +160,8 @@ export default function Contact() {
                         onChange={(e) => setForm({ ...form, pincode: e.target.value })}
                         className={inputClassName}
                         maxLength="6"
+                        pattern="[0-9]{6}"
+                        required
                       />
                     </div>
                   </div>
@@ -158,6 +177,7 @@ export default function Contact() {
                         onChange={(e) => setForm({ ...form, panCard: e.target.value.toUpperCase() })}
                         className={`${inputClassName} uppercase`}
                         maxLength="10"
+                        required
                       />
                     </div>
                     <div>
@@ -166,7 +186,8 @@ export default function Contact() {
                         <select
                           value={form.existingLoan}
                           onChange={(e) => setForm({ ...form, existingLoan: e.target.value })}
-                          className={`${inputClassName} appearance-none`}
+                          className={`${inputClassName} appearance-none cursor-pointer`}
+                          required
                         >
                           <option value="" disabled>Select</option>
                           <option value="Yes">Yes</option>
@@ -183,7 +204,8 @@ export default function Contact() {
                       <select
                         value={form.loanType}
                         onChange={(e) => setForm({ ...form, loanType: e.target.value })}
-                        className={`${inputClassName} appearance-none`}
+                        className={`${inputClassName} appearance-none cursor-pointer`}
+                        required
                       >
                         <option value="" disabled>Select Loan Type</option>
                         {loanTypes.map((type) => (
@@ -200,7 +222,8 @@ export default function Contact() {
                       <select
                         value={form.employmentType}
                         onChange={(e) => setForm({ ...form, employmentType: e.target.value })}
-                        className={`${inputClassName} appearance-none`}
+                        className={`${inputClassName} appearance-none cursor-pointer`}
+                        required
                       >
                         <option value="" disabled>Select Employment Type</option>
                         {employmentTypes.map((type) => (
@@ -224,6 +247,7 @@ export default function Contact() {
                           value={form.companyName}
                           onChange={(e) => setForm({ ...form, companyName: e.target.value })}
                           className={inputClassName}
+                          required
                         />
                       </div>
 
@@ -239,6 +263,7 @@ export default function Contact() {
                               checked={form.sector === "Government"}
                               onChange={(e) => setForm({ ...form, sector: e.target.value })}
                               className="w-5 h-5 text-blue-600 focus:ring-blue-500 border-gray-300"
+                              required
                             />
                             <span className="text-gray-700">Government</span>
                           </label>
@@ -250,6 +275,7 @@ export default function Contact() {
                               checked={form.sector === "Private"}
                               onChange={(e) => setForm({ ...form, sector: e.target.value })}
                               className="w-5 h-5 text-blue-600 focus:ring-blue-500 border-gray-300"
+                              required
                             />
                             <span className="text-gray-700">Private</span>
                           </label>
@@ -268,30 +294,28 @@ export default function Contact() {
                         value={form.businessName}
                         onChange={(e) => setForm({ ...form, businessName: e.target.value })}
                         className={inputClassName}
+                        required
                       />
                     </div>
                   )}
 
-                  {/* Earning */}
+                  {/* --- CHANGE 4: Monthly Earning Input Field (Was Select) --- */}
                   <div>
-                    <label className="block text-gray-700 font-semibold mb-2 text-sm">Monthly Earning *</label>
-                    <div className="relative">
-                      <select
-                        value={form.earning}
-                        onChange={(e) => setForm({ ...form, earning: e.target.value })}
-                        className={`${inputClassName} appearance-none`}
-                      >
-                        <option value="" disabled>Select Earning Range</option>
-                        {earningRanges.map((range) => (
-                          <option key={range} value={range}>{range}</option>
-                        ))}
-                      </select>
-                    </div>
+                    <label className="block text-gray-700 font-semibold mb-2 text-sm">Monthly Earning (₹) *</label>
+                    <input
+                      type="number"
+                      placeholder="e.g. 25000"
+                      value={form.earning}
+                      onChange={(e) => setForm({ ...form, earning: e.target.value })}
+                      className={inputClassName}
+                      min="0"
+                      required
+                    />
                   </div>
 
                   {/* Submit Button */}
                   <button 
-                    onClick={handleSubmit}
+                    type="submit"
                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 rounded-xl transition transform hover:scale-105 shadow-lg mt-2"
                   >
                     SEND
@@ -300,12 +324,14 @@ export default function Contact() {
                   {/* Status Message */}
                   {status && (
                     <div className={`p-4 rounded-lg text-center font-semibold ${
-                      status.includes('successfully') ? 'bg-green-100 text-green-700 border border-green-300' : 'bg-red-100 text-red-700 border border-red-300'
+                      status.includes('successfully') || status.includes('Details saved') 
+                      ? 'bg-green-100 text-green-700 border border-green-300' 
+                      : 'bg-red-100 text-red-700 border border-red-300'
                     }`}>
                       {status}
                     </div>
                   )}
-                </div>
+                </form>
               </div>
 
               {/* Image Section */}

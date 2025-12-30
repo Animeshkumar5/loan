@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { sendEmails } from "../service/sendmail"; 
-
-// --- CHANGE 1: Import Firebase functions ---
 import { db } from "../firebase"; 
 import { collection, addDoc } from "firebase/firestore"; 
 
@@ -19,25 +17,23 @@ export default function HeroEnquiryForm() {
     companyName: "",    
     sector: "",         
     businessName: "",   
-    earning: "",
+    earning: "", // This will now hold the exact amount entered
   });
 
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Processing..."); // Changed text to indicate work is happening
+    setStatus("Processing..."); 
 
     try {
-      // --- CHANGE 2: Save to Firestore Database First ---
-      // We add a 'createdAt' field so you know when the lead came in
+      // Save to Firestore
       await addDoc(collection(db, "enquiries"), {
         ...form,
         createdAt: new Date()
       });
 
-      // --- CHANGE 3: Send Email (Existing Logic) ---
-      // We wait for the DB save to finish, then send the email
+      // Send Email
       const emailResult = await sendEmails(form);
 
       if (emailResult.success) {
@@ -59,7 +55,6 @@ export default function HeroEnquiryForm() {
         });
       } else {
         console.error("Email Submission Error:", emailResult);
-        // Even if email fails, data is saved in DB, so we can be less harsh with the error
         setStatus("Details saved, but email notification failed. We will contact you.");
       }
     } catch (err) {
@@ -82,12 +77,7 @@ export default function HeroEnquiryForm() {
     "Business"
   ];
 
-  const earningRanges = [
-    "Less than ₹20k",
-    "₹20k - ₹50k",
-    "₹50k - ₹1 Lakh",
-    "₹1 Lakh+"
-  ];
+  // NOTE: earningRanges array removed as it is no longer needed
 
   // Common input style
   const inputClassName = "w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition bg-gray-50 text-gray-900 text-sm sm:text-base outline-none";
@@ -97,8 +87,6 @@ export default function HeroEnquiryForm() {
     <div className="bg-white">
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
 
-        {/* ... (Rest of your JSX input fields remain exactly the same) ... */}
-        
         {/* Full Name */}
         <div className="col-span-1">
           <label className={labelClassName}>Full Name *</label>
@@ -250,27 +238,18 @@ export default function HeroEnquiryForm() {
           </div>
         </div>
 
-        {/* Monthly Earning */}
+        {/* Monthly Earning - UPDATED to Input Field */}
         <div className="col-span-1">
-          <label className={labelClassName}>Monthly Income *</label>
-          <div className="relative">
-            <select
-              value={form.earning}
-              onChange={(e) => setForm({ ...form, earning: e.target.value })}
-              className={`${inputClassName} appearance-none cursor-pointer`}
-              required
-            >
-              <option value="" disabled>Select Range</option>
-              {earningRanges.map((range) => (
-                <option key={range} value={range}>{range}</option>
-              ))}
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
-              <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
-                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-              </svg>
-            </div>
-          </div>
+          <label className={labelClassName}>Monthly Income (₹) *</label>
+          <input
+            type="number"
+            placeholder="e.g. 25000"
+            value={form.earning}
+            onChange={(e) => setForm({ ...form, earning: e.target.value })}
+            className={inputClassName}
+            min="0"
+            required
+          />
         </div>
 
         {/* Conditional Fields based on Employment Type */}
