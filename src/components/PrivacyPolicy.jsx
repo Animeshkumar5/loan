@@ -50,7 +50,7 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-3">5. Contact Us</h2>
             <p className="leading-relaxed">
-              If you have questions about this policy, please contact our support team at support@example.com.
+              If you have questions about this policy, please contact our support team at Support@paisasolutions.com.
             </p>
           </section>
 
