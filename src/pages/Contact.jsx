@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link
 import { sendEmails } from "../service/sendmail"; 
-// --- CHANGE 1: Import Firebase functions ---
 import { db } from "../firebase"; 
 import { collection, addDoc } from "firebase/firestore"; 
 
@@ -18,46 +18,42 @@ export default function Contact() {
     companyName: "",
     sector: "",
     businessName: "",
-    earning: "", // This now stores the exact amount entered
+    earning: "",
   });
 
+  // New State for Checkbox
+  const [isAgreed, setIsAgreed] = useState(false);
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("Processing..."); // Updated status text
+
+    // Checkbox Validation
+    if (!isAgreed) {
+        alert("Please agree to the Terms and Conditions.");
+        return;
+    }
+
+    setStatus("Processing..."); 
 
     try {
-      // --- CHANGE 2: Save to Firestore Database First ---
-      // We save it to 'enquiries' collection (same as hero form)
-      // We add 'source: "Contact Page"' so you know where the lead came from
       await addDoc(collection(db, "enquiries"), {
         ...form,
         createdAt: new Date(),
         source: "Contact Page" 
       });
 
-      // --- CHANGE 3: Send Email ---
       const emailResult = await sendEmails(form);
 
       if (emailResult.success) {
         setStatus("Message sent successfully! We will contact you soon.");
-        // Reset all fields after success
+        // Reset form
         setForm({
-          name: "",
-          phone: "",
-          email: "",
-          city: "",
-          pincode: "",
-          panCard: "",
-          existingLoan: "",
-          loanType: "",
-          employmentType: "",
-          companyName: "",
-          sector: "",
-          businessName: "",
-          earning: "",
+          name: "", phone: "", email: "", city: "", pincode: "", panCard: "",
+          existingLoan: "", loanType: "", employmentType: "", companyName: "",
+          sector: "", businessName: "", earning: "",
         });
+        setIsAgreed(false); // Reset checkbox
       } else {
         console.error("Email Error:", emailResult);
         setStatus("Details saved, but email notification failed. We will contact you.");
@@ -70,8 +66,6 @@ export default function Contact() {
 
   const loanTypes = ["Personal Loan", "Business Loan", "Home Loan", "Life Insurance", "Used Car Loan"];
   const employmentTypes = ["Salaried", "Self Employed", "Business"];
-  // Note: earningRanges array removed as we now use an input field
-  
   const inputClassName = "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition bg-white text-gray-700 outline-none";
 
   return (
@@ -100,95 +94,43 @@ export default function Contact() {
                   {/* Name */}
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2 text-sm">Full Name *</label>
-                    <input
-                      type="text"
-                      placeholder="Enter your full name"
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className={inputClassName}
-                      required
-                    />
+                    <input type="text" placeholder="Enter your full name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className={inputClassName} required />
                   </div>
 
                   {/* Email */}
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2 text-sm">Email Address *</label>
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className={inputClassName}
-                      required
-                    />
+                    <input type="email" placeholder="Enter your email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className={inputClassName} required />
                   </div>
 
                   {/* Phone */}
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2 text-sm">Mobile Number *</label>
-                    <input
-                      type="tel"
-                      placeholder="Enter your mobile number"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className={inputClassName}
-                      maxLength="10"
-                      pattern="[0-9]{10}"
-                      required
-                    />
+                    <input type="tel" placeholder="Enter your mobile number" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className={inputClassName} maxLength="10" pattern="[0-9]{10}" required />
                   </div>
 
                   {/* City & Pincode */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2 text-sm">City *</label>
-                      <input
-                        type="text"
-                        placeholder="Your city"
-                        value={form.city}
-                        onChange={(e) => setForm({ ...form, city: e.target.value })}
-                        className={inputClassName}
-                        required
-                      />
+                      <input type="text" placeholder="Your city" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} className={inputClassName} required />
                     </div>
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2 text-sm">Pincode *</label>
-                      <input
-                        type="text"
-                        placeholder="Pincode"
-                        value={form.pincode}
-                        onChange={(e) => setForm({ ...form, pincode: e.target.value })}
-                        className={inputClassName}
-                        maxLength="6"
-                        pattern="[0-9]{6}"
-                        required
-                      />
+                      <input type="text" placeholder="Pincode" value={form.pincode} onChange={(e) => setForm({ ...form, pincode: e.target.value })} className={inputClassName} maxLength="6" pattern="[0-9]{6}" required />
                     </div>
                   </div>
 
-                  {/* --- PAN Card & Existing Loan (Side by Side) --- */}
+                  {/* PAN & Existing Loan */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2 text-sm">PAN Card *</label>
-                      <input
-                        type="text"
-                        placeholder="ABCDE1234F"
-                        value={form.panCard}
-                        onChange={(e) => setForm({ ...form, panCard: e.target.value.toUpperCase() })}
-                        className={`${inputClassName} uppercase`}
-                        maxLength="10"
-                        required
-                      />
+                      <input type="text" placeholder="ABCDE1234F" value={form.panCard} onChange={(e) => setForm({ ...form, panCard: e.target.value.toUpperCase() })} className={`${inputClassName} uppercase`} maxLength="10" required />
                     </div>
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2 text-sm">Existing Loan? *</label>
                       <div className="relative">
-                        <select
-                          value={form.existingLoan}
-                          onChange={(e) => setForm({ ...form, existingLoan: e.target.value })}
-                          className={`${inputClassName} appearance-none cursor-pointer`}
-                          required
-                        >
+                        <select value={form.existingLoan} onChange={(e) => setForm({ ...form, existingLoan: e.target.value })} className={`${inputClassName} appearance-none cursor-pointer`} required>
                           <option value="" disabled>Select</option>
                           <option value="Yes">Yes</option>
                           <option value="No">No</option>
@@ -201,16 +143,9 @@ export default function Contact() {
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2 text-sm">Loan Type *</label>
                     <div className="relative">
-                      <select
-                        value={form.loanType}
-                        onChange={(e) => setForm({ ...form, loanType: e.target.value })}
-                        className={`${inputClassName} appearance-none cursor-pointer`}
-                        required
-                      >
+                      <select value={form.loanType} onChange={(e) => setForm({ ...form, loanType: e.target.value })} className={`${inputClassName} appearance-none cursor-pointer`} required>
                         <option value="" disabled>Select Loan Type</option>
-                        {loanTypes.map((type) => (
-                          <option key={type} value={type}>{type}</option>
-                        ))}
+                        {loanTypes.map((type) => (<option key={type} value={type}>{type}</option>))}
                       </select>
                     </div>
                   </div>
@@ -219,64 +154,29 @@ export default function Contact() {
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2 text-sm">Employment Type *</label>
                     <div className="relative">
-                      <select
-                        value={form.employmentType}
-                        onChange={(e) => setForm({ ...form, employmentType: e.target.value })}
-                        className={`${inputClassName} appearance-none cursor-pointer`}
-                        required
-                      >
+                      <select value={form.employmentType} onChange={(e) => setForm({ ...form, employmentType: e.target.value })} className={`${inputClassName} appearance-none cursor-pointer`} required>
                         <option value="" disabled>Select Employment Type</option>
-                        {employmentTypes.map((type) => (
-                          <option key={type} value={type}>{type}</option>
-                        ))}
+                        {employmentTypes.map((type) => (<option key={type} value={type}>{type}</option>))}
                       </select>
                     </div>
                   </div>
 
-                  {/* --- Conditional Fields based on Employment Type --- */}
-                  
-                  {/* Scenario: SALARIED */}
+                  {/* Conditional Fields */}
                   {form.employmentType === "Salaried" && (
                     <>
-                      {/* Company Name */}
                       <div>
                         <label className="block text-gray-700 font-semibold mb-2 text-sm">Company Name *</label>
-                        <input
-                          type="text"
-                          placeholder="Enter company name"
-                          value={form.companyName}
-                          onChange={(e) => setForm({ ...form, companyName: e.target.value })}
-                          className={inputClassName}
-                          required
-                        />
+                        <input type="text" placeholder="Enter company name" value={form.companyName} onChange={(e) => setForm({ ...form, companyName: e.target.value })} className={inputClassName} required />
                       </div>
-
-                      {/* Sector (Govt vs Private) */}
                       <div>
                         <label className="block text-gray-700 font-semibold mb-2 text-sm">Sector *</label>
                         <div className="flex gap-6 mt-2">
                           <label className="flex items-center space-x-2 cursor-pointer">
-                            <input
-                              type="radio"
-                              name="sector"
-                              value="Government"
-                              checked={form.sector === "Government"}
-                              onChange={(e) => setForm({ ...form, sector: e.target.value })}
-                              className="w-5 h-5 text-blue-600 focus:ring-blue-500 border-gray-300"
-                              required
-                            />
+                            <input type="radio" name="sector" value="Government" checked={form.sector === "Government"} onChange={(e) => setForm({ ...form, sector: e.target.value })} className="w-5 h-5 text-blue-600 focus:ring-blue-500 border-gray-300" required />
                             <span className="text-gray-700">Government</span>
                           </label>
                           <label className="flex items-center space-x-2 cursor-pointer">
-                            <input
-                              type="radio"
-                              name="sector"
-                              value="Private"
-                              checked={form.sector === "Private"}
-                              onChange={(e) => setForm({ ...form, sector: e.target.value })}
-                              className="w-5 h-5 text-blue-600 focus:ring-blue-500 border-gray-300"
-                              required
-                            />
+                            <input type="radio" name="sector" value="Private" checked={form.sector === "Private"} onChange={(e) => setForm({ ...form, sector: e.target.value })} className="w-5 h-5 text-blue-600 focus:ring-blue-500 border-gray-300" required />
                             <span className="text-gray-700">Private</span>
                           </label>
                         </div>
@@ -284,39 +184,50 @@ export default function Contact() {
                     </>
                   )}
 
-                  {/* Scenario: BUSINESS */}
                   {form.employmentType === "Business" && (
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2 text-sm">Business Name *</label>
-                      <input
-                        type="text"
-                        placeholder="Enter your business name"
-                        value={form.businessName}
-                        onChange={(e) => setForm({ ...form, businessName: e.target.value })}
-                        className={inputClassName}
-                        required
-                      />
+                      <input type="text" placeholder="Enter your business name" value={form.businessName} onChange={(e) => setForm({ ...form, businessName: e.target.value })} className={inputClassName} required />
                     </div>
                   )}
 
-                  {/* --- CHANGE 4: Monthly Earning Input Field (Was Select) --- */}
+                  {/* Monthly Earning */}
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2 text-sm">Monthly Earning (₹) *</label>
-                    <input
-                      type="number"
-                      placeholder="e.g. 25000"
-                      value={form.earning}
-                      onChange={(e) => setForm({ ...form, earning: e.target.value })}
-                      className={inputClassName}
-                      min="0"
-                      required
-                    />
+                    <input type="number" placeholder="e.g. 25000" value={form.earning} onChange={(e) => setForm({ ...form, earning: e.target.value })} className={inputClassName} min="0" required />
+                  </div>
+
+                  {/* --- CHECKBOX SECTION --- */}
+                  <div className="mt-4">
+                    <div className="flex items-start gap-3">
+                        <div className="flex items-center h-5">
+                            <input
+                                id="contact-terms"
+                                type="checkbox"
+                                checked={isAgreed}
+                                onChange={(e) => setIsAgreed(e.target.checked)}
+                                className="w-5 h-5 border border-gray-300 rounded bg-white focus:ring-3 focus:ring-blue-300"
+                                required
+                            />
+                        </div>
+                        <label htmlFor="contact-terms" className="text-sm font-medium text-gray-700">
+                            I agree to the Terms and Conditions and authorise the company to contact me via Email/SMS/WhatsApp. {" "}
+                            <Link to="/privacy-policy" className="text-blue-600 hover:underline hover:text-blue-700 font-semibold">
+                                Know More
+                            </Link>
+                        </label>
+                    </div>
                   </div>
 
                   {/* Submit Button */}
                   <button 
                     type="submit"
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 rounded-xl transition transform hover:scale-105 shadow-lg mt-2"
+                    disabled={!isAgreed}
+                    className={`w-full font-bold py-4 rounded-xl transition shadow-lg mt-2 ${
+                        isAgreed 
+                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 hover:scale-105 text-white cursor-pointer' 
+                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
                   >
                     SEND
                   </button>
@@ -346,7 +257,7 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Contact Details */}
+          {/* Contact Details Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 mb-8">
             <div className="bg-white rounded-xl p-6 shadow-lg text-center border border-gray-200">
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">

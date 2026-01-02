@@ -19,6 +19,7 @@ import Blogs from "./pages/Blogs";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 
+
 // --- NEW IMPORTS: Admin & Auth ---
 import Login from "./pages/Login"; 
 import AdminPanel from "./components/AdminPanel"; 
@@ -29,6 +30,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import QuickApplyAlert from "./components/QuickApplyAlert";
 import ScrollToTop from "./components/ScrollToTop"; 
+import PrivacyPolicy from "./components/PrivacyPolicy";
 
 function App() {
   return (
@@ -45,6 +47,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
+          
+          {/* Legal Pages */}
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
           {/* --- NEW ROUTES: Admin System --- */}
           

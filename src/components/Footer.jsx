@@ -123,8 +123,9 @@ export default function Footer() {
               <li>
                 <Link to="/contact" className="hover:text-white transition">Contact</Link>
               </li>
+              {/* --- UPDATED LINK HERE --- */}
               <li>
-                <Link to="/privacy" className="hover:text-white transition">Privacy Policy</Link>
+                <Link to="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
               </li>
             </ul>
           </div>
