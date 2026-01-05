@@ -3,6 +3,7 @@ import { db, auth } from "../firebase";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import * as XLSX from "xlsx"; // Import the Excel library
 
 export default function AdminPanel() {
   const [enquiries, setEnquiries] = useState([]);
@@ -12,7 +13,6 @@ export default function AdminPanel() {
   // Function to fetch data from Firestore
   const fetchEnquiries = async () => {
     try {
-      // Get reference to 'enquiries' collection and order by newest first
       const q = query(collection(db, "enquiries"), orderBy("createdAt", "desc"));
       const querySnapshot = await getDocs(q);
       
@@ -33,6 +33,37 @@ export default function AdminPanel() {
     fetchEnquiries();
   }, []);
 
+  // --- NEW: Function to Export Data to Excel ---
+  const handleExportToExcel = () => {
+    // 1. Format the data for the Excel sheet
+    const excelData = enquiries.map((person) => ({
+      Date: person.createdAt?.seconds 
+        ? new Date(person.createdAt.seconds * 1000).toLocaleDateString() 
+        : "N/A",
+      Name: person.name,
+      Mobile: person.phone,
+      Email: person.email,
+      City: person.city,
+      Pincode: person.pincode,
+      PAN_Card: person.panCard,
+      Existing_Loan: person.existingLoan,
+      Loan_Type: person.loanType,
+      Employment_Type: person.employmentType,
+      Income: person.earning,
+      // Logic to combine Company/Business name into one column
+      Organization_Name: person.companyName || person.businessName || "N/A",
+      Sector: person.sector || "N/A"
+    }));
+
+    // 2. Create the worksheet
+    const worksheet = XLSX.utils.json_to_sheet(excelData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Enquiries");
+
+    // 3. Download the file
+    XLSX.writeFile(workbook, "Loan_Enquiries_Data.xlsx");
+  };
+
   const handleLogout = async () => {
     await signOut(auth);
     navigate("/login");
@@ -45,12 +76,24 @@ export default function AdminPanel() {
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>
-          <button 
-            onClick={handleLogout}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition"
-          >
-            Logout
-          </button>
+          
+          <div className="flex gap-3">
+            {/* --- NEW: Export Button --- */}
+            <button 
+              onClick={handleExportToExcel}
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition flex items-center gap-2 shadow-sm"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+              Export to Excel
+            </button>
+
+            <button 
+              onClick={handleLogout}
+              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition shadow-sm"
+            >
+              Logout
+            </button>
+          </div>
         </div>
 
         <div className="bg-white shadow rounded-lg overflow-hidden">
@@ -63,8 +106,8 @@ export default function AdminPanel() {
                   <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Contact</th>
                   <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Requirement</th>
                   <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Income</th>
-                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">PAN Card</th> {/* NEW COLUMN */}
-                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Company / Business</th> {/* NEW COLUMN */}
+                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">PAN Card</th>
+                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Company / Business</th>
                   <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">City</th>
                 </tr>
               </thead>
@@ -92,12 +135,10 @@ export default function AdminPanel() {
                       ₹{person.earning}
                     </td>
                     
-                    {/* NEW: PAN Card Details */}
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 uppercase font-mono">
                       {person.panCard || "-"}
                     </td>
 
-                    {/* NEW: Company or Business Name */}
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {person.companyName ? (
                         <span className="text-gray-700">{person.companyName} <span className="text-xs text-gray-400">(Co.)</span></span>
