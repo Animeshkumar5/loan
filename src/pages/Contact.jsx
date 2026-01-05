@@ -276,7 +276,7 @@ export default function Contact() {
                 </svg>
               </div>
               <h3 className="font-bold text-gray-900 mb-1">Email</h3>
-              <p className="text-sm text-gray-600">Support@paisasolutions.com</p>
+              <p className="text-sm text-gray-600">Info@paisasolutions.com</p>
             </div>
 
             <div className="bg-white rounded-xl p-6 shadow-lg text-center border border-gray-200">
