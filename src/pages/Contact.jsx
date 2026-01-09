@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom"; 
 import { sendEmails } from "../service/sendmail"; 
 import { db } from "../firebase"; 
-import { collection, addDoc } from "firebase/firestore"; 
+// Added query, where, getDocs for validation
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore"; 
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -21,7 +22,6 @@ export default function Contact() {
     earning: "",
   });
 
-  // New State for Checkbox
   const [isAgreed, setIsAgreed] = useState(false);
   const [status, setStatus] = useState("");
 
@@ -37,6 +37,19 @@ export default function Contact() {
     setStatus("Processing..."); 
 
     try {
+      // --- VALIDATION LOGIC START ---
+      const enquiriesRef = collection(db, "enquiries");
+      
+      // Check if email already exists
+      const q = query(enquiriesRef, where("email", "==", form.email));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        setStatus("This email ID has already submitted an enquiry.");
+        return; // Stop execution
+      }
+      // --- VALIDATION LOGIC END ---
+
       await addDoc(collection(db, "enquiries"), {
         ...form,
         createdAt: new Date(),
