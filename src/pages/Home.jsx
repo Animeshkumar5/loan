@@ -49,21 +49,26 @@ export default function Home() {
     <div className="bg-gray-50 font-sans -mt-6">
       
       {/* --- SEO SECTION --- */}
-      <Helmet>
-        <title>Personal Loan Near Me - Low Interest & Fast Approval | PaisaSolutions</title>
+     <Helmet>
+        <title>Loan Agency Near Me - Personal, Business & Home Loans | PaisaSolutions</title>
+        
+        {/* THIS IS THE MISSING TAG FIXING YOUR ERROR */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
         <meta 
           name="description" 
-          content="Looking for a personal loan near me? Apply now for low-interest personal loans, business loans for startups, and used car loans. Trusted home loan agents and best insurance agents near you." 
+          content="Apply for Personal, Business, and Home Loans with instant approval. Trusted loan consultancy offering low-interest rates, paperless processing, and same-day disbursement services." 
         />
+        
         <meta 
           name="keywords" 
-          content="Personal loan near me, Low-interest personal loan, Home loan agents, Business loan for startup, Used car loan apply now, Best insurance agent near me" 
+          content="Personal Loan Services, Business Loan Provider, Home Loan Agency, Instant Loan Approval, Low Interest Loan, Loan Consultancy Services, Quick Loan Disbursement, SME Loan Assistance, Education Loan Services, Mortgage Loan Agency, Online Loan Application, Paperless Loan Process, Same Day Loan Approval, Fast Loan Services, Instant Finance Solutions, Loan Agency Near Me, Trusted Loan Consultant, Best Loan Service Provider, Financial Loan Assistance, Loan Processing Company" 
         />
-        <link rel="canonical" href="https://yourwebsite.com/" />
+        
+        <link rel="canonical" href="https://paisasolutions.com/" />
       </Helmet>
 
       {/* 1. HERO SECTION */}
-      {/* FIX: Added 'hero-section' class here for the CSS override */}
       <div className="relative bg-gradient-to-br from-blue-50 via-white to-blue-50 min-h-screen flex items-center overflow-hidden py-12 lg:py-14 xl:py-20 hero-section">
         
         {/* Background Blobs */}
@@ -78,6 +83,13 @@ export default function Home() {
 
             {/* LEFT CONTENT - Text & Stats */}
             <div className="space-y-6 lg:space-y-6 xl:space-y-8 text-center lg:text-left">
+              
+              {/* --- SEO H1 FIX --- */}
+              {/* This H1 is hidden visually but visible to SEO Crawlers/Bots */}
+              <h1 style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: '0' }}>
+                Personal, Business & Home Loan Agency Near Me
+              </h1>
+
               {/* Badge */}
               <div className="inline-block">
                 <span className="bg-blue-100 text-blue-600 text-sm font-semibold px-4 py-2 rounded-full">
@@ -85,8 +97,8 @@ export default function Home() {
                 </span>
               </div>
 
-              {/* Animated Text Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight text-slate-800">
+              {/* Animated Text Headline (Changed from H1 to DIV to avoid duplicates, styling remains same) */}
+              <div className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold leading-tight text-slate-800">
                 <span className="block">Let's find you</span>
                 <span className="block text-slate-900 font-extrabold">
                   the{' '}
@@ -97,7 +109,7 @@ export default function Home() {
                     {loanTypes[currentTextIndex]}
                   </span>
                 </span>
-              </h1>
+              </div>
 
               {/* Features Row */}
               <div className="mt-4 flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center lg:justify-start">
