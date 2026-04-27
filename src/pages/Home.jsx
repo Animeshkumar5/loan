@@ -6,6 +6,8 @@ import LoanOptions from '../components/LoanOptions';
 import LoanSteps from "../components/LoanSteps";
 import { Helmet } from 'react-helmet-async';
 import WhyChooseUs from "../components/WhyChooseUs";
+import AuthorisedBankingPartners from "../components/AuthorisedBankingPartners";
+import LoanStatsCounter from "../components/LoanStatsCounter";
 
 // --- ICONS ---
 const TagIcon = () => (
@@ -363,6 +365,12 @@ export default function Home() {
       
       <AboutPreview />
       <LoanSteps />
+
+      {/* AUTHORISED BANKING PARTNERS */}
+      <AuthorisedBankingPartners />
+
+      {/* LOAN PROVIDED TO CLIENTS - ANIMATED STATS */}
+      <LoanStatsCounter />
 
       {/* 5. FEATURES */}
       <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 bg-white">
