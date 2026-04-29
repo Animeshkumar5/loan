@@ -392,48 +392,111 @@ export default function Home() {
 
       {/* 6. EXPLORE YOUR OPTIONS */}
       <div className="py-16 sm:py-24 lg:py-32 bg-gray-50 overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 relative min-h-[400px] sm:h-[500px] lg:h-[600px] flex justify-center items-center">
+        <div className="container mx-auto px-4 sm:px-6 relative min-h-[350px] sm:min-h-[500px] lg:min-h-[600px] flex justify-center items-center">
           {/* CENTER CIRCLE */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-64 sm:h-64 lg:w-96 lg:h-96 rounded-full border-4 sm:border-6 border-orange-500 flex flex-col justify-center items-center text-center p-4 sm:p-6 lg:p-8 z-10 bg-white shadow-lg">
-            <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold text-black mb-2 sm:mb-3">Explore Your Options</h2>
-            <p className="text-xs sm:text-base lg:text-lg text-gray-600">Compare personal loans by credit rating</p>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-56 sm:h-56 lg:w-72 lg:h-72 rounded-full border-4 sm:border-6 border-orange-500 flex flex-col justify-center items-center text-center p-2 sm:p-6 lg:p-8 z-10 bg-white shadow-lg">
+            <h2 className="text-sm sm:text-2xl lg:text-3xl font-bold text-black mb-1 sm:mb-3 leading-tight">Explore Options</h2>
+            <p className="hidden sm:block text-base lg:text-lg text-gray-600">Compare personal loans by credit rating</p>
+            <p className="text-[10px] sm:hidden text-gray-600 leading-tight">By credit rating</p>
           </div>
 
           {/* ROTATING ITEMS */}
-          <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] -ml-[150px] sm:-ml-[200px] lg:-ml-[250px] -mt-[150px] sm:-mt-[200px] lg:-mt-[250px] animate-orbit z-20 pointer-events-none origin-center">
+          <div className="absolute top-1/2 left-1/2 w-[210px] h-[210px] sm:w-[350px] sm:h-[350px] lg:w-[420px] lg:h-[420px] -ml-[105px] sm:-ml-[175px] lg:-ml-[210px] -mt-[105px] sm:-mt-[175px] lg:-mt-[210px] animate-orbit z-20 pointer-events-none origin-center">
             
-            {/* 1. Excellent (Top) */}
+            {/* 1. Super Excellent (Top) */}
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
-              <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Excellent</h3>
-                <p className="text-green-500 font-bold text-base sm:text-lg lg:text-xl">720+</p>
+              <div className="bg-white p-2 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[90px] sm:min-w-[140px] lg:min-w-[160px] animate-float">
+                <h3 className="font-bold text-[11px] sm:text-xl lg:text-2xl text-blue-900 mb-0 sm:mb-1 leading-tight">Super Excellent</h3>
+                <p className="text-green-600 font-bold text-xs sm:text-lg lg:text-xl">Above 800</p>
               </div>
             </div>
 
-            {/* 2. Good (Right) */}
-            <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
-              <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-1000">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Good</h3>
-                <p className="text-blue-500 font-bold text-base sm:text-lg lg:text-xl">550-719</p>
+            {/* 2. Excellent (Top Right) */}
+            <div className="absolute top-[34%] right-0 transform translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
+              <div className="bg-white p-2 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[90px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-1000">
+                <h3 className="font-bold text-xs sm:text-xl lg:text-2xl text-blue-900 mb-0 sm:mb-1 leading-tight">Excellent</h3>
+                <p className="text-green-500 font-bold text-xs sm:text-lg lg:text-xl">751-800</p>
               </div>
             </div>
 
-            {/* 3. Fair (Bottom) */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 animate-counter-orbit pointer-events-auto">
-              <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-2000">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Fair</h3>
-                <p className="text-red-500 font-bold text-base sm:text-lg lg:text-xl">620-659</p>
+            {/* 3. Good (Bottom Right) */}
+            <div className="absolute top-[90%] right-[15%] transform translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
+              <div className="bg-white p-2 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[90px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-2000">
+                <h3 className="font-bold text-xs sm:text-xl lg:text-2xl text-blue-900 mb-0 sm:mb-1 leading-tight">Good</h3>
+                <p className="text-blue-500 font-bold text-xs sm:text-lg lg:text-xl">701-750</p>
               </div>
             </div>
 
-            {/* 4. Poor (Left) */}
-            <div className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
-              <div className="bg-white p-3 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[120px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-1500">
-                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-blue-900 mb-1">Poor</h3>
-                <p className="text-gray-500 font-bold text-base sm:text-lg lg:text-xl">&lt;620</p>
+            {/* 4. Fair (Bottom Left) */}
+            <div className="absolute top-[90%] left-[15%] transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
+              <div className="bg-white p-2 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[90px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-1500">
+                <h3 className="font-bold text-xs sm:text-xl lg:text-2xl text-blue-900 mb-0 sm:mb-1 leading-tight">Fair</h3>
+                <p className="text-orange-500 font-bold text-xs sm:text-lg lg:text-xl">650-700</p>
               </div>
             </div>
 
+            {/* 5. Poor (Top Left) */}
+            <div className="absolute top-[34%] left-0 transform -translate-x-1/2 -translate-y-1/2 animate-counter-orbit pointer-events-auto">
+              <div className="bg-white p-2 sm:p-4 lg:p-5 rounded-xl shadow-lg text-center min-w-[90px] sm:min-w-[140px] lg:min-w-[160px] animate-float animation-delay-[2500ms]">
+                <h3 className="font-bold text-xs sm:text-xl lg:text-2xl text-blue-900 mb-0 sm:mb-1 leading-tight">Poor</h3>
+                <p className="text-red-500 font-bold text-xs sm:text-lg lg:text-xl">Below 650</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {/* 7. HOW TO IMPROVE YOUR CIBIL */}
+      <div className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-900 mb-4">How to Improve Your CIBIL Score</h2>
+            <p className="text-gray-600 text-lg">Follow these simple points to boost your credit rating and get better loan offers.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            <div className="bg-blue-50 p-6 rounded-xl flex items-start shadow-sm border border-blue-100">
+              <div className="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">1</div>
+              <div>
+                <h3 className="font-bold text-blue-900 text-lg mb-1">Pay Dues on Time</h3>
+                <p className="text-gray-600">Ensure all your EMIs and credit card bills are paid on or before the due date.</p>
+              </div>
+            </div>
+            
+            <div className="bg-blue-50 p-6 rounded-xl flex items-start shadow-sm border border-blue-100">
+              <div className="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">2</div>
+              <div>
+                <h3 className="font-bold text-blue-900 text-lg mb-1">Keep Utilization Low</h3>
+                <p className="text-gray-600">Try not to use more than 30% of your total credit limit to show responsible credit behavior.</p>
+              </div>
+            </div>
+            
+            <div className="bg-blue-50 p-6 rounded-xl flex items-start shadow-sm border border-blue-100">
+              <div className="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">3</div>
+              <div>
+                <h3 className="font-bold text-blue-900 text-lg mb-1">Avoid Multiple Loans</h3>
+                <p className="text-gray-600">Don't apply for several loans or credit cards simultaneously, as this leads to multiple hard inquiries.</p>
+              </div>
+            </div>
+            
+            <div className="bg-blue-50 p-6 rounded-xl flex items-start shadow-sm border border-blue-100">
+              <div className="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold mr-4 shrink-0">4</div>
+              <div>
+                <h3 className="font-bold text-blue-900 text-lg mb-1">Monitor Your Report</h3>
+                <p className="text-gray-600">Check your CIBIL report regularly and report any inaccuracies or errors immediately.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-xl flex flex-col sm:flex-row items-center justify-between">
+            <div className="mb-4 sm:mb-0">
+              <h3 className="text-xl font-bold text-orange-800 mb-1">Need Expert Guidance?</h3>
+              <p className="text-orange-700">Our financial experts can help you analyze and improve your credit score.</p>
+            </div>
+            <a href="/contact" className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition shadow-md whitespace-nowrap">
+              Contact Us for Help
+            </a>
           </div>
         </div>
       </div>

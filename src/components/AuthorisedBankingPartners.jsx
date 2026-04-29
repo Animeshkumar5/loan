@@ -36,8 +36,7 @@ export default function AuthorisedBankingPartners() {
       </div>
 
       {/* ── Marquee Track ── */}
-      {/* 
-        The outer div masks the edges with a gradient fade.
+      {/* The outer div masks the edges with a gradient fade.
         The inner div (.partners-track) runs the infinite scroll.
         On hover over any individual card, the track pauses.
       */}
@@ -81,12 +80,9 @@ export default function AuthorisedBankingPartners() {
           box-shadow: 0 20px 45px rgba(59, 130, 246, 0.18);
           border-color: #3b82f6;
         }
+        /* Removed the grayscale and opacity filters here so the image is always in full color */
         .partner-card img {
-          transition: filter 0.35s ease, opacity 0.35s ease;
-          filter: grayscale(60%) opacity(0.8);
-        }
-        .partner-card:hover img {
-          filter: grayscale(0%) opacity(1);
+          transition: transform 0.35s ease; 
         }
       `}</style>
     </section>
