@@ -242,7 +242,7 @@ export default function Contact() {
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     }`}
                   >
-                    SEND
+                    SUMBIT ENQUIRY
                   </button>
 
                   {/* Status Message */}
